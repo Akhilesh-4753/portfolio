@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Code2, Menu } from 'lucide-react';
-import { GithubIcon } from '../common/BrandIcons';
 import { NavLinks, NAV_ITEMS } from './NavLinks';
 import { MobileMenu } from './MobileMenu';
-import { MagneticButton } from '../animations/MagneticButton';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -99,7 +97,7 @@ export const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Nav Items (Aligned to the right on desktop) */}
           <nav
             style={{
               display: 'none',
@@ -110,53 +108,26 @@ export const Navbar = () => {
             <NavLinks activeSection={activeSection} />
           </nav>
 
-          {/* Right Action Icons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            {/* GitHub Fast Link */}
-            <MagneticButton pullFactor={0.3}>
-              <a
-                href="https://github.com/Akhilesh-4753"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'var(--bg-card)',
-                  border: '1px solid var(--border-subtle)',
-                  color: 'var(--text-secondary)',
-                  transition: 'var(--transition-smooth)'
-                }}
-              >
-                <GithubIcon size={18} />
-              </a>
-            </MagneticButton>
-
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open Navigation Menu"
-              className="mobile-hamburger"
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border-subtle)',
-                color: 'var(--text-primary)',
-                cursor: 'pointer'
-              }}
-            >
-              <Menu size={20} />
-            </button>
-          </div>
+          {/* Mobile Hamburger Toggle (only visible on mobile < 900px) */}
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open Navigation Menu"
+            className="mobile-hamburger"
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-subtle)',
+              color: 'var(--text-primary)',
+              cursor: 'pointer'
+            }}
+          >
+            <Menu size={20} />
+          </button>
         </div>
       </header>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Mail, Download } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { Button } from '../../components/common/Button';
 import { SocialLinks } from '../../components/common/SocialLinks';
@@ -88,14 +88,6 @@ export const Hero = () => {
                   icon={ArrowDown}
                 >
                   View My Work
-                </Button>
-
-                <Button
-                  onClick={() => handleScrollTo('contact')}
-                  variant="secondary"
-                  icon={Mail}
-                >
-                  Contact Me
                 </Button>
 
                 <Button
