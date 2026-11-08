@@ -62,7 +62,7 @@ export const About = () => {
                       width: '44px',
                       height: '44px',
                       borderRadius: '12px',
-                      backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                      backgroundColor: 'rgba(249, 115, 22, 0.12)',
                       color: 'var(--color-blue)',
                       display: 'flex',
                       alignItems: 'center',

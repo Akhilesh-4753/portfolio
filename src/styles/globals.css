@@ -142,13 +142,13 @@ code, pre {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.32);
   transition: var(--transition-smooth);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.45);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.45);
 }
 
 .btn-secondary {
@@ -191,9 +191,9 @@ code, pre {
 }
 
 .btn-outline:hover {
-  border-color: var(--color-blue);
-  color: var(--color-blue);
-  background: rgba(56, 189, 248, 0.05);
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  background: rgba(249, 115, 22, 0.08);
 }
 
 /* Badges */
@@ -207,9 +207,9 @@ code, pre {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--color-blue);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--color-orange);
+  border: 1px solid rgba(249, 115, 22, 0.28);
 }
 
 .tech-tag {
@@ -221,16 +221,16 @@ code, pre {
   font-size: 0.8rem;
   font-weight: 500;
   font-family: var(--font-mono);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
   transition: var(--transition-smooth);
 }
 
 .tech-tag:hover {
-  border-color: var(--color-blue);
+  border-color: var(--color-orange);
   color: var(--text-primary);
-  background: rgba(56, 189, 248, 0.12);
+  background: rgba(249, 115, 22, 0.12);
 }
 
 /* Status Indicator Dot */

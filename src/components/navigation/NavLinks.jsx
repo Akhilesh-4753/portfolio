@@ -63,7 +63,7 @@ export const NavLinks = ({ activeSection, onItemClick, isMobile = false }) => {
                 fontSize: isMobile ? '1.1rem' : '0.88rem',
                 fontWeight: isActive ? 600 : 500,
                 color: isActive ? 'var(--color-blue)' : 'var(--text-secondary)',
-                backgroundColor: isActive && !isMobile ? 'rgba(56, 189, 248, 0.08)' : 'transparent',
+                backgroundColor: isActive && !isMobile ? 'rgba(249, 115, 22, 0.1)' : 'transparent',
                 transition: 'var(--transition-smooth)'
               }}
               onMouseEnter={(e) => {

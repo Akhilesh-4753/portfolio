@@ -46,7 +46,7 @@ export const CurrentWork = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 4px 18px rgba(56, 189, 248, 0.35)'
+                      boxShadow: '0 4px 18px rgba(249, 115, 22, 0.35)'
                     }}
                   >
                     <ShoppingBag size={24} />

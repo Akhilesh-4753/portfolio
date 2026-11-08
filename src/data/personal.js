@@ -4,9 +4,9 @@ export const personalInfo = {
   title: "Software Developer",
   positioning: "Software Developer | React.js | ASP.NET Core | REST APIs",
   heroLabel: "SOFTWARE DEVELOPER",
-  heroHeadline: "Building scalable digital experiences with React & .NET",
+  heroHeadline: "Web Developer in Kozhikode, Kerala",
   heroBio:
-    "I’m Akhilesh P, a Software Developer experienced in building responsive web applications, ERP systems, REST API integrations, and business-focused software solutions.",
+    "Hi, I'm Akhilesh P. With a strong commerce foundation and hands-on experience across enterprise .NET ERP systems and full-stack Python Django web applications, I build performant digital products enhanced with practical AI API integrations.",
   aboutHeading: "About Me",
   aboutBio: [
     "I’m a Software Developer focused on building practical, scalable, and responsive software applications.",
@@ -16,7 +16,7 @@ export const personalInfo = {
   email: "akhipn4753@gmail.com",
   phone: "+91 9526008613",
   location: "Kerala, India",
-  profileImage: "/Akhilesh/Akhilesh.jpeg",
+  profileImage: "/Akhilesh/hero_image.png",
   resumeUrl: "/Akhilesh_P_Resume.pdf",
   status: "Building real-world software",
   activeWork: {

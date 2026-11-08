@@ -46,7 +46,7 @@ export const ExperienceTimeline = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: 'var(--color-blue)',
-                  boxShadow: '0 0 15px rgba(56, 189, 248, 0.3)',
+                  boxShadow: '0 0 15px rgba(249, 115, 22, 0.3)',
                   zIndex: 1,
                   flexShrink: 0
                 }}
@@ -85,9 +85,9 @@ export const ExperienceTimeline = () => {
                         fontFamily: 'var(--font-mono)',
                         padding: '0.3rem 0.75rem',
                         borderRadius: '9999px',
-                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
                         color: 'var(--color-blue)',
-                        border: '1px solid rgba(56, 189, 248, 0.2)'
+                        border: '1px solid rgba(249, 115, 22, 0.2)'
                       }}
                     >
                       <Calendar size={13} />

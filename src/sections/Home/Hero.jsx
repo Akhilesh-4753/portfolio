@@ -3,7 +3,6 @@ import { ArrowDown, Mail, Download } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { Button } from '../../components/common/Button';
 import { SocialLinks } from '../../components/common/SocialLinks';
-import { TerminalCard } from './TerminalCard';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { useMouseParallax } from '../../hooks/useMouseParallax';
 
@@ -35,7 +34,7 @@ export const Hero = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.2fr 0.9fr',
+            gridTemplateColumns: '1.1fr 1fr',
             gap: '3.5rem',
             alignItems: 'center'
           }}
@@ -43,42 +42,23 @@ export const Hero = () => {
         >
           {/* LEFT: Text & CTAs */}
           <div style={{ maxWidth: '620px' }}>
-            <FadeIn direction="down" delay={0.05} immediate={true}>
-              <div style={{ marginBottom: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
-                <span className="badge-pill">
-                  <span className="status-dot animate-status-pulse" />
-                  {personalInfo.heroLabel}
-                </span>
-                <span
-                  style={{
-                    fontSize: '0.8rem',
-                    color: 'var(--text-muted)',
-                    fontFamily: 'var(--font-mono)'
-                  }}
-                >
-                  // Kerala, India
-                </span>
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="up" delay={0.12} immediate={true}>
+            <FadeIn direction="up" delay={0.06} immediate={true}>
               <h1
                 style={{
-                  fontSize: 'clamp(2.1rem, 3.8vw, 3.2rem)',
+                  fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)',
                   fontWeight: 800,
-                  lineHeight: 1.16,
+                  lineHeight: 1.18,
                   letterSpacing: '-0.025em',
                   marginBottom: '1.25rem',
                   color: 'var(--text-primary)'
                 }}
               >
-                Building scalable digital experiences with{' '}
-                <span className="gradient-text">React</span> &{' '}
-                <span className="gradient-text-accent">.NET</span>
+                Web Developer in{' '}
+                <span className="gradient-text">Kozhikode, Kerala</span>
               </h1>
             </FadeIn>
 
-            <FadeIn direction="up" delay={0.18} immediate={true}>
+            <FadeIn direction="up" delay={0.14} immediate={true}>
               <p
                 style={{
                   fontSize: 'clamp(0.98rem, 1.3vw, 1.08rem)',
@@ -92,7 +72,7 @@ export const Hero = () => {
             </FadeIn>
 
             {/* CTA Buttons */}
-            <FadeIn direction="up" delay={0.24} immediate={true}>
+            <FadeIn direction="up" delay={0.2} immediate={true}>
               <div
                 style={{
                   display: 'flex',
@@ -130,64 +110,76 @@ export const Hero = () => {
             </FadeIn>
 
             {/* Social Links */}
-            <FadeIn direction="up" delay={0.3} immediate={true}>
+            <FadeIn direction="up" delay={0.26} immediate={true}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <SocialLinks />
               </div>
             </FadeIn>
           </div>
 
-          {/* RIGHT: Profile Photo & Floating Developer Terminal (Zero Overlap) */}
+          {/* RIGHT: Hero Image filling the right side */}
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1.25rem',
               width: '100%',
-              maxWidth: '390px',
-              margin: '0 auto'
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
-            {/* Unobstructed Professional Portrait Showcase */}
-            <FadeIn direction="left" delay={0.15} immediate={true}>
+            <FadeIn direction="left" delay={0.15} immediate={true} style={{ width: '100%' }}>
               <div
                 style={{
                   position: 'relative',
+                  width: '100%',
+                  maxWidth: '560px',
+                  margin: '0 auto',
                   transform: `translate(${(normalizedX * 5).toFixed(1)}px, ${(normalizedY * 5).toFixed(1)}px)`,
                   transition: 'transform 0.2s cubic-bezier(0.2, 0, 0.2, 1)'
                 }}
               >
-                {/* Clean Frame with Subtle Gradient Hairline */}
+                {/* Ambient glow accent behind image */}
                 <div
                   style={{
-                    padding: '5px',
+                    position: 'absolute',
+                    inset: '-8px',
                     borderRadius: '24px',
-                    background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.45) 0%, rgba(139, 92, 246, 0.25) 50%, rgba(34, 211, 238, 0.45) 100%)',
-                    boxShadow: '0 16px 36px -8px rgba(0, 0, 0, 0.75), 0 0 20px -5px rgba(56, 189, 248, 0.16)'
+                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.32) 0%, rgba(124, 45, 18, 0.25) 50%, rgba(253, 186, 116, 0.22) 100%)',
+                    filter: 'blur(22px)',
+                    zIndex: 0,
+                    opacity: 0.85
+                  }}
+                  aria-hidden="true"
+                />
+
+                {/* Hero Image Container */}
+                <div
+                  style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    borderRadius: '20px',
+                    padding: '3px',
+                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.5) 0%, rgba(124, 45, 18, 0.38) 50%, rgba(253, 186, 116, 0.45) 100%)',
+                    boxShadow: '0 20px 45px -10px rgba(0, 0, 0, 0.85), 0 0 28px -5px rgba(249, 115, 22, 0.22)'
                   }}
                 >
-                  {/* Photo Container */}
                   <div
                     style={{
-                      width: '210px',
-                      height: '240px',
-                      borderRadius: '20px',
+                      borderRadius: '17px',
                       overflow: 'hidden',
-                      backgroundColor: '#0c1220'
+                      backgroundColor: 'var(--bg-card, #111111)',
+                      aspectRatio: '1536 / 1024',
+                      width: '100%'
                     }}
                   >
                     <img
-                      src={personalInfo.profileImage}
-                      alt={personalInfo.name}
+                      src="/Akhilesh/hero_image.png"
+                      alt="Akhilesh P - Web Developer in Kozhikode, Kerala"
                       style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
-                        objectPosition: 'center 10%',
                         display: 'block',
-                        filter: 'brightness(1.06) contrast(1.04) saturate(1.03)',
-                        imageRendering: '-webkit-optimize-contrast'
+                        filter: 'brightness(1.02) contrast(1.02)'
                       }}
                       onError={(e) => {
                         e.currentTarget.src = '/Akhilesh/Akhilesh.jpeg';
@@ -195,38 +187,7 @@ export const Hero = () => {
                     />
                   </div>
                 </div>
-
-                {/* Refined Status Tag Overlay */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '-11px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    whiteSpace: 'nowrap',
-                    backgroundColor: 'rgba(10, 15, 26, 0.95)',
-                    padding: '0.35rem 0.85rem',
-                    borderRadius: '9999px',
-                    border: '1px solid rgba(56, 189, 248, 0.3)',
-                    boxShadow: '0 6px 16px rgba(0, 0, 0, 0.6), 0 0 10px -2px rgba(16, 185, 129, 0.25)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.45rem',
-                    fontSize: '0.74rem',
-                    fontWeight: 600,
-                    backdropFilter: 'blur(8px)',
-                    zIndex: 2
-                  }}
-                >
-                  <span className="status-dot animate-status-pulse" />
-                  <span style={{ color: '#f1f5f9', letterSpacing: '0.02em' }}>{personalInfo.status}</span>
-                </div>
               </div>
-            </FadeIn>
-
-            {/* Interactive Developer Terminal Card */}
-            <FadeIn direction="up" delay={0.25} immediate={true} style={{ width: '100%' }}>
-              <TerminalCard />
             </FadeIn>
           </div>
         </div>
@@ -240,9 +201,6 @@ export const Hero = () => {
             text-align: center;
           }
           .hero-grid > div:first-child {
-            margin: 0 auto;
-          }
-          .hero-grid .badge-pill {
             margin: 0 auto;
           }
           .hero-grid .btn-primary, .hero-grid .btn-secondary, .hero-grid .btn-outline {

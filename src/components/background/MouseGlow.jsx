@@ -20,7 +20,7 @@ export const MouseGlow = () => {
         height: '500px',
         transform: 'translate(-50%, -50%)',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 40%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, rgba(124, 45, 18, 0.04) 40%, transparent 70%)',
         pointerEvents: 'none',
         zIndex: 1,
         transition: 'transform 0.08s ease-out'

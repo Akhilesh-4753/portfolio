@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/navigation/Navbar';
 import { Footer } from '../components/common/Footer';
-import { GridBackground } from '../components/background/GridBackground';
+import { CinematicBackground } from '../components/background/CinematicBackground';
 import { CodeBackground } from '../components/background/CodeBackground';
 import { MouseGlow } from '../components/background/MouseGlow';
 import { useScrollProgress } from '../hooks/useScrollProgress';
@@ -21,8 +21,8 @@ export const MainLayout = () => {
         aria-hidden="true"
       />
 
-      {/* Dynamic Backgrounds */}
-      <GridBackground />
+      {/* Dynamic Cinematic Backgrounds */}
+      <CinematicBackground />
       <CodeBackground />
       <MouseGlow />
 

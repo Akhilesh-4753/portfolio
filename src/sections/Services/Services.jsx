@@ -51,7 +51,7 @@ export const Services = () => {
                         width: '46px',
                         height: '46px',
                         borderRadius: '12px',
-                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
                         color: 'var(--color-blue)',
                         display: 'flex',
                         alignItems: 'center',

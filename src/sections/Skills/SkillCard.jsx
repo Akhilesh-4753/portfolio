@@ -42,7 +42,7 @@ export const SkillCard = ({ category }) => {
                 width: '36px',
                 height: '36px',
                 borderRadius: '9px',
-                backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                backgroundColor: 'rgba(249, 115, 22, 0.12)',
                 color: 'var(--color-blue)',
                 display: 'flex',
                 alignItems: 'center',
@@ -160,10 +160,10 @@ export const SkillCard = ({ category }) => {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.66rem',
                     color: 'var(--color-blue)',
-                    backgroundColor: 'rgba(56, 189, 248, 0.08)',
+                    backgroundColor: 'rgba(249, 115, 22, 0.08)',
                     padding: '0.1rem 0.4rem',
                     borderRadius: '4px',
-                    border: '1px solid rgba(56, 189, 248, 0.2)',
+                    border: '1px solid rgba(249, 115, 22, 0.25)',
                     whiteSpace: 'nowrap'
                   }}
                 >
@@ -188,8 +188,8 @@ export const SkillCard = ({ category }) => {
 
       <style>{`
         .tech-mini-card:hover {
-          border-color: rgba(56, 189, 248, 0.4);
-          background-color: rgba(56, 189, 248, 0.06);
+          border-color: rgba(249, 115, 22, 0.45);
+          background-color: rgba(249, 115, 22, 0.08);
           transform: translateY(-2px);
         }
         @media (max-width: 480px) {

@@ -88,7 +88,7 @@ export const Navbar = () => {
                 justifyContent: 'center',
                 background: 'var(--gradient-primary)',
                 color: '#ffffff',
-                boxShadow: '0 4px 14px rgba(56, 189, 248, 0.35)'
+                boxShadow: '0 4px 14px rgba(249, 115, 22, 0.35)'
               }}
             >
               <Code2 size={20} />

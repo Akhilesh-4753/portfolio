@@ -151,7 +151,7 @@ export const ProjectDetailsPage = () => {
                       width: '42px',
                       height: '42px',
                       borderRadius: '10px',
-                      backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                      backgroundColor: 'rgba(249, 115, 22, 0.1)',
                       color: 'var(--color-blue)',
                       display: 'flex',
                       alignItems: 'center',
@@ -245,8 +245,8 @@ export const ProjectDetailsPage = () => {
                     <div
                       style={{
                         padding: '1rem',
-                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                        border: '1px solid rgba(56, 189, 248, 0.3)',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        border: '1px solid rgba(249, 115, 22, 0.3)',
                         borderRadius: '10px',
                         color: 'var(--color-blue)',
                         fontWeight: 700,
@@ -293,7 +293,7 @@ export const ProjectDetailsPage = () => {
                           width: '36px',
                           height: '36px',
                           borderRadius: '8px',
-                          backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                          backgroundColor: 'rgba(249, 115, 22, 0.1)',
                           color: 'var(--color-blue)',
                           display: 'flex',
                           alignItems: 'center',
@@ -363,8 +363,8 @@ export const ProjectDetailsPage = () => {
                       marginTop: '1.5rem',
                       padding: '1rem',
                       borderRadius: '10px',
-                      backgroundColor: 'rgba(56, 189, 248, 0.08)',
-                      border: '1px solid rgba(56, 189, 248, 0.2)',
+                      backgroundColor: 'rgba(249, 115, 22, 0.08)',
+                      border: '1px solid rgba(249, 115, 22, 0.25)',
                       fontSize: '0.88rem',
                       color: 'var(--color-blue)'
                     }}
@@ -382,7 +382,7 @@ export const ProjectDetailsPage = () => {
                 style={{
                   padding: '3rem',
                   textAlign: 'center',
-                  background: 'linear-gradient(145deg, rgba(56, 189, 248, 0.06) 0%, rgba(139, 92, 246, 0.06) 100%)',
+                  background: 'linear-gradient(145deg, rgba(249, 115, 22, 0.08) 0%, rgba(124, 45, 18, 0.08) 100%)',
                   borderRadius: '20px',
                   border: '1px solid var(--border-highlight)'
                 }}
