@@ -9,13 +9,10 @@ export const personalInfo = {
     "Hi, I'm Akhilesh P. With a strong commerce foundation and hands-on experience across enterprise .NET ERP systems and full-stack Python Django web applications, I build performant digital products enhanced with practical AI API integrations.",
   about: {
     badge: "ABOUT ME",
-    title: "Bridging Business Knowledge with",
-    highlight: "Software Engineering",
-    intro: [
-      { text: "I'm a " },
-      { text: "Software Developer", bold: true },
-      { text: " with a background in Commerce and Accounting. I combine business understanding, analytical thinking, and technical skills to build practical software solutions that solve real-world problems." }
-    ],
+    title: "More Than Code.",
+    highlight: "Built on Business Thinking.",
+    intro:
+      "From understanding business operations to engineering software solutions, my journey combines analytical thinking, technology, and a passion for building meaningful products.",
     careerJourney: {
       heading: "My Career",
       highlight: "Journey",
@@ -74,44 +71,34 @@ export const personalInfo = {
         }
       ]
     },
-    sections: [
+    accordion: [
       {
-        title: "Where It Started",
-        segments: [
-          { text: "I graduated with a " },
-          { text: "B.Com from Calicut University", bold: true },
-          { text: " and began my professional journey at " },
-          { text: "myG India Private Limited", bold: true },
-          { text: ", gaining hands-on experience in financial accounting, reporting, GST compliance, and business operations." }
-        ]
+        number: "01",
+        title: "My Foundation",
+        subtitle: "Commerce background & financial operations",
+        description:
+          "I started my professional journey with a Bachelor of Commerce from Calicut University. My experience in accounting at myG India Private Limited helped me understand financial operations, business processes, reporting, and the importance of accuracy. This background shaped my analytical thinking and ability to understand real business problems."
       },
       {
-        title: "Moving into Software",
-        segments: [
-          { text: "Driven by my interest in technology, I transitioned into software development as a " },
-          { text: ".NET Developer at Ebsor Infosystem", bold: true },
-          { text: ". I developed enterprise ERP modules using ASP.NET Core MVC, C#, Kendo UI, and JavaScript, translating business workflows into functional software solutions." }
-        ]
+        number: "02",
+        title: "My Transition",
+        subtitle: "Moving from accounting into software development",
+        description:
+          "My curiosity about technology inspired me to move from accounting into software development. Working with .NET, ASP.NET Core MVC, and enterprise ERP applications allowed me to transform business workflows into practical software solutions."
       },
       {
-        title: "Growing My Skill Set",
-        segments: [
-          { text: "I expanded my experience through React.js applications, client websites, and freelance projects. Later, at " },
-          { text: "BlackBox Learning Academy", bold: true },
-          { text: ", I strengthened my Python and Django skills by developing " },
-          { text: "TaskFlow", bold: true },
-          { text: " and " },
-          { text: "INKSPACE", bold: true },
-          { text: ", integrating AI capabilities through Google Gemini and Groq APIs." }
-        ]
+        number: "03",
+        title: "What I Build",
+        subtitle: "Full-stack web apps, REST APIs & Generative AI",
+        description:
+          "I work across frontend and backend development using React.js, Python, Django, C#, and ASP.NET Core. Through projects like TaskFlow and INKSPACE, I've explored application architecture, database integration, authentication, REST APIs, and Generative AI integrations using Google Gemini and Groq."
       },
       {
-        title: "What Drives Me",
-        segments: [
-          { text: "I enjoy transforming business challenges into practical digital solutions. I'm passionate about continuous learning, building useful products, and growing as a " },
-          { text: "Software Engineer who creates meaningful value through technology", bold: true },
-          { text: "." }
-        ]
+        number: "04",
+        title: "Beyond Development",
+        subtitle: "Continuous learning & future product vision",
+        description:
+          "I'm passionate about continuous learning, exploring Generative AI, building intelligent chatbots, and developing solutions that simplify business operations. My long-term ambition is to become a well-rounded Software Engineer and eventually build technology products that create meaningful value for businesses."
       }
     ]
   },

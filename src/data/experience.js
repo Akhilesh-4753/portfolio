@@ -254,16 +254,73 @@ export const experiences = [
 ];
 
 export const freelanceExperience = {
-  company: "Branding Hut",
-  title: "Freelance Collaboration — Branding Hut",
-  location: "Govt. Cyberpark",
-  period: "Freelance Collaboration",
-  description:
-    "Collaborated with Branding Hut for freelance creative work, creating professional posters and promotional designs based on project requirements.",
-  highlights: [
-    "Delivered professional digital posters and brand promotional assets",
-    "Tailored design output to client branding and campaign specifications",
-    "Collaboration with an agency located inside Govt. Cyberpark"
+  heading: {
+    badge: "FREELANCE & COLLABORATION",
+    title: "Beyond",
+    highlight: "Development",
+    subtitle: "Creative work, web development, SEO, and real-world team collaboration."
+  },
+  mainCollaboration: {
+    organization: "Branding Hut",
+    location: "Govt. Cyberpark, Kozhikode, Kerala, India",
+    description:
+      "Collaborated with Branding Hut on freelance projects involving website development, creative design, technical SEO, and digital business activities. Worked alongside the team to deliver client-focused digital solutions while gaining exposure to real-world project workflows, client requirements, and business discussions."
+  },
+  contributions: [
+    {
+      title: "Website Development",
+      icon: "Globe",
+      description:
+        "Collaborated on client-focused web development tasks, translating project requirements into responsive digital experiences."
+    },
+    {
+      title: "Creative & Poster Design",
+      icon: "Palette",
+      description:
+        "Created professional posters and visual promotional assets aligned with brand specifications and design goals."
+    },
+    {
+      title: "Technical SEO",
+      icon: "Search",
+      description:
+        "Contributed to technical SEO efforts supporting website structure and digital visibility for client solutions."
+    },
+    {
+      title: "Business Meetings & Team Collaboration",
+      icon: "Users",
+      description:
+        "Participated in client discussions, business activities, and collaborative team workflows across real-world projects."
+    }
   ],
-  skills: ["Creative Design", "Visual Communications", "Promotional Artwork", "Client Collaboration"]
+  featuredProject: {
+    badge: "FEATURED TEAM PROJECT",
+    name: "ApnaVilla",
+    category: "Real Estate Web Application",
+    organization: "Branding Hut Team",
+    myRole: "Frontend Developer",
+    description:
+      "Collaborated with the Branding Hut team to develop ApnaVilla, a real estate web application designed to support property-related digital services.",
+    myContributions: [
+      "Developed frontend interfaces using React.js.",
+      "Implemented responsive and user-friendly UI components.",
+      "Worked with the Laravel backend development team.",
+      "Collaborated with team members on frontend and backend integration.",
+      "Participated in team discussions and project development activities."
+    ],
+    teamCollaborationContext: {
+      frontendScope: "React.js UI components, responsive layouts, and client-side application views",
+      backendScope: "Managed by the Branding Hut Laravel backend development team",
+      integrationNote:
+        "Coordinated closely across team members to integrate React.js frontend interfaces with Laravel backend services."
+    },
+    technologies: [
+      "React.js",
+      "JavaScript",
+      "Laravel",
+      "PostgreSQL",
+      "HTML",
+      "CSS",
+      "Bootstrap"
+    ]
+  }
 };
