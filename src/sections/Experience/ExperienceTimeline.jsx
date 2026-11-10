@@ -1,8 +1,44 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
+import { Briefcase, Calendar, Building2, MapPin, CheckCircle2 } from 'lucide-react';
 import { experiences } from '../../data/experience';
 import { TiltCard } from '../../components/animations/TiltCard';
 import { FadeIn } from '../../components/animations/FadeIn';
+
+/**
+ * Shared bullet list renderer for experience responsibilities and project points.
+ */
+const BulletList = ({ items }) => (
+  <ul
+    style={{
+      listStyle: 'none',
+      padding: 0,
+      margin: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.6rem'
+    }}
+  >
+    {items.map((item, idx) => (
+      <li
+        key={idx}
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '0.65rem',
+          fontSize: '0.92rem',
+          color: 'var(--text-secondary)',
+          lineHeight: 1.6
+        }}
+      >
+        <CheckCircle2
+          size={16}
+          style={{ color: 'var(--color-cyan)', flexShrink: 0, marginTop: '4px' }}
+        />
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+);
 
 export const ExperienceTimeline = () => {
   return (
@@ -22,7 +58,11 @@ export const ExperienceTimeline = () => {
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-        {experiences.map((exp, idx) => (
+        {experiences.map((exp, idx) => {
+          const groupedSections = exp.projects || exp.categories;
+          const hasTechnologies = exp.technologies && exp.technologies.length > 0;
+
+          return (
           <FadeIn key={exp.id} delay={idx * 0.12} direction="up">
             <div
               style={{
@@ -76,23 +116,25 @@ export const ExperienceTimeline = () => {
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.35rem' }}>
-                    <span
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.35rem',
-                        fontSize: '0.82rem',
-                        fontFamily: 'var(--font-mono)',
-                        padding: '0.3rem 0.75rem',
-                        borderRadius: '9999px',
-                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
-                        color: 'var(--color-blue)',
-                        border: '1px solid rgba(249, 115, 22, 0.2)'
-                      }}
-                    >
-                      <Calendar size={13} />
-                      {exp.period}
-                    </span>
+                    {(exp.period || exp.venue) && (
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          fontSize: '0.82rem',
+                          fontFamily: 'var(--font-mono)',
+                          padding: '0.3rem 0.75rem',
+                          borderRadius: '9999px',
+                          backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                          color: 'var(--color-blue)',
+                          border: '1px solid rgba(249, 115, 22, 0.2)'
+                        }}
+                      >
+                        {exp.period ? <Calendar size={13} /> : <Building2 size={13} />}
+                        {exp.period || exp.venue}
+                      </span>
+                    )}
                     <span
                       style={{
                         display: 'inline-flex',
@@ -108,50 +150,59 @@ export const ExperienceTimeline = () => {
                   </div>
                 </div>
 
-                {/* Responsibilities */}
-                <ul
-                  style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    margin: '1.25rem 0',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.65rem'
-                  }}
-                >
-                  {exp.responsibilities.map((resp, rIdx) => (
-                    <li
-                      key={rIdx}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '0.65rem',
-                        fontSize: '0.92rem',
-                        color: 'var(--text-secondary)',
-                        lineHeight: 1.6
-                      }}
-                    >
-                      <CheckCircle2
-                        size={16}
-                        style={{ color: 'var(--color-cyan)', flexShrink: 0, marginTop: '4px' }}
-                      />
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Categorized Sections (Projects / Responsibilities) or Flat Responsibilities */}
+                {groupedSections && groupedSections.length > 0 ? (
+                  <div
+                    style={{
+                      marginTop: '1.25rem',
+                      marginBottom: hasTechnologies ? '1.25rem' : '0',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '1.35rem'
+                    }}
+                  >
+                    {groupedSections.map((section, sIdx) => (
+                      <div key={sIdx}>
+                        <h4
+                          style={{
+                            fontSize: '1rem',
+                            fontWeight: 700,
+                            color: 'var(--text-primary)',
+                            marginBottom: '0.65rem'
+                          }}
+                        >
+                          {section.title}
+                        </h4>
+                        <BulletList items={section.points} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      marginTop: '1.25rem',
+                      marginBottom: hasTechnologies ? '1.25rem' : '0'
+                    }}
+                  >
+                    <BulletList items={exp.responsibilities || []} />
+                  </div>
+                )}
 
                 {/* Tech Badges */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '1.25rem' }}>
-                  {exp.technologies.map((t, tIdx) => (
-                    <span key={tIdx} className="tech-tag">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                {hasTechnologies && (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '1.25rem' }}>
+                    {exp.technologies.map((t, tIdx) => (
+                      <span key={tIdx} className="tech-tag">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </TiltCard>
             </div>
           </FadeIn>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
