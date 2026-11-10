@@ -333,14 +333,15 @@ export const ProjectPreview = ({ project, aspectRatio = '16 / 9' }) => {
       {showImage ? (
         <img
           src={project.image}
-          alt={`${project.title} preview`}
+          alt={project.imageAlt || `${project.title} preview`}
           loading="lazy"
           onError={() => setImgFailed(true)}
           className="project-preview-media"
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            objectFit: project.imageFit || 'cover',
+            objectPosition: project.imageFit === 'contain' ? 'center center' : 'top center',
             display: 'block'
           }}
         />

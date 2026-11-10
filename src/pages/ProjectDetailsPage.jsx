@@ -6,6 +6,7 @@ import { Container } from '../components/common/Container';
 import { Button } from '../components/common/Button';
 import { TiltCard } from '../components/animations/TiltCard';
 import { FadeIn } from '../components/animations/FadeIn';
+import { ProjectGallery } from '../components/project/ProjectGallery';
 
 export const ProjectDetailsPage = () => {
   const { slug } = useParams();
@@ -413,6 +414,10 @@ export const ProjectDetailsPage = () => {
               </div>
             </FadeIn>
 
+            {project.gallery?.length > 0 && (
+              <ProjectGallery gallery={project.gallery} projectTitle={project.title} />
+            )}
+
             {/* My Contribution & Outcome */}
             <FadeIn direction="up">
               <TiltCard style={{ padding: '2.5rem' }}>
@@ -523,6 +528,10 @@ export const ProjectDetailsPage = () => {
                   </div>
                 </TiltCard>
               </FadeIn>
+            )}
+
+            {project.gallery?.length > 0 && (
+              <ProjectGallery gallery={project.gallery} projectTitle={project.title} />
             )}
 
             {/* Outcome */}

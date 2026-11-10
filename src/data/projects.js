@@ -12,6 +12,9 @@ export const projects = [
     ownership: "Independent Learning Project",
     role: "Full-Stack Developer",
     previewType: "taskflow",
+    image: "/images/projects/taskflow/taskflow-dashboard.webp",
+    imageFit: "cover",
+    imageAlt: "TaskFlow Django productivity dashboard showing task metrics, overview widgets, and navigation",
     featured: true,
     shortDescription:
       "Django-based task management application combining user authentication, CRUD workflows, task prioritization, productivity reports, email reminders, and AI-powered task planning.",
@@ -49,7 +52,45 @@ export const projects = [
     developmentApproach:
       "Structured around Django's Model-View-Template pattern with relational database persistence in Neon PostgreSQL and REST-based AI API integration.",
     outcome:
-      "Delivered a deployed full-stack Django web application integrating practical CRUD workflows with AI-assisted productivity features."
+      "Delivered a deployed full-stack Django web application integrating practical CRUD workflows with AI-assisted productivity features.",
+    gallery: [
+      {
+        src: "/images/projects/taskflow/taskflow-dashboard.webp",
+        title: "Productivity Dashboard",
+        caption: "Main workspace dashboard summarizing task status, priorities, and productivity metrics.",
+        alt: "TaskFlow productivity dashboard displaying task overview cards and workspace navigation",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/taskflow/taskflow-tasks.webp",
+        title: "Task Management Workspace",
+        caption: "Structured task list supporting full CRUD workflows, status tracking, and quick filtering.",
+        alt: "TaskFlow All Tasks management interface showing task rows, statuses, and action controls",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/taskflow/taskflow-reports.webp",
+        title: "Analytics & Progress Reports",
+        caption: "Visual productivity breakdown using interactive donut, bar, and trend charts.",
+        alt: "TaskFlow reports view featuring donut, bar, and trend charts for task completion analytics",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/taskflow/taskflow-profile.webp",
+        title: "Account & Profile Settings",
+        caption: "User account management screen for profile details and password updates.",
+        alt: "TaskFlow profile settings page with account details and password update form",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/taskflow/taskflow.webp",
+        title: "Platform Overview Showcase",
+        caption: "Project showcase highlighting TaskFlow's full-stack architecture and tech stack.",
+        alt: "TaskFlow overview showcase poster featuring a laptop preview and technology stack summary",
+        orientation: "portrait",
+        layout: "overview"
+      }
+    ]
   },
   {
     id: "inkspace",
@@ -63,6 +104,9 @@ export const projects = [
     ownership: "Independent Learning Project",
     role: "Full-Stack Developer",
     previewType: "inkspace",
+    image: "/images/projects/inkspace/blog-home-page.webp",
+    imageFit: "cover",
+    imageAlt: "INKSPACE blogging platform home page featuring hero banner and featured article preview",
     featured: true,
     shortDescription:
       "Django-based blogging platform enabling users to write, publish, and manage blog posts with rich text editing, ownership authentication, and Google Gemini API writing assistance.",
@@ -97,7 +141,44 @@ export const projects = [
     developmentApproach:
       "Focused on clean Django MVT separation, author-scoped permissions, responsive UI layouts, and seamless Gemini API prompt workflows.",
     outcome:
-      "Built a complete publishing platform combining standard content workflows with practical AI writing support."
+      "Built a complete publishing platform combining standard content workflows with practical AI writing support.",
+    gallery: [
+      {
+        src: "/images/projects/inkspace/blog-home-page.webp",
+        title: "Platform Home & Hero",
+        caption: "Editorial home view highlighting featured stories and platform entry actions.",
+        alt: "INKSPACE home page with hero heading 'Every Story Deserves a Place.' and featured blog post",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/inkspace/blog-hero-page.webp",
+        title: "Latest Stories Showcase",
+        caption: "Clean editorial grid presenting recently published articles and category highlights.",
+        alt: "INKSPACE Latest Stories showcase section displaying a responsive grid of published articles",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/inkspace/blog-posts.webp",
+        title: "Explore Stories & Search Feed",
+        caption: "Searchable article directory enabling readers to filter and browse published posts.",
+        alt: "INKSPACE Explore Stories and Ideas page showing searchable blog post cards",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/inkspace/create-blog.webp",
+        title: "Rich Text Editor & Gemini AI Assist",
+        caption: "Article authoring studio integrating CKEditor formatting with Gemini-powered writing assistance.",
+        alt: "INKSPACE Write a New Blog screen featuring a rich text editor and Gemini AI Assist panel",
+        orientation: "landscape"
+      },
+      {
+        src: "/images/projects/inkspace/my-blog-list.webp",
+        title: "Author Management Dashboard",
+        caption: "Author-scoped workspace to review, edit, publish, or remove personal blog posts.",
+        alt: "INKSPACE My Blogs author dashboard listing user-created articles with management controls",
+        orientation: "landscape"
+      }
+    ]
   },
   {
     id: "daybook",
@@ -111,6 +192,9 @@ export const projects = [
     ownership: "Independent Product",
     role: "Creator & React Native Developer",
     previewType: "daybook",
+    image: "/images/projects/daybook/dashboard.webp",
+    imageFit: "contain",
+    imageAlt: "Daybook React Native mobile app overview displaying core daily planning, reflection, and habit screens",
     featured: true,
     shortDescription:
       "A personal productivity and self-reflection application that brings daily planning, tasks, reminders, habits, notes, and journaling together in one place.",
@@ -185,7 +269,59 @@ export const projects = [
     myContribution:
       "Conceived, architected, and built the mobile application using React Native. Implemented the task scheduling views, state workflows, progress report logic, and interactive reflection modules.",
     outcome:
-      "Created a distinct productivity system that bridges the gap between passive task listing and active self-improvement."
+      "Created a distinct productivity system that bridges the gap between passive task listing and active self-improvement.",
+    gallery: [
+      {
+        src: "/images/projects/daybook/dashboard.webp",
+        title: "Product Overview Collage",
+        caption: "High-level visual showcase spanning Daybook's daily planning, tracking, and reflection suite.",
+        alt: "Daybook React Native showcase collage presenting five core mobile application screens",
+        orientation: "portrait",
+        layout: "overview"
+      },
+      {
+        src: "/images/projects/daybook/tasks.webp",
+        title: "Daily Task Execution",
+        caption: "Focused daily task view structured around planned priorities and completion actions.",
+        alt: "Daybook mobile Tasks screen displaying scheduled daily items and completion toggles",
+        orientation: "portrait"
+      },
+      {
+        src: "/images/projects/daybook/reminder.webp",
+        title: "Smart Reminders",
+        caption: "Scheduled alerts and time-sensitive reminders to keep daily intentions on track.",
+        alt: "Daybook mobile Reminder screen showing scheduled notification cards and time controls",
+        orientation: "portrait"
+      },
+      {
+        src: "/images/projects/daybook/habit-tracker.webp",
+        title: "Habit Tracker",
+        caption: "Daily consistency tracker helping reinforce recurring positive routines.",
+        alt: "Daybook mobile Habit Tracker screen displaying habit streaks and daily check-ins",
+        orientation: "portrait"
+      },
+      {
+        src: "/images/projects/daybook/diary.webp",
+        title: "Personal Diary & Reflection",
+        caption: "Structured journaling space for end-of-day thoughts and personal reflection.",
+        alt: "Daybook mobile Diary screen designed for daily reflections and written notes",
+        orientation: "portrait"
+      },
+      {
+        src: "/images/projects/daybook/reports.webp",
+        title: "Weekly & Daily Progress Reports",
+        caption: "Behavioral insights and completion summaries highlighting daily productivity patterns.",
+        alt: "Daybook mobile Reports screen visualizing completion metrics and progress trends",
+        orientation: "portrait"
+      },
+      {
+        src: "/images/projects/daybook/user-profile.webp",
+        title: "User Profile & App Preferences",
+        caption: "Personal account overview and customization preferences within the React Native app.",
+        alt: "Daybook mobile User Profile screen with account information and settings options",
+        orientation: "portrait"
+      }
+    ]
   },
   {
     id: "pos-business-management",
