@@ -32,8 +32,8 @@ export const HomePage = () => {
       <Hero />
       <About />
       <Experience />
-      <CurrentWork />
       <Skills />
+      <CurrentWork />
       <Projects />
       <Services />
       <Contact />

@@ -4,6 +4,7 @@ import { SectionTitle } from '../../components/common/SectionTitle';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { TiltCard } from '../../components/animations/TiltCard';
 import { GraduationCap, Code, TrendingUp, Target } from 'lucide-react';
+import { CareerJourneyTimeline } from './CareerJourneyTimeline';
 
 const ICON_MAP = [GraduationCap, Code, TrendingUp, Target];
 
@@ -36,6 +37,9 @@ export const About = () => {
           highlight={about.highlight}
           subtitle={<RichText segments={about.intro} />}
         />
+
+        {/* My Career Journey Connected Timeline */}
+        <CareerJourneyTimeline journey={about.careerJourney} />
 
         {/* 4 Journey & Philosophy Cards */}
         <div className="grid-2" style={{ maxWidth: '1040px', margin: '0 auto' }}>
