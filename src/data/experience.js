@@ -1,10 +1,129 @@
 // Professional experience timeline source of truth
 export const experiences = [
   {
+    id: "blackbox",
+    company: "BlackBox Learning Academy",
+    role: "Genstack Internship",
+    period: "Sept 2026 – Nov 2026",
+    location: "Thiruvananthapuram, Kerala, India",
+    type: "Internship",
+    isCurrent: false,
+    projects: [
+      {
+        title: "Project 1: TaskFlow",
+        overview:
+          "TaskFlow is a Django-based task management application developed as a practical learning project to understand Django's MVT architecture and implement real-world web application functionalities. It combines task management, user authentication, productivity tracking, reporting, notifications, and AI-powered assistance in one platform.",
+        points: [
+          {
+            label: "User Authentication",
+            text: "Implemented user registration, login, logout, and protected access to application features."
+          },
+          {
+            label: "Task Management (CRUD)",
+            text: "Developed functionality to create, view, update, and delete tasks."
+          },
+          {
+            label: "Task Prioritization",
+            text: "Added priority levels and completed/pending task status management."
+          },
+          {
+            label: "Dashboard & Reports",
+            text: "Created a dashboard to display task statistics, productivity insights, and reports."
+          },
+          {
+            label: "Notifications",
+            text: "Implemented notifications to highlight pending tasks and important task updates."
+          },
+          {
+            label: "Email Reminders",
+            text: "Integrated email reminders for tasks that remain incomplete on their scheduled dates."
+          },
+          {
+            label: "AI Task Suggestions",
+            text: "Integrated AI to generate actionable task suggestions based on user input."
+          },
+          {
+            label: "AI Productivity Assistant",
+            text: "Developed an AI-powered assistant to support productivity and task planning."
+          },
+          {
+            label: "Learning Roadmap Generation",
+            text: "Added AI functionality to generate structured learning roadmaps for different technologies."
+          },
+          {
+            label: "Database Integration",
+            text: "Integrated Neon PostgreSQL for persistent application data storage."
+          },
+          {
+            label: "Deployment",
+            text: "Deployed the Django application using Render."
+          }
+        ]
+      },
+      {
+        title: "Project 2: INKSPACE",
+        overview:
+          "INKSPACE is a Django-based blogging platform designed to provide users with a simple and interactive environment to create, publish, manage, and explore blog content. The project focuses on implementing Django MVT architecture, content management, authentication, and AI-powered writing assistance.",
+        points: [
+          {
+            label: "Blog Creation & Publishing",
+            text: "Developed functionality for users to write, create, and publish blog posts."
+          },
+          {
+            label: "Blog Listing & Reading",
+            text: "Created blog listing pages and individual blog detail views for reading published content."
+          },
+          {
+            label: "Rich Text Editor",
+            text: "Integrated a rich text editing experience for structured blog content creation."
+          },
+          {
+            label: "User Authentication",
+            text: "Implemented authentication to manage user access and blog ownership."
+          },
+          {
+            label: "Blog Management",
+            text: "Added update and delete functionality to allow users to manage their published content."
+          },
+          {
+            label: "AI Writing Assistant",
+            text: "Integrated Google's Gemini API to assist users with blog writing and content generation."
+          },
+          {
+            label: "AI Content Generation",
+            text: "Enabled AI-powered suggestions for blog content and writing ideas."
+          },
+          {
+            label: "Responsive UI",
+            text: "Developed responsive navigation, blog cards, and layouts for different screen sizes."
+          },
+          {
+            label: "Database Integration",
+            text: "Used SQLite for application data storage."
+          }
+        ]
+      }
+    ],
+    technologies: [
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Render",
+      "Gemini API",
+      "Groq API",
+      "Neon PostgreSQL",
+      "SQLite",
+      "Git",
+      "GitHub"
+    ]
+  },
+  {
     id: "ebsor",
     company: "Ebsor Infosystem Pvt. Ltd.",
     role: "Dot Net Developer",
-    period: "12/2024 – 03/2026",
+    period: "Dec 2024 – Mar 2026",
     location: "Malappuram, Kerala, India",
     type: "Full-time",
     isCurrent: false, // Explicitly false: do NOT show Present
@@ -13,7 +132,7 @@ export const experiences = [
       "Developed Master, Transaction, and Report modules with responsive MVC views, forms, data binding, validations, CRUD operations, filtering, and dynamic UI interactions.",
       "Developed and managed ASP.NET Core MVC Controller.cs files to handle HTTP requests, business workflows, API calls, data processing, and communication between views and backend services.",
       "Integrated and managed REST APIs for communication between frontend MVC applications and backend services.",
-      "Developed Kidonex Customer Feedback & Review and AI Credential Purchase modules.",
+      "Developed Kidonex Customer Feedback & Review",
       "Worked on the Code7 ERP project using Kendo UI for advanced enterprise UI controls and data tables.",
       "Used Visual Studio for development, debugging, testing, and issue resolution."
     ],

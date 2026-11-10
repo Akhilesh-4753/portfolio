@@ -34,7 +34,16 @@ const BulletList = ({ items }) => (
           size={16}
           style={{ color: 'var(--color-cyan)', flexShrink: 0, marginTop: '4px' }}
         />
-        <span>{item}</span>
+        {typeof item === 'string' ? (
+          <span>{item}</span>
+        ) : (
+          <span>
+            <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }}>
+              {item.label}:
+            </strong>{' '}
+            {item.text}
+          </span>
+        )}
       </li>
     ))}
   </ul>
@@ -60,6 +69,9 @@ export const ExperienceTimeline = () => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
         {experiences.map((exp, idx) => {
           const groupedSections = exp.projects || exp.categories;
+          const hasRichSections = Boolean(
+            groupedSections?.some((section) => section.overview)
+          );
           const hasTechnologies = exp.technologies && exp.technologies.length > 0;
 
           return (
@@ -162,7 +174,17 @@ export const ExperienceTimeline = () => {
                     }}
                   >
                     {groupedSections.map((section, sIdx) => (
-                      <div key={sIdx}>
+                      <div
+                        key={sIdx}
+                        style={
+                          hasRichSections && sIdx > 0
+                            ? {
+                                borderTop: '1px solid var(--border-subtle)',
+                                paddingTop: '1.35rem'
+                              }
+                            : undefined
+                        }
+                      >
                         <h4
                           style={{
                             fontSize: '1rem',
@@ -173,6 +195,20 @@ export const ExperienceTimeline = () => {
                         >
                           {section.title}
                         </h4>
+
+                        {section.overview && (
+                          <p
+                            style={{
+                              fontSize: '0.91rem',
+                              color: 'var(--text-secondary)',
+                              lineHeight: 1.65,
+                              marginBottom: '0.85rem'
+                            }}
+                          >
+                            {section.overview}
+                          </p>
+                        )}
+
                         <BulletList items={section.points} />
                       </div>
                     ))}
@@ -190,7 +226,20 @@ export const ExperienceTimeline = () => {
 
                 {/* Tech Badges */}
                 {hasTechnologies && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '1.25rem' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '0.45rem',
+                      marginTop: '1.25rem',
+                      ...(hasRichSections
+                        ? {
+                            borderTop: '1px solid var(--border-subtle)',
+                            paddingTop: '1.25rem'
+                          }
+                        : {})
+                    }}
+                  >
                     {exp.technologies.map((t, tIdx) => (
                       <span key={tIdx} className="tech-tag">
                         {t}
