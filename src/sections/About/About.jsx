@@ -3,54 +3,49 @@ import { personalInfo } from '../../data/personal';
 import { SectionTitle } from '../../components/common/SectionTitle';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { TiltCard } from '../../components/animations/TiltCard';
-import { Code, Server, Network, Layers, Smartphone, Briefcase } from 'lucide-react';
+import { GraduationCap, Code, TrendingUp, Target } from 'lucide-react';
 
-const ICON_MAP = [Code, Server, Network, Layers, Smartphone, Briefcase];
+const ICON_MAP = [GraduationCap, Code, TrendingUp, Target];
+
+/**
+ * Renders inline text segments with optional bold primary-color emphasis.
+ */
+const RichText = ({ segments }) => (
+  <>
+    {segments.map((seg, idx) =>
+      seg.bold ? (
+        <strong key={idx} style={{ color: 'var(--text-primary)', fontWeight: 600 }}>
+          {seg.text}
+        </strong>
+      ) : (
+        <React.Fragment key={idx}>{seg.text}</React.Fragment>
+      )
+    )}
+  </>
+);
 
 export const About = () => {
+  const { about } = personalInfo;
+
   return (
     <section id="about" className="section-wrapper">
       <div className="site-container">
         <SectionTitle
-          badge="ABOUT ME"
-          title="Practical Engineering with"
-          highlight="Real-World Impact"
-          subtitle="A disciplined approach to building reliable software systems and modern interfaces."
+          badge={about.badge}
+          title={about.title}
+          highlight={about.highlight}
+          subtitle={<RichText segments={about.intro} />}
         />
 
-        {/* Bio Story Grid */}
-        <div
-          style={{
-            maxWidth: '900px',
-            margin: '0 auto 3.5rem auto',
-            textAlign: 'center'
-          }}
-        >
-          {personalInfo.aboutBio.map((paragraph, idx) => (
-            <FadeIn key={idx} delay={0.15 + idx * 0.08} direction="up">
-              <p
-                style={{
-                  fontSize: 'clamp(1.02rem, 1.4vw, 1.15rem)',
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.75,
-                  marginBottom: '1.25rem'
-                }}
-              >
-                {paragraph}
-              </p>
-            </FadeIn>
-          ))}
-        </div>
-
-        {/* 6 Core Domain Focus Cards */}
-        <div className="grid-3">
-          {personalInfo.domainCards.map((card, idx) => {
+        {/* 4 Journey & Philosophy Cards */}
+        <div className="grid-2" style={{ maxWidth: '1040px', margin: '0 auto' }}>
+          {about.sections.map((section, idx) => {
             const Icon = ICON_MAP[idx] || Code;
             return (
-              <FadeIn key={card.title} delay={idx * 0.07} direction="up">
+              <FadeIn key={section.title} delay={idx * 0.08} direction="up">
                 <TiltCard
                   style={{
-                    padding: '1.75rem',
+                    padding: '1.85rem',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -71,9 +66,9 @@ export const About = () => {
                   >
                     <Icon size={22} />
                   </div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{card.title}</h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                    {card.desc}
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{section.title}</h3>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7 }}>
+                    <RichText segments={section.segments} />
                   </p>
                 </TiltCard>
               </FadeIn>

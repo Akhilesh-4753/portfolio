@@ -7,12 +7,56 @@ export const personalInfo = {
   heroHeadline: "Web Developer in Kozhikode, Kerala",
   heroBio:
     "Hi, I'm Akhilesh P. With a strong commerce foundation and hands-on experience across enterprise .NET ERP systems and full-stack Python Django web applications, I build performant digital products enhanced with practical AI API integrations.",
-  aboutHeading: "About Me",
-  aboutBio: [
-    "I’m a Software Developer focused on building practical, scalable, and responsive software applications.",
-    "I have experience working across frontend and backend development, including React.js, ASP.NET Core MVC, REST API integration, ERP applications, responsive UI development, and business-oriented software.",
-    "Throughout my experience, I have worked on real-world applications ranging from ERP systems and corporate websites to e-commerce applications, customer feedback systems, AI credential purchasing modules, and productivity software."
-  ],
+  about: {
+    badge: "ABOUT ME",
+    title: "Bridging Business Knowledge with",
+    highlight: "Software Engineering",
+    intro: [
+      { text: "I'm a " },
+      { text: "Software Developer", bold: true },
+      { text: " with a background in Commerce and Accounting. I combine business understanding, analytical thinking, and technical skills to build practical software solutions that solve real-world problems." }
+    ],
+    sections: [
+      {
+        title: "Where It Started",
+        segments: [
+          { text: "I graduated with a " },
+          { text: "B.Com from Calicut University", bold: true },
+          { text: " and began my professional journey at " },
+          { text: "myG India Private Limited", bold: true },
+          { text: ", gaining hands-on experience in financial accounting, reporting, GST compliance, and business operations." }
+        ]
+      },
+      {
+        title: "Moving into Software",
+        segments: [
+          { text: "Driven by my interest in technology, I transitioned into software development as a " },
+          { text: ".NET Developer at Ebsor Infosystem", bold: true },
+          { text: ". I developed enterprise ERP modules using ASP.NET Core MVC, C#, Kendo UI, and JavaScript, translating business workflows into functional software solutions." }
+        ]
+      },
+      {
+        title: "Growing My Skill Set",
+        segments: [
+          { text: "I expanded my experience through React.js applications, client websites, and freelance projects. Later, at " },
+          { text: "BlackBox Learning Academy", bold: true },
+          { text: ", I strengthened my Python and Django skills by developing " },
+          { text: "TaskFlow", bold: true },
+          { text: " and " },
+          { text: "INKSPACE", bold: true },
+          { text: ", integrating AI capabilities through Google Gemini and Groq APIs." }
+        ]
+      },
+      {
+        title: "What Drives Me",
+        segments: [
+          { text: "I enjoy transforming business challenges into practical digital solutions. I'm passionate about continuous learning, building useful products, and growing as a " },
+          { text: "Software Engineer who creates meaningful value through technology", bold: true },
+          { text: "." }
+        ]
+      }
+    ]
+  },
   email: "akhipn4753@gmail.com",
   phone: "+91 9526008613",
   location: "Kerala, India",
@@ -31,13 +75,5 @@ export const personalInfo = {
     location: "Govt. Cyberpark",
     description:
       "Collaborated with Branding Hut for freelance creative work, creating professional posters and promotional designs based on project requirements."
-  },
-  domainCards: [
-    { title: "Frontend Development", desc: "Building responsive, component-driven web apps using React.js, modern JavaScript, and clean state workflows." },
-    { title: "Backend Development", desc: "Developing MVC controllers, handling business logic, and architecting backend workflows in ASP.NET Core." },
-    { title: "REST API Integration", desc: "Seamless client-server integration, request optimization, payload handling, and CRUD data synchronization." },
-    { title: "ERP Applications", desc: "Engineering complex enterprise Master, Transaction, and Report modules with rigorous validations." },
-    { title: "Responsive UI", desc: "Crafting fluid layouts tailored specifically for desktop, tablet, and mobile viewing environments." },
-    { title: "Business Software", desc: "Designing real-world solutions that streamline business operations, from feedback systems to POS tools." }
-  ]
+  }
 };
