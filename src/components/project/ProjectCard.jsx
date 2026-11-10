@@ -1,133 +1,127 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Layers } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { TiltCard } from '../animations/TiltCard';
+import { ProjectPreview } from './ProjectPreview';
+import { ProjectStatusPill, ProjectRoleLine, ProjectTechList } from './ProjectMeta';
 
 export const ProjectCard = ({ project }) => {
   return (
-    <TiltCard
-      className="project-card"
-      glare={true}
+    <Link
+      to={`/projects/${project.slug}`}
+      className="project-card-link"
       style={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'block',
         height: '100%',
-        padding: '1.75rem',
-        borderRadius: '16px'
+        textDecoration: 'none',
+        color: 'inherit'
       }}
     >
-      {/* Card Header: Category & Badge */}
-      <div
+      <TiltCard
+        className="project-card"
+        glare={true}
         style={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: '1.2rem',
-          flexWrap: 'wrap',
-          gap: '0.5rem'
+          flexDirection: 'column',
+          height: '100%',
+          padding: '1.35rem',
+          borderRadius: '18px'
         }}
       >
-        <span
+        {/* Screenshot / Preview */}
+        <div style={{ marginBottom: '1.15rem' }}>
+          <ProjectPreview project={project} aspectRatio="16 / 10" />
+        </div>
+
+        {/* Card Header: Category & Status */}
+        <div
           style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.78rem',
-            color: 'var(--color-blue)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em'
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '0.75rem',
+            flexWrap: 'wrap',
+            gap: '0.5rem'
           }}
         >
-          {project.category}
-        </span>
-        {project.badge && (
           <span
             style={{
-              fontSize: '0.72rem',
-              fontWeight: 600,
-              padding: '0.2rem 0.6rem',
-              borderRadius: '9999px',
-              backgroundColor: 'rgba(56, 189, 248, 0.1)',
-              color: 'var(--color-blue)',
-              border: '1px solid rgba(56, 189, 248, 0.2)'
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.74rem',
+              color: '#F97316',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              fontWeight: 600
             }}
           >
-            {project.badge}
+            {project.category}
           </span>
-        )}
-      </div>
 
-      {/* Title */}
-      <h3
-        style={{
-          fontSize: '1.4rem',
-          fontWeight: 700,
-          marginBottom: '0.75rem',
-          color: 'var(--text-primary)'
-        }}
-      >
-        {project.title}
-      </h3>
+          <ProjectStatusPill status={project.status} badge={project.badge} />
+        </div>
 
-      {/* Description */}
-      <p
-        style={{
-          fontSize: '0.92rem',
-          color: 'var(--text-secondary)',
-          lineHeight: 1.6,
-          marginBottom: '1.5rem',
-          flexGrow: 1
-        }}
-      >
-        {project.shortDescription}
-      </p>
-
-      {/* Tech Stack Pills */}
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.45rem',
-          marginBottom: '1.75rem'
-        }}
-      >
-        {project.technologies.slice(0, 4).map((tech, idx) => (
-          <span key={idx} className="tech-tag">
-            {tech}
-          </span>
-        ))}
-        {project.technologies.length > 4 && (
-          <span className="tech-tag" style={{ color: 'var(--text-muted)' }}>
-            +{project.technologies.length - 4} more
-          </span>
-        )}
-      </div>
-
-      {/* Action Footer */}
-      <div
-        style={{
-          paddingTop: '1rem',
-          borderTop: '1px solid var(--border-subtle)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}
-      >
-        <Link
-          to={`/projects/${project.slug}`}
+        {/* Title */}
+        <h3
+          className="project-card-title"
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            fontSize: '0.9rem',
-            fontWeight: 600,
-            color: 'var(--color-blue)',
-            transition: 'var(--transition-smooth)'
+            fontSize: '1.25rem',
+            fontWeight: 700,
+            marginBottom: '0.45rem',
+            color: 'var(--text-primary)',
+            transition: 'color 0.25s ease'
           }}
-          className="project-action-link"
         >
-          <span>View Project Case Study</span>
-          <ArrowUpRight size={17} />
-        </Link>
-      </div>
-    </TiltCard>
+          {project.title}
+        </h3>
+
+        {/* Role & Ownership */}
+        <ProjectRoleLine role={project.role} ownership={project.ownership} />
+
+        {/* Concise Description */}
+        <p
+          style={{
+            fontSize: '0.9rem',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.6,
+            marginBottom: '1.25rem',
+            flexGrow: 1
+          }}
+        >
+          {project.shortDescription}
+        </p>
+
+        {/* Max 4 Technology Badges */}
+        <div style={{ marginBottom: '1.25rem' }}>
+          <ProjectTechList technologies={project.technologies} maxVisible={4} />
+        </div>
+
+        {/* Action Footer */}
+        <div
+          style={{
+            paddingTop: '0.95rem',
+            borderTop: '1px solid var(--border-subtle)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <span
+            className="project-card-cta"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              fontSize: '0.88rem',
+              fontWeight: 600,
+              color: '#FDBA74',
+              transition: 'color 0.25s ease'
+            }}
+          >
+            <span>Explore Project Details</span>
+            <ArrowUpRight size={16} className="project-card-arrow" />
+          </span>
+        </div>
+      </TiltCard>
+    </Link>
   );
 };

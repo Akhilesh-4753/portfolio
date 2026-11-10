@@ -8,12 +8,13 @@ export const Projects = () => {
     <section id="projects" className="section-wrapper">
       <div className="site-container">
         <SectionTitle
-          badge="FEATURED WORK"
-          title="Software Projects &"
-          highlight="Case Studies"
-          subtitle="Explore selected engineering projects spanning personal productivity products, enterprise ERP applications, and client solutions."
+          badge="MY WORK"
+          title="Building Ideas Into"
+          highlight="Software"
+          subtitle="A collection of applications, engineering projects, and digital solutions built through professional experience, independent development, and team collaboration."
         />
 
+        {/* Unified Filterable & Searchable Projects Gallery */}
         <ProjectGrid projects={projects} />
       </div>
     </section>
