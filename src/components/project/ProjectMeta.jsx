@@ -69,7 +69,7 @@ export const ProjectRoleLine = ({ role, ownership }) => {
         gap: '0.4rem',
         fontSize: '0.8rem',
         color: 'var(--text-secondary)',
-        marginBottom: '1rem'
+        marginBottom: '0.6rem'
       }}
     >
       <UserCheck size={14} style={{ color: '#F97316', flexShrink: 0 }} />

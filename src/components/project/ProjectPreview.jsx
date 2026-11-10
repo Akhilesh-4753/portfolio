@@ -8,12 +8,13 @@ import {
   Building2,
   Database,
   MessageSquare,
-  KeyRound,
   Film,
   ShoppingCart,
   Globe,
   BarChart3,
-  Layers
+  Layers,
+  Shirt,
+  Compass
 } from 'lucide-react';
 
 const PREVIEW_CONFIG = {
@@ -59,26 +60,12 @@ const PREVIEW_CONFIG = {
     chips: ['Kendo Grid', 'Master/Tx', 'REST APIs'],
     layout: 'grid'
   },
-  erp: {
-    label: 'Enterprise ERP · ASP.NET Core MVC',
-    icon: Layers,
-    accent: '#FDBA74',
-    chips: ['Master', 'Transaction', 'Report'],
-    layout: 'grid'
-  },
   kidonex: {
     label: 'Kidonex CX · Feedback & Reviews',
     icon: MessageSquare,
     accent: '#F97316',
     chips: ['MVC Views', 'Validations', 'REST APIs'],
     layout: 'editor'
-  },
-  'ai-credential': {
-    label: 'AI Credentials · Quota Module',
-    icon: KeyRound,
-    accent: '#FDBA74',
-    chips: ['Allocation', 'API Sync', 'MVC'],
-    layout: 'workflow'
   },
   movie: {
     label: 'Movie Browser · React UI',
@@ -100,6 +87,20 @@ const PREVIEW_CONFIG = {
     accent: '#F97316',
     chips: ['Corporate UI', 'Consultancy', 'Responsive'],
     layout: 'editor'
+  },
+  aishka: {
+    label: 'Aishka · Fashion Showcase',
+    icon: Shirt,
+    accent: '#FDBA74',
+    chips: ['Fashion UI', 'React.js', 'Responsive'],
+    layout: 'cards'
+  },
+  'urban-escape': {
+    label: 'Urban Escape · Travel & Tourism',
+    icon: Compass,
+    accent: '#F97316',
+    chips: ['Destinations', 'Bootstrap', 'JavaScript'],
+    layout: 'cards'
   }
 };
 
@@ -112,16 +113,16 @@ const PreviewSkeleton = ({ layout, accent }) => {
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         <div
           style={{
-            width: '128px',
+            width: '122px',
             height: '100%',
-            maxHeight: '148px',
-            borderRadius: '14px',
+            maxHeight: '112px',
+            borderRadius: '12px',
             border: `1px solid ${accent}44`,
             backgroundColor: '#121212',
-            padding: '0.6rem',
+            padding: '0.45rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.45rem'
+            gap: '0.32rem'
           }}
         >
           <div style={{ width: '36%', height: '4px', borderRadius: '4px', backgroundColor: accent, margin: '0 auto' }} />
@@ -171,7 +172,7 @@ const PreviewSkeleton = ({ layout, accent }) => {
             <div
               style={{
                 flex: 1,
-                height: '86px',
+                height: '68px',
                 borderRadius: '8px',
                 backgroundColor: idx === 0 ? 'rgba(249, 115, 22, 0.12)' : 'rgba(255, 255, 255, 0.03)',
                 border: idx === 0 ? `1px solid ${accent}55` : '1px solid rgba(255, 255, 255, 0.07)',
@@ -304,7 +305,7 @@ const PreviewSkeleton = ({ layout, accent }) => {
 /**
  * Displays a project's screenshot when provided, or a clean orange-and-black architectural UI preview.
  */
-export const ProjectPreview = ({ project, aspectRatio = '16 / 10' }) => {
+export const ProjectPreview = ({ project, aspectRatio = '16 / 9' }) => {
   const [imgFailed, setImgFailed] = useState(false);
   const config = PREVIEW_CONFIG[project.previewType] || {
     label: project.title,
@@ -349,10 +350,10 @@ export const ProjectPreview = ({ project, aspectRatio = '16 / 10' }) => {
           style={{
             width: '100%',
             height: '100%',
-            padding: '0.85rem',
+            padding: '0.7rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.65rem',
+            gap: '0.45rem',
             background:
               'radial-gradient(circle at 90% 10%, rgba(249, 115, 22, 0.14) 0%, rgba(124, 45, 18, 0.06) 40%, #090909 78%)'
           }}

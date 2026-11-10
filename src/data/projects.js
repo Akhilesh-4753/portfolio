@@ -320,46 +320,6 @@ export const projects = [
       "Delivered stable, responsive business modules capable of handling extensive operational workflows reliably."
   },
   {
-    id: "erp",
-    slug: "erp",
-    title: "Enterprise ERP Applications",
-    tagline: "Master, Transaction, and Report modules engineered in ASP.NET Core MVC",
-    category: "Enterprise Software",
-    filterCategories: ["Full-Stack Development", "Backend & ERP"],
-    badge: "Full-Stack MVC",
-    status: null,
-    ownership: "Ebsor Infosystem",
-    role: "Dot Net Developer",
-    previewType: "erp",
-    featured: false,
-    shortDescription:
-      "Business-focused ERP applications containing Master, Transaction, and Report modules with responsive MVC interfaces, validations, CRUD workflows, filtering, and API integration.",
-    technologies: ["ASP.NET Core MVC", ".NET", "REST APIs", "SQL", "Entity Framework", "Visual Studio"],
-    accentColor: "from-indigo-600 via-purple-600 to-pink-600",
-    stats: [
-      { label: "Architecture", value: "MVC Pattern" },
-      { label: "Modules", value: "Master, Tx, Report" },
-      { label: "Database", value: "SQL Relational" },
-      { label: "Workflows", value: "Enterprise CRUD" }
-    ],
-    overview:
-      "A core suite of enterprise applications architected to power operational backbones with dedicated Master data governance, transactional ledger entries, and analytical reports.",
-    purpose:
-      "Empower enterprise operations with reliable CRUD controls, strict data binding validations, and performant REST API backend communication.",
-    myRole:
-      "Engineered responsive MVC views, constructed Controller.cs files handling HTTP endpoints and business workflows, implemented form validations, and integrated REST APIs.",
-    keyFeatures: [
-      "Master Modules: Cataloging and maintenance of enterprise entities with strict schema rules",
-      "Transaction Modules: Responsive forms, transactional data binding, and live calculations",
-      "Report Modules: Querying, dynamic filtering, and structured operational reporting",
-      "End-to-end REST API communication and database mapping"
-    ],
-    developmentApproach:
-      "Built upon ASP.NET Core MVC with robust controller actions, strongly typed ViewModels, and transactional SQL data layers.",
-    outcome:
-      "Maintained and expanded mission-critical ERP solutions supporting complex daily business operations."
-  },
-  {
     id: "kidonex-feedback",
     slug: "kidonex-feedback",
     title: "Kidonex Customer Feedback & Review",
@@ -398,46 +358,6 @@ export const projects = [
       "Ensured smooth user experience for customers providing reviews while maintaining secure, structured payload handling on the server.",
     outcome:
       "Successfully deployed module enabling structured feedback gathering and customer rating insights."
-  },
-  {
-    id: "ai-credential-purchase",
-    slug: "ai-credential-purchase",
-    title: "AI Credential Purchase Module",
-    tagline: "Secure workflow for purchasing and allocating AI credentials within enterprise systems",
-    category: "Enterprise Module",
-    filterCategories: ["Backend & ERP", "AI & Automation"],
-    badge: "AI Commerce",
-    status: null,
-    ownership: "Ebsor Infosystem",
-    role: "Dot Net Developer",
-    previewType: "ai-credential",
-    featured: false,
-    shortDescription:
-      "AI Credential Purchase module involving MVC views, frontend workflows, validations, controller implementation, and REST API integration.",
-    technologies: ["ASP.NET Core MVC", "REST APIs", "JSON Workflows", "Visual Studio", "SQL"],
-    accentColor: "from-violet-600 via-purple-600 to-indigo-700",
-    stats: [
-      { label: "Module Type", value: "Credential Allocation" },
-      { label: "Stack", value: "ASP.NET Core MVC" },
-      { label: "Protocol", value: "REST APIs" },
-      { label: "Security", value: "Strict Validation" }
-    ],
-    overview:
-      "An enterprise purchasing workflow that allows business users to acquire, allocate, and manage AI model credentials and usage tiers.",
-    purpose:
-      "Enable seamless transaction workflows for automated AI service quotas within the larger ERP environment.",
-    myRole:
-      "Developed MVC views, user purchase workflows, dynamic form validation, Controller.cs endpoints, and backend API integration.",
-    keyFeatures: [
-      "Interactive tier selection and quota calculation views",
-      "Rigorous front-end and server-side data validation",
-      "Controller-level order and credential balance orchestration",
-      "Direct REST API communication for quota provisioning"
-    ],
-    developmentApproach:
-      "Engineered high-accuracy purchase workflows ensuring zero transaction discrepancies during credential allocation.",
-    outcome:
-      "Enabled business accounts to seamlessly purchase and provision AI capabilities with full auditability."
   },
   {
     id: "movie",
@@ -558,5 +478,83 @@ export const projects = [
       "Constructed a clean, maintainable React codebase allowing company personnel to easily update project showcases.",
     outcome:
       "Elevated the corporate digital brand identity for the consultancy with modern React performance."
+  },
+  {
+    id: "aishka",
+    slug: "aishka",
+    title: "Aishka – Clothing Website",
+    tagline: "Modern clothing showcase web application built with React.js",
+    category: "E-commerce / Fashion",
+    filterCategories: ["Frontend Development"],
+    badge: "React Showcase",
+    status: null,
+    ownership: "Frontend Web Project",
+    role: "Frontend Developer",
+    previewType: "aishka",
+    featured: false,
+    shortDescription:
+      "Developed a modern clothing showcase website using React.js, presenting fashion products through a clean, responsive, and user-friendly interface.",
+    technologies: ["React.js", "JavaScript", "HTML", "CSS"],
+    stats: [
+      { label: "Category", value: "E-commerce / Fashion" },
+      { label: "Framework", value: "React.js" },
+      { label: "Core Stack", value: "JS, HTML, CSS" },
+      { label: "Focus", value: "Responsive UI" }
+    ],
+    overview:
+      "Aishka is a modern clothing showcase website engineered with React.js to present fashion collections and apparel items in a clean, accessible interface.",
+    purpose:
+      "Deliver an inviting digital storefront experience with clear fashion product presentation and smooth navigation across desktop and mobile devices.",
+    myRole:
+      "Built the frontend user interface in React.js using JavaScript, HTML, and CSS, structuring reusable product showcase views and responsive layouts.",
+    keyFeatures: [
+      "Modern clothing and fashion product showcase layout",
+      "Clean, user-friendly navigation across collections",
+      "Reusable React.js frontend UI components",
+      "Responsive styling optimized for mobile, tablet, and desktop screens"
+    ],
+    developmentApproach:
+      "Structured modular React components paired with clean semantic HTML and responsive CSS styling for intuitive apparel browsing.",
+    outcome:
+      "Created a refined fashion showcase web application delivering clean product presentation and responsive usability."
+  },
+  {
+    id: "urban-escape",
+    slug: "urban-escape",
+    title: "Urban Escape – Travel Website",
+    tagline: "Responsive travel & destination showcase built with HTML5, CSS3, JavaScript & Bootstrap",
+    category: "Travel & Tourism",
+    filterCategories: ["Frontend Development"],
+    badge: "Frontend Web",
+    status: null,
+    ownership: "Frontend Web Project",
+    role: "Frontend Developer",
+    previewType: "urban-escape",
+    featured: false,
+    shortDescription:
+      "Developed a responsive travel website showcasing travel destinations and tourism-related information with an engaging layout and user-friendly navigation.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    stats: [
+      { label: "Category", value: "Travel & Tourism" },
+      { label: "Markup & Style", value: "HTML5 & CSS3" },
+      { label: "Layout", value: "Bootstrap" },
+      { label: "Interactivity", value: "JavaScript" }
+    ],
+    overview:
+      "Urban Escape is a responsive travel website designed to present travel destinations and tourism details through an engaging layout and intuitive site navigation.",
+    purpose:
+      "Make exploring travel destinations and tourism information effortless across desktop, tablet, and mobile viewports.",
+    myRole:
+      "Designed and developed the frontend pages using HTML5, CSS3, JavaScript, and Bootstrap, focusing on layout hierarchy and accessible navigation.",
+    keyFeatures: [
+      "Engaging destination showcase sections for travel & tourism content",
+      "User-friendly navigation tailored for exploring travel information",
+      "Responsive Bootstrap grid adapting smoothly across device breakpoints",
+      "Clean semantic HTML5 structure combined with custom CSS3 styling and JavaScript"
+    ],
+    developmentApproach:
+      "Paired Bootstrap's responsive grid system with custom CSS3 presentation and JavaScript interactions for cross-device consistency.",
+    outcome:
+      "Delivered a responsive travel showcase website highlighting destinations cleanly across all screen sizes."
   }
 ];

@@ -24,13 +24,13 @@ export const ProjectCard = ({ project }) => {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          padding: '1.35rem',
+          padding: '1.1rem',
           borderRadius: '18px'
         }}
       >
         {/* Screenshot / Preview */}
-        <div style={{ marginBottom: '1.15rem' }}>
-          <ProjectPreview project={project} aspectRatio="16 / 10" />
+        <div style={{ marginBottom: '0.85rem' }}>
+          <ProjectPreview project={project} aspectRatio="16 / 9" />
         </div>
 
         {/* Card Header: Category & Status */}
@@ -39,9 +39,9 @@ export const ProjectCard = ({ project }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: '0.75rem',
+            marginBottom: '0.45rem',
             flexWrap: 'wrap',
-            gap: '0.5rem'
+            gap: '0.4rem'
           }}
         >
           <span
@@ -64,9 +64,9 @@ export const ProjectCard = ({ project }) => {
         <h3
           className="project-card-title"
           style={{
-            fontSize: '1.25rem',
+            fontSize: '1.2rem',
             fontWeight: 700,
-            marginBottom: '0.45rem',
+            marginBottom: '0.3rem',
             color: 'var(--text-primary)',
             transition: 'color 0.25s ease'
           }}
@@ -80,10 +80,10 @@ export const ProjectCard = ({ project }) => {
         {/* Concise Description */}
         <p
           style={{
-            fontSize: '0.9rem',
+            fontSize: '0.88rem',
             color: 'var(--text-secondary)',
-            lineHeight: 1.6,
-            marginBottom: '1.25rem',
+            lineHeight: 1.52,
+            marginBottom: '0.85rem',
             flexGrow: 1
           }}
         >
@@ -91,14 +91,14 @@ export const ProjectCard = ({ project }) => {
         </p>
 
         {/* Max 4 Technology Badges */}
-        <div style={{ marginBottom: '1.25rem' }}>
+        <div style={{ marginBottom: '0.85rem' }}>
           <ProjectTechList technologies={project.technologies} maxVisible={4} />
         </div>
 
         {/* Action Footer */}
         <div
           style={{
-            paddingTop: '0.95rem',
+            paddingTop: '0.75rem',
             borderTop: '1px solid var(--border-subtle)',
             display: 'flex',
             alignItems: 'center',
