@@ -1,65 +1,10 @@
 // Skills & Expertise source of truth
 export const skillGroups = [
   {
-    id: "accounting-finance",
-    title: "Accounting & Finance",
-    subtitle: "Financial operations, compliance, reporting, and accounting platforms",
-    direction: "ltr",
-    icon: "Calculator",
-    categories: [
-      {
-        id: "accounting-knowledge",
-        title: "Accounting & Financial Knowledge",
-        icon: "FileSpreadsheet",
-        durationSeconds: 58,
-        skills: [
-          "General Ledger (GL) Management",
-          "Financial Accounting",
-          "Financial Statement Preparation",
-          "Balance Sheet Preparation",
-          "Financial Reporting",
-          "Bank Reconciliation",
-          "Ledger Reconciliation",
-          "Accounts Payable (AP)",
-          "Accounts Receivable (AR)",
-          "GST Filing & Compliance",
-          "TDS Deduction & Compliance",
-          "Cash Flow Management",
-          "Payment Planning",
-          "Financial Consolidation Reports",
-          "Cost Variance Analysis",
-          "Fixed Asset Management",
-          "Depreciation Calculation",
-          "Inventory & Stock Management",
-          "Financial Data Analysis",
-          "Management Reporting"
-        ]
-      },
-      {
-        id: "accounting-software",
-        title: "Accounting Software & Tools",
-        icon: "Landmark",
-        durationSeconds: 42,
-        skills: [
-          "SAP Business One",
-          "SAP FICO",
-          "Tally Prime",
-          "Glowsis",
-          "Code7",
-          "Microsoft Excel",
-          "Microsoft PowerPoint",
-          "Microsoft Word",
-          "QuickBooks",
-          "Peachtree"
-        ]
-      }
-    ]
-  },
-  {
     id: "software-development",
     title: "Software Development",
     subtitle: "Programming languages, full-stack frameworks, UI libraries, and development tools",
-    direction: "rtl",
+    direction: "ltr",
     icon: "Code2",
     categories: [
       {
@@ -110,5 +55,60 @@ export const skillGroups = [
         ]
       }
     ]
-  }
+  },
+  {
+    id: "accounting-finance",
+    title: "Accounting & Finance",
+    subtitle: "Financial operations, compliance, reporting, and accounting platforms",
+    direction: "rtl",
+    icon: "Calculator",
+    categories: [
+      {
+        id: "accounting-knowledge",
+        title: "Accounting & Financial Knowledge",
+        icon: "FileSpreadsheet",
+        durationSeconds: 58,
+        skills: [
+          "General Ledger (GL) Management",
+          "Financial Accounting",
+          "Financial Statement Preparation",
+          "Balance Sheet Preparation",
+          "Financial Reporting",
+          "Bank Reconciliation",
+          "Ledger Reconciliation",
+          "Accounts Payable (AP)",
+          "Accounts Receivable (AR)",
+          "GST Filing & Compliance",
+          "TDS Deduction & Compliance",
+          "Cash Flow Management",
+          "Payment Planning",
+          "Financial Consolidation Reports",
+          "Cost Variance Analysis",
+          "Fixed Asset Management",
+          "Depreciation Calculation",
+          "Inventory & Stock Management",
+          "Financial Data Analysis",
+          "Management Reporting"
+        ]
+      },
+      {
+        id: "accounting-software",
+        title: "Accounting Software & Tools",
+        icon: "Landmark",
+        durationSeconds: 42,
+        skills: [
+          "SAP Business One",
+          "SAP FICO",
+          "Tally Prime",
+          "Glowsis",
+          "Code7",
+          "Microsoft Excel",
+          "Microsoft PowerPoint",
+          "Microsoft Word",
+          "QuickBooks",
+          "Peachtree"
+        ]
+      }
+    ]
+  },
 ];

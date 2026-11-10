@@ -109,10 +109,92 @@ export const personalInfo = {
   resumeUrl: "/Akhilesh_P_Resume.pdf",
   status: "Building real-world software",
   activeWork: {
+    badge: "FEATURED ONGOING PROJECT",
     title: "POS Sales Software",
-    category: "ACTIVE PROJECT",
+    organization: "Ebsor Infosystem",
+    status: "Currently in Development",
+    role: "Product Planning, Functional Analysis & Business Logic",
     description:
-      "Currently working with POS sales software, contributing to software used for point-of-sale and sales-related business operations."
+      "Collaborating with the Ebsor Infosystem team to plan and develop a Point of Sale (POS) software solution. Leveraging my previous accounting experience and understanding of business operations, I contribute to the functional planning and system design of the application.",
+    responsibilities: [
+      "POS module identification and planning.",
+      "Input field and form structure definition.",
+      "Module relationships and data flow planning.",
+      "Sales and billing workflow planning.",
+      "Inventory and stock management planning.",
+      "Purchase and supplier management planning.",
+      "Customer and payment workflow planning.",
+      "Reports and analytics structure planning.",
+      "Business logic and validation requirements.",
+      "Team collaboration and requirement discussions."
+    ],
+    moduleTiers: [
+      {
+        tierLabel: "Core POS & Customer Operations",
+        modules: [
+          { name: "Dashboard", icon: "LayoutDashboard" },
+          { name: "Sales & Billing", icon: "Receipt" },
+          { name: "Returns & Refunds", icon: "RotateCcw" },
+          { name: "Customer Management", icon: "Users" }
+        ]
+      },
+      {
+        tierLabel: "Catalog, Stock & Procurement",
+        modules: [
+          { name: "Products & Categories", icon: "Package" },
+          { name: "Inventory & Stock", icon: "Boxes" },
+          { name: "Purchases & Suppliers", icon: "Truck" }
+        ]
+      },
+      {
+        tierLabel: "Finance, Analytics & Governance",
+        modules: [
+          { name: "Payments & Expenses", icon: "Wallet" },
+          { name: "Tax & Transactions", icon: "FileSpreadsheet" },
+          { name: "Reports & Analytics", icon: "BarChart3" },
+          { name: "User & Role Management", icon: "ShieldCheck" },
+          { name: "System Settings", icon: "Settings" }
+        ]
+      }
+    ],
+    transactionWorkflow: [
+      {
+        step: "01",
+        title: "Sales & Billing",
+        detail: "Line items captured, discounts & tax logic validated, invoice generated",
+        icon: "Receipt"
+      },
+      {
+        step: "02",
+        title: "Payments & Expenses",
+        detail: "Payment mode recorded, settlement logged, customer balance updated",
+        icon: "Wallet"
+      },
+      {
+        step: "03",
+        title: "Inventory & Stock",
+        detail: "Item stock quantities adjusted and reorder thresholds evaluated",
+        icon: "Boxes"
+      },
+      {
+        step: "04",
+        title: "Reports & Analytics",
+        detail: "Sales registers, tax summaries, and dashboard KPIs updated",
+        icon: "BarChart3"
+      }
+    ],
+    technicalCollaboration: {
+      myContribution:
+        "Functional planning, module architecture, input field mapping, business workflows, and accounting domain expertise.",
+      backend: {
+        stack: "ASP.NET Core / .NET",
+        scope: "Backend APIs, database operations, and server-side implementation handled by the Ebsor Infosystem engineering team."
+      },
+      frontend: {
+        stack: "React.js",
+        scope: "Client-side UI interfaces and component rendering implemented by the Ebsor Infosystem engineering team."
+      }
+    }
   },
   freelanceWork: {
     title: "Freelance Collaboration — Branding Hut",
