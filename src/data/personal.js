@@ -110,23 +110,23 @@ export const personalInfo = {
   status: "Building real-world software",
   activeWork: {
     badge: "FEATURED ONGOING PROJECT",
-    title: "POS Sales Software",
-    organization: "Ebsor Infosystem",
+    title: "POS Sales & Business Management Software",
+    projectType: "Independent Team Collaboration",
     status: "Currently in Development",
-    role: "Product Planning, Functional Analysis & Business Logic",
+    role: "Functional Planning & Business Analysis",
     description:
-      "Collaborating with the Ebsor Infosystem team to plan and develop a Point of Sale (POS) software solution. Leveraging my previous accounting experience and understanding of business operations, I contribute to the functional planning and system design of the application.",
+      "An independent Point of Sale (POS) and business management software project started collaboratively with former colleagues and fellow developers. Leveraging my accounting background and operational experience, I contribute to functional planning, module relationships, input field mapping, business workflow design, and reporting structure alongside the development team.",
     responsibilities: [
-      "POS module identification and planning.",
-      "Input field and form structure definition.",
-      "Module relationships and data flow planning.",
-      "Sales and billing workflow planning.",
-      "Inventory and stock management planning.",
-      "Purchase and supplier management planning.",
-      "Customer and payment workflow planning.",
-      "Reports and analytics structure planning.",
-      "Business logic and validation requirements.",
-      "Team collaboration and requirement discussions."
+      "POS module identification and functional architecture planning.",
+      "Input field mapping and structured form layout definition.",
+      "Module relationships and cross-module data flow planning.",
+      "Accounting-aligned business workflow design across operations.",
+      "Sales, billing, returns, and tax workflow planning.",
+      "Inventory and stock management logic planning.",
+      "Purchase, supplier, customer, and payment workflow planning.",
+      "Financial and operational reporting structure planning.",
+      "Business validation rules and domain requirements analysis.",
+      "Collaborative requirement alignment with the development team."
     ],
     moduleTiers: [
       {
@@ -185,14 +185,14 @@ export const personalInfo = {
     ],
     technicalCollaboration: {
       myContribution:
-        "Functional planning, module architecture, input field mapping, business workflows, and accounting domain expertise.",
+        "Accounting domain knowledge, functional module planning, input field mapping, business workflow design, module relationships, and reporting structure.",
       backend: {
         stack: "ASP.NET Core / .NET",
-        scope: "Backend APIs, database operations, and server-side implementation handled by the Ebsor Infosystem engineering team."
+        scope: "Backend APIs, database operations, and server-side implementation developed by the team."
       },
       frontend: {
         stack: "React.js",
-        scope: "Client-side UI interfaces and component rendering implemented by the Ebsor Infosystem engineering team."
+        scope: "Client-side UI interfaces and component rendering developed by the team."
       }
     }
   },

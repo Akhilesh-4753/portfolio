@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   ShoppingBag,
-  Building2,
   Compass,
   CheckCircle2,
   LayoutDashboard,
@@ -159,8 +158,8 @@ export const CurrentWork = () => {
                             color: '#FDBA74'
                           }}
                         >
-                          <Building2 size={14} style={{ color: '#F97316' }} />
-                          {activeWork.organization}
+                          <Users size={14} style={{ color: '#F97316' }} />
+                          {activeWork.projectType}
                         </span>
 
                         <span style={{ color: 'var(--text-muted)' }} aria-hidden="true">•</span>
