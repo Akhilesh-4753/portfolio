@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Floating AI Assistant Launcher (Scoped .ai-* prefix)
+   ========================================================================== */
+
+@property --ai-ang {
+  syntax: '<angle>';
+  initial-value: 45deg;
+  inherits: false;
+}
+
+.ai-launcher {
+  --ai-accent: var(--color-orange, #F97316);
+  --ai-accent-bright: var(--color-amber, #FDBA74);
+  --ai-bg: radial-gradient(circle at 35% 30%, #1d1d1d 0%, #111111 100%);
+  --ai-ring: conic-gradient(
+    from var(--ai-ang, 45deg),
+    rgba(255, 255, 255, 0.14) 0deg,
+    rgba(255, 255, 255, 0.08) 235deg,
+    rgba(249, 115, 22, 0.36) 290deg,
+    var(--ai-accent) 332deg,
+    rgba(253, 186, 116, 0.92) 348deg,
+    rgba(255, 255, 255, 0.14) 360deg
+  );
+  --ai-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --ai-font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  position: fixed;
+  right: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  pointer-events: none;
+  font-family: var(--ai-font-sans);
+}
+
+/* Optional timed hint bubble */
+.ai-bubble {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: min(15rem, calc(100vw - 2.5rem));
+  padding: 0.7rem 0.75rem 0.7rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 17, 17, 0.88);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 14px 32px -8px rgba(0, 0, 0, 0.72),
+    0 0 24px -10px rgba(249, 115, 22, 0.25);
+  color: #f4f4f5;
+  animation: ai-bubble-enter 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ai-bubble-text {
+  margin: 0;
+  font-family: var(--ai-font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #e4e4e7;
+}
+
+.ai-bubble-close {
+  appearance: none;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: -1px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #a1a1aa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.ai-bubble-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.ai-bubble-close:focus-visible {
+  outline: 2px solid var(--ai-accent);
+  outline-offset: 2px;
+}
+
+/* Floating round launcher button */
+.ai-btn {
+  pointer-events: auto;
+  appearance: none;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  background: var(--ai-bg);
+  color: var(--ai-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px -8px rgba(249, 115, 22, 0.5);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
+  z-index: 2;
+}
+
+@supports (background: conic-gradient(from 0deg, #fff, #000)) {
+  .ai-btn {
+    border: 1.5px solid transparent;
+    background-image: var(--ai-bg), var(--ai-ring);
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    animation: ai-ring-spin 4s linear infinite;
+  }
+}
+
+.ai-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 34px -6px rgba(249, 115, 22, 0.72),
+    0 0 22px -4px rgba(249, 115, 22, 0.32);
+}
+
+.ai-btn:active {
+  transform: scale(0.96);
+}
+
+.ai-btn:focus-visible {
+  outline: 2px solid var(--ai-accent);
+  outline-offset: 4px;
+}
+
+/* Hover / focus-visible floating label built from data-label="Ask AI" */
+.ai-btn::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  padding: 0.32rem 0.62rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(17, 17, 17, 0.96);
+  color: #f4f4f5;
+  font-family: var(--ai-font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 5;
+}
+
+.ai-btn:hover::after,
+.ai-btn:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Center code brackets SVG icon */
+.ai-btn-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  color: var(--ai-accent);
+  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.55));
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), filter 0.22s ease;
+  pointer-events: none;
+}
+
+.ai-btn:hover .ai-btn-icon {
+  transform: scale(1.14);
+  filter: drop-shadow(0 0 11px rgba(249, 115, 22, 0.78));
+}
+
+/* Top-right 20px AI sparkle badge */
+.ai-sparkle {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #141414;
+  border: 1px solid rgba(249, 115, 22, 0.65);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ai-accent);
+  pointer-events: none;
+}
+
+.ai-sparkle-star {
+  width: 11px;
+  height: 11px;
+  display: block;
+  transform-origin: center;
+  animation: ai-twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes ai-ring-spin {
+  from {
+    --ai-ang: 45deg;
+  }
+  to {
+    --ai-ang: 405deg;
+  }
+}
+
+@keyframes ai-twinkle {
+  0%,
+  100% {
+    transform: scale(0.9) rotate(0deg);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.14) rotate(12deg);
+    opacity: 1;
+  }
+}
+
+@keyframes ai-bubble-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 519px) {
+  .ai-btn {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-btn,
+  .ai-btn::after,
+  .ai-btn-icon,
+  .ai-sparkle,
+  .ai-sparkle-star,
+  .ai-bubble,
+  .ai-bubble-close {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

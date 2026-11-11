@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/navigation/Navbar';
 import { Footer } from '../components/common/Footer';
+import { AIButton } from '../components/common/AIButton';
 import { CinematicBackground } from '../components/background/CinematicBackground';
 import { CodeBackground } from '../components/background/CodeBackground';
 import { MouseGlow } from '../components/background/MouseGlow';
@@ -36,6 +37,9 @@ export const MainLayout = () => {
 
       {/* Global Footer */}
       <Footer />
+
+      {/* Floating AI Assistant Launcher */}
+      <AIButton />
     </div>
   );
 };
