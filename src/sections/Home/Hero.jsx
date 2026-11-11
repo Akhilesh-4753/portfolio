@@ -77,7 +77,7 @@ export const Hero = () => {
                   href={personalInfo.resumeUrl}
                   variant="outline"
                   icon={Download}
-                  download="Akhilesh_P_Resume.pdf"
+                  download="Akhilesh_P_Resume_2026.pdf"
                 >
                   Download CV
                 </Button>

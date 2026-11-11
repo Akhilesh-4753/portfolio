@@ -106,7 +106,7 @@ export const personalInfo = {
   phone: "+91 9526008613",
   location: "Kerala, India",
   profileImage: "/Akhilesh/hero_image.png",
-  resumeUrl: "/Akhilesh_P_Resume.pdf",
+  resumeUrl: "/documents/Akhilesh_P_Resume_2026.pdf",
   status: "Building real-world software",
   activeWork: {
     badge: "FEATURED ONGOING PROJECT",
