@@ -1,51 +1,51 @@
-// What I Build / Services offerings source of truth
+// Capabilities data for the Services / Signal Panel section
 export const services = [
   {
     number: "01",
-    title: "Web Applications",
+    title: "Web Application Development",
     description:
-      "Responsive and scalable web applications using React.js and modern frontend technologies.",
-    icon: "Layout",
-    tags: ["React.js", "JavaScript", "SPA Architecture", "Modern UI"]
+      "Building modern, responsive web applications with intuitive interfaces and reliable functionality.",
+    tags: ["React.js", "Django", "ASP.NET Core"],
+    waveform: "sine"
   },
   {
     number: "02",
-    title: "ERP Applications",
+    title: "Backend & API Development",
     description:
-      "Business-focused ERP applications using ASP.NET Core MVC and .NET.",
-    icon: "Database",
-    tags: ["ASP.NET Core MVC", ".NET", "Master & Tx Modules", "Enterprise Workflows"]
+      "Developing server-side functionality, database-driven features, REST APIs, and secure application workflows.",
+    tags: ["Python", "C#", "Django", "REST APIs"],
+    waveform: "square"
   },
   {
     number: "03",
-    title: "REST API Integration",
+    title: "ERP & Business Software",
     description:
-      "Frontend/backend communication using REST APIs.",
-    icon: "Network",
-    tags: ["API Endpoints", "Payload Handling", "CRUD Operations", "HTTP Services"]
+      "Creating practical business solutions for sales, inventory, billing, reporting, and everyday business operations.",
+    tags: ["ASP.NET Core", "SQL", "Business Logic"],
+    waveform: "triangle"
   },
   {
     number: "04",
-    title: "Responsive Interfaces",
+    title: "AI Integration & Chatbots",
     description:
-      "Modern responsive interfaces for desktop, tablet, and mobile devices.",
-    icon: "Smartphone",
-    tags: ["Mobile First", "Cross-Browser", "Adaptive Design", "Clean Ergonomics"]
+      "Integrating AI-powered assistants, content generation, and intelligent features into web applications.",
+    tags: ["Gemini API", "Groq API", "AI Chatbots"],
+    waveform: "pulse"
   },
   {
     number: "05",
-    title: "Business Software",
+    title: "Responsive UI Development",
     description:
-      "Practical software solutions for real-world business workflows, including POS and ERP applications.",
-    icon: "Briefcase",
-    tags: ["POS Software", "Operational Logic", "Validation Rules", "Business Flow"]
+      "Creating clean, accessible interfaces that work smoothly across desktops, tablets, and mobile devices.",
+    tags: ["JavaScript", "React.js", "Tailwind CSS"],
+    waveform: "sawtooth"
   },
   {
     number: "06",
-    title: "Creative Digital Work",
+    title: "Website Optimization & SEO",
     description:
-      "Professional posters and promotional designs through freelance collaboration.",
-    icon: "Palette",
-    tags: ["Freelance Collaboration", "Branding Hut", "Promotional Design", "Visual Arts"]
+      "Improving website structure, performance, responsiveness, and technical SEO for a better user experience.",
+    tags: ["Technical SEO", "Performance", "Accessibility"],
+    waveform: "mixed"
   }
 ];

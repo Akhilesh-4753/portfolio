@@ -1,0 +1,571 @@
+/* ==========================================================================
+   Capabilities / Interactive Signal Panel Section (Scoped .sig- prefix)
+   ========================================================================== */
+
+.sig-section {
+  --sig-accent: var(--color-orange, #F97316);
+  --sig-accent-deep: #EA580C;
+  --sig-accent-bright: var(--color-amber, #FDBA74);
+  --sig-accent-glow: rgba(249, 115, 22, 0.5);
+  --sig-accent-tint: rgba(249, 115, 22, 0.14);
+  --sig-bg: #080808;
+  --sig-chassis-bg: #0b0b0e;
+  --sig-selector-bg: #0a0a0d;
+  --sig-screen-bg: #07080a;
+  --sig-border: rgba(255, 255, 255, 0.08);
+  --sig-border-accent: rgba(249, 115, 22, 0.42);
+  --sig-grid-minor: rgba(249, 115, 22, 0.045);
+  --sig-grid-major: rgba(249, 115, 22, 0.115);
+  --sig-text: #f4f4f5;
+  --sig-text-muted: #a1a1aa;
+  --sig-text-dim: #71717a;
+
+  --sig-font-display: 'Chakra Petch', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sig-font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --sig-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  position: relative;
+  padding: 5.5rem 0;
+  background-color: var(--sig-bg);
+  background-image: radial-gradient(circle at 50% 18%, rgba(249, 115, 22, 0.07) 0%, transparent 58%);
+  color: var(--sig-text);
+  overflow-x: clip;
+}
+
+.sig-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Section Header */
+.sig-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.25rem;
+}
+
+.sig-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--sig-border-accent);
+  background: rgba(249, 115, 22, 0.09);
+  color: var(--sig-accent);
+  font-family: var(--sig-font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sig-eyebrow-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--sig-accent);
+  box-shadow: 0 0 8px var(--sig-accent), 0 0 14px var(--sig-accent-glow);
+  animation: sig-led-pulse 2.4s ease-in-out infinite;
+}
+
+.sig-title {
+  font-family: var(--sig-font-display);
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--sig-text);
+  margin: 0 0 1rem;
+}
+
+.sig-title-accent {
+  color: var(--sig-accent);
+}
+
+.sig-subtitle {
+  font-family: var(--sig-font-sans);
+  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  color: var(--sig-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Master-Detail Control Console */
+.sig-shell {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  background: var(--sig-chassis-bg);
+  border: 1px solid var(--sig-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px -18px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(249, 115, 22, 0.08);
+}
+
+/* Left Selector Tablist */
+.sig-tablist {
+  display: flex;
+  flex-direction: column;
+  background: var(--sig-selector-bg);
+  border-right: 1px solid var(--sig-border);
+  padding: 0.75rem 0;
+}
+
+.sig-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 1.1rem 1.35rem;
+  border: none;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  color: var(--sig-text-muted);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.sig-tab:last-child {
+  border-bottom: none;
+}
+
+.sig-tab:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--sig-text);
+}
+
+.sig-tab[aria-selected='true'] {
+  border-left-color: var(--sig-accent);
+  background: linear-gradient(
+    90deg,
+    rgba(249, 115, 22, 0.17) 0%,
+    rgba(249, 115, 22, 0.05) 72%,
+    transparent 100%
+  );
+  color: var(--sig-text);
+}
+
+.sig-tab:focus-visible {
+  outline: 2px solid var(--sig-accent);
+  outline-offset: -3px;
+  box-shadow: inset 0 0 0 1px rgba(253, 186, 116, 0.35);
+}
+
+.sig-tab-num {
+  font-family: var(--sig-font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--sig-text-dim);
+  flex-shrink: 0;
+  transition: color 0.22s ease, text-shadow 0.22s ease;
+}
+
+.sig-tab[aria-selected='true'] .sig-tab-num {
+  color: var(--sig-accent);
+  text-shadow: 0 0 10px var(--sig-accent-glow);
+}
+
+.sig-tab-title {
+  font-family: var(--sig-font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Right Display Screen Container */
+.sig-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+  background: var(--sig-screen-bg);
+}
+
+.sig-shell[data-sig-interactive='true'] .sig-panels {
+  gap: 0;
+}
+
+/* Individual Oscilloscope Display Panel */
+.sig-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 455px;
+  padding: 2rem 2.25rem 1.5rem;
+  background-color: var(--sig-screen-bg);
+  background-image:
+    linear-gradient(to right, var(--sig-grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--sig-grid-minor) 1px, transparent 1px),
+    linear-gradient(to right, var(--sig-grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--sig-grid-major) 1px, transparent 1px);
+  background-size:
+    24px 24px,
+    24px 24px,
+    96px 96px,
+    96px 96px;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.72);
+  overflow: hidden;
+  transition: opacity 0.24s ease;
+}
+
+.sig-shell:not([data-sig-interactive='true']) .sig-panel + .sig-panel {
+  border-top: 1px solid var(--sig-border);
+}
+
+.sig-shell[data-sig-interactive='true'] .sig-panel[data-active='false'] {
+  display: none;
+}
+
+.sig-panel:focus-visible {
+  outline: 2px solid var(--sig-accent);
+  outline-offset: -3px;
+}
+
+/* Corner Brackets inside Oscilloscope Screen */
+.sig-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sig-bracket--tl {
+  top: 12px;
+  left: 12px;
+  border-top: 2px solid var(--sig-accent);
+  border-left: 2px solid var(--sig-accent);
+}
+
+.sig-bracket--tr {
+  top: 12px;
+  right: 12px;
+  border-top: 2px solid var(--sig-accent);
+  border-right: 2px solid var(--sig-accent);
+}
+
+.sig-bracket--bl {
+  bottom: 12px;
+  left: 12px;
+  border-bottom: 2px solid var(--sig-accent);
+  border-left: 2px solid var(--sig-accent);
+}
+
+.sig-bracket--br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 2px solid var(--sig-accent);
+  border-right: 2px solid var(--sig-accent);
+}
+
+/* Top Telemetry Status Bar */
+.sig-status-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--sig-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sig-channel {
+  color: var(--sig-text-muted);
+  font-weight: 500;
+}
+
+.sig-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sig-accent);
+  font-weight: 600;
+}
+
+.sig-status-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--sig-accent);
+  box-shadow: 0 0 8px var(--sig-accent), 0 0 14px var(--sig-accent-glow);
+  animation: sig-led-pulse 2s ease-in-out infinite;
+}
+
+/* Large Faint Background Channel Number */
+.sig-watermark {
+  position: absolute;
+  top: 3.1rem;
+  right: 2rem;
+  z-index: 1;
+  font-family: var(--sig-font-mono);
+  font-size: clamp(5rem, 11vw, 9rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: rgba(249, 115, 22, 0.075);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -0.04em;
+}
+
+/* Core Content Area */
+.sig-body {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.sig-panel-title {
+  font-family: var(--sig-font-display);
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sig-text);
+  margin: 0 0 0.85rem;
+  letter-spacing: 0.01em;
+}
+
+.sig-panel-desc {
+  font-family: var(--sig-font-sans);
+  font-size: clamp(0.96rem, 1.3vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--sig-text-muted);
+  margin: 0 0 1.65rem;
+}
+
+/* Hardware Component Label Tags */
+.sig-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sig-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.78rem;
+  border-radius: 4px;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  background: rgba(249, 115, 22, 0.07);
+  color: var(--sig-text);
+  font-family: var(--sig-font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.sig-tag:hover {
+  border-color: var(--sig-accent);
+  background: rgba(249, 115, 22, 0.13);
+}
+
+.sig-tag-led {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background-color: var(--sig-accent);
+  box-shadow: 0 0 7px var(--sig-accent), 0 0 12px var(--sig-accent-glow);
+  flex-shrink: 0;
+}
+
+/* Bottom Oscilloscope Waveform Bay */
+.sig-wave-bay {
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(249, 115, 22, 0.22);
+}
+
+.sig-wave-svg {
+  display: block;
+  width: 100%;
+  height: 82px;
+  overflow: visible;
+}
+
+.sig-wave-axis {
+  stroke: rgba(249, 115, 22, 0.18);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.sig-wave-ghost {
+  fill: none;
+  stroke: rgba(249, 115, 22, 0.14);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sig-wave-trace {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 2.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px var(--sig-accent-glow));
+}
+
+.sig-shell[data-sig-interactive='true'] .sig-panel[data-active='true'] .sig-wave-trace {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: sig-wave-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Keyframes */
+@keyframes sig-wave-draw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sig-led-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+}
+
+/* Tablet & Mobile Layout (below 860px) */
+@media (max-width: 860px) {
+  .sig-section {
+    padding: 4.25rem 0;
+  }
+
+  .sig-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .sig-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sig-tablist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-right: none;
+    border-bottom: 1px solid var(--sig-border);
+  }
+
+  .sig-tab {
+    padding: 0.8rem 0.9rem;
+    gap: 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-left: 3px solid transparent;
+    border-radius: 8px;
+  }
+
+  .sig-tab:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .sig-tab[aria-selected='true'] {
+    border-color: rgba(249, 115, 22, 0.32);
+    border-left-color: var(--sig-accent);
+  }
+
+  .sig-tab-title {
+    font-size: 0.88rem;
+  }
+
+  .sig-panel {
+    min-height: 390px;
+    padding: 1.5rem 1.35rem 1.25rem;
+  }
+
+  .sig-watermark {
+    top: 3.4rem;
+    right: 1.15rem;
+    font-size: 4.75rem;
+  }
+}
+
+/* Narrow Mobile Screens */
+@media (max-width: 480px) {
+  .sig-container {
+    padding: 0 1rem;
+  }
+
+  .sig-tablist {
+    gap: 0.45rem;
+    padding: 0.6rem;
+  }
+
+  .sig-tab {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.7rem 0.75rem;
+  }
+
+  .sig-tab-title {
+    font-size: 0.82rem;
+    line-height: 1.3;
+  }
+
+  .sig-panel {
+    min-height: auto;
+    padding: 1.35rem 1.05rem 1rem;
+  }
+
+  .sig-wave-svg {
+    height: 68px;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sig-tab,
+  .sig-panel,
+  .sig-tag {
+    transition: none !important;
+  }
+
+  .sig-eyebrow-led,
+  .sig-status-led {
+    animation: none !important;
+  }
+
+  .sig-shell[data-sig-interactive='true'] .sig-panel[data-active='true'] .sig-wave-trace {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
