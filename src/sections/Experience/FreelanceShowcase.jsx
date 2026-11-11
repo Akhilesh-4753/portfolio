@@ -1,10 +1,5 @@
 import React from 'react';
 import {
-  Building2,
-  MapPin,
-  Globe,
-  Palette,
-  Search,
   Users,
   Code2,
   Server,
@@ -13,212 +8,28 @@ import {
   GitMerge
 } from 'lucide-react';
 import { freelanceExperience } from '../../data/experience';
-import { SectionTitle } from '../../components/common/SectionTitle';
 import { FadeIn } from '../../components/animations/FadeIn';
-import { TiltCard } from '../../components/animations/TiltCard';
-
-const CONTRIBUTION_ICONS = {
-  Globe,
-  Palette,
-  Search,
-  Users
-};
+import { BeyondDevelopment } from './BeyondDevelopment';
 
 /**
  * Editorial showcase for Freelance & Professional Collaboration (Branding Hut & ApnaVilla).
  */
 export const FreelanceShowcase = () => {
-  const { heading, mainCollaboration, contributions, featuredProject } = freelanceExperience;
+  const { featuredProject } = freelanceExperience;
 
   return (
     <div id="freelance" style={{ marginTop: '6.5rem', paddingTop: '1.5rem' }}>
-      {/* 1. Section Heading */}
-      <SectionTitle
-        badge={heading.badge}
-        title={heading.title}
-        highlight={heading.highlight}
-        subtitle={heading.subtitle}
-      />
+      {/* Card-Free Beyond Development / Branding Hut Collaboration Section */}
+      <BeyondDevelopment />
 
-      {/* 2. Branding Hut — Main Collaboration Editorial Panel */}
-      <FadeIn direction="up" delay={0.1}>
-        <div
-          className="glass-panel freelance-hero-panel"
-          style={{
-            position: 'relative',
-            overflow: 'hidden',
-            marginBottom: '2rem',
-            background:
-              'linear-gradient(145deg, rgba(17, 17, 17, 0.88) 0%, rgba(10, 10, 10, 0.94) 100%)',
-            border: '1px solid rgba(249, 115, 22, 0.25)'
-          }}
-        >
-          {/* Subtle Right-Side Warm Ambient Glow */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              top: '-40%',
-              right: '-10%',
-              width: '380px',
-              height: '380px',
-              borderRadius: '50%',
-              background:
-                'radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(124, 45, 18, 0.06) 45%, transparent 72%)',
-              filter: 'blur(45px)',
-              pointerEvents: 'none'
-            }}
-          />
-
-          <div className="freelance-editorial-grid" style={{ position: 'relative', zIndex: 1 }}>
-            {/* Left: Organization Identity & Location */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-              <span
-                style={{
-                  fontSize: '0.76rem',
-                  fontFamily: 'var(--font-mono)',
-                  color: '#FDBA74',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase'
-                }}
-              >
-                // Main Collaboration
-              </span>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
-                <div
-                  style={{
-                    width: '50px',
-                    height: '50px',
-                    borderRadius: '14px',
-                    background: 'rgba(249, 115, 22, 0.14)',
-                    border: '1px solid rgba(249, 115, 22, 0.3)',
-                    color: '#F97316',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    boxShadow: '0 0 20px rgba(249, 115, 22, 0.18)'
-                  }}
-                >
-                  <Building2 size={24} />
-                </div>
-                <div>
-                  <h3
-                    style={{
-                      fontSize: 'clamp(1.45rem, 2.4vw, 1.85rem)',
-                      fontWeight: 800,
-                      color: 'var(--text-primary)',
-                      lineHeight: 1.2,
-                      margin: 0
-                    }}
-                  >
-                    {mainCollaboration.organization}
-                  </h3>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  padding: '0.42rem 0.85rem',
-                  borderRadius: '9999px',
-                  backgroundColor: 'rgba(249, 115, 22, 0.08)',
-                  border: '1px solid rgba(249, 115, 22, 0.22)',
-                  color: 'var(--text-secondary)',
-                  fontSize: '0.83rem',
-                  width: 'fit-content'
-                }}
-              >
-                <MapPin size={14} style={{ color: '#F97316', flexShrink: 0 }} />
-                <span>{mainCollaboration.location}</span>
-              </div>
-            </div>
-
-            {/* Right: Collaboration Narrative */}
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <p
-                style={{
-                  fontSize: '1.02rem',
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.75,
-                  margin: 0
-                }}
-              >
-                {mainCollaboration.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      </FadeIn>
-
-      {/* 3. Four Contribution Categories Grid */}
-      <div className="freelance-contributions-grid" style={{ marginBottom: '2.5rem' }}>
-        {contributions.map((item, idx) => {
-          const Icon = CONTRIBUTION_ICONS[item.icon] || Globe;
-          return (
-            <FadeIn key={item.title} delay={0.08 + idx * 0.07} direction="up" style={{ height: '100%' }}>
-              <TiltCard
-                style={{
-                  padding: '1.5rem',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.85rem'
-                }}
-              >
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '11px',
-                    backgroundColor: 'rgba(249, 115, 22, 0.12)',
-                    border: '1px solid rgba(249, 115, 22, 0.24)',
-                    color: '#F97316',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <Icon size={20} />
-                </div>
-                <h4
-                  style={{
-                    fontSize: '1.04rem',
-                    fontWeight: 700,
-                    color: 'var(--text-primary)',
-                    lineHeight: 1.35,
-                    margin: 0
-                  }}
-                >
-                  {item.title}
-                </h4>
-                <p
-                  style={{
-                    fontSize: '0.88rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.6,
-                    margin: 0
-                  }}
-                >
-                  {item.description}
-                </p>
-              </TiltCard>
-            </FadeIn>
-          );
-        })}
-      </div>
-
-      {/* 4. Featured Team Project Showcase — ApnaVilla */}
+      {/* Featured Team Project Showcase — ApnaVilla */}
       <FadeIn direction="up" delay={0.18}>
         <div
           className="glass-panel apnavilla-showcase-panel"
           style={{
             position: 'relative',
             overflow: 'hidden',
+            marginTop: '1.5rem',
             border: '1px solid rgba(249, 115, 22, 0.35)',
             background:
               'linear-gradient(155deg, rgba(249, 115, 22, 0.06) 0%, rgba(17, 17, 17, 0.9) 45%, rgba(10, 10, 10, 0.95) 100%)',
@@ -547,23 +358,9 @@ export const FreelanceShowcase = () => {
       </FadeIn>
 
       <style>{`
-        .freelance-hero-panel,
         .apnavilla-showcase-panel {
           padding: 2.25rem;
           border-radius: 20px;
-        }
-
-        .freelance-editorial-grid {
-          display: grid;
-          grid-template-columns: 1fr 1.45fr;
-          gap: 2.25rem;
-          align-items: center;
-        }
-
-        .freelance-contributions-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.25rem;
         }
 
         .apnavilla-split-grid {
@@ -573,14 +370,7 @@ export const FreelanceShowcase = () => {
           align-items: stretch;
         }
 
-        @media (max-width: 1024px) {
-          .freelance-contributions-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
         @media (max-width: 900px) {
-          .freelance-editorial-grid,
           .apnavilla-split-grid {
             grid-template-columns: 1fr;
             gap: 1.35rem;
@@ -588,18 +378,12 @@ export const FreelanceShowcase = () => {
         }
 
         @media (max-width: 640px) {
-          .freelance-hero-panel,
           .apnavilla-showcase-panel {
             padding: 1.35rem 1.15rem;
             border-radius: 16px;
-          }
-
-          .freelance-contributions-grid {
-            grid-template-columns: 1fr;
           }
         }
       `}</style>
     </div>
   );
 };
-
