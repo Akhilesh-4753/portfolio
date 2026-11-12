@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Briefcase, Globe, Server, Code2, Sparkles, ArrowRight } from 'lucide-react';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
@@ -83,7 +83,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
         {prefersReducedMotion ? (
           <div style={railStyle} aria-hidden="true" />
         ) : (
-          <motion.div
+          <m.div
             key={isDesktop ? 'desktop-rail' : 'mobile-rail'}
             style={{
               ...railStyle,

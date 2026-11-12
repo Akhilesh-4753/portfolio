@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { AppRoutes } from './routes/AppRoutes';
 
@@ -31,8 +32,10 @@ function AnalyticsTracker() {
 export function AppShell({ projectDetailsPage, notFound } = {}) {
   return (
     <ThemeProvider>
-      <AnalyticsTracker />
-      <AppRoutes projectDetailsPage={projectDetailsPage} notFound={notFound} />
+      <LazyMotion features={domAnimation} strict>
+        <AnalyticsTracker />
+        <AppRoutes projectDetailsPage={projectDetailsPage} notFound={notFound} />
+      </LazyMotion>
     </ThemeProvider>
   );
 }

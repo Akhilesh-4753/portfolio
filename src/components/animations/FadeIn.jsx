@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export const FadeIn = ({
@@ -13,32 +12,62 @@ export const FadeIn = ({
   style = {}
 }) => {
   const prefersReducedMotion = useReducedMotion();
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(immediate);
+
+  useEffect(() => {
+    if (immediate || prefersReducedMotion || visible) return undefined;
+    const node = ref.current;
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [immediate, prefersReducedMotion, visible]);
 
   if (prefersReducedMotion || immediate) {
-    return <div className={className} style={style}>{children}</div>;
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
   }
 
-  const directions = {
-    up: { y: distance, x: 0 },
-    down: { y: -distance, x: 0 },
-    left: { x: distance, y: 0 },
-    right: { x: -distance, y: 0 },
-    none: { x: 0, y: 0 }
+  const offsets = {
+    up: `translate3d(0, ${distance}px, 0)`,
+    down: `translate3d(0, -${distance}px, 0)`,
+    left: `translate3d(${distance}px, 0, 0)`,
+    right: `translate3d(-${distance}px, 0, 0)`,
+    none: 'translate3d(0, 0, 0)'
   };
 
-  const initialOffset = directions[direction] || directions.up;
+  const hiddenTransform = offsets[direction] || offsets.up;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, ...initialOffset }}
-      {...(immediate
-        ? { animate: { opacity: 1, x: 0, y: 0 } }
-        : { whileInView: { opacity: 1, x: 0, y: 0 }, viewport: { once: true, amount: 0.1 } })}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+    <div
+      ref={ref}
       className={className}
-      style={style}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translate3d(0, 0, 0)' : hiddenTransform,
+        transition: `opacity ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, transform ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s`,
+        willChange: visible ? 'auto' : 'opacity, transform',
+        ...style
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };

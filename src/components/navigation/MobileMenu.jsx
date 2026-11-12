@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { NavLinks } from './NavLinks';
 import { SocialLinks } from '../common/SocialLinks';
@@ -24,7 +24,7 @@ export const MobileMenu = ({ isOpen, onClose, activeSection }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ x: '100%' }}
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
@@ -102,7 +102,7 @@ export const MobileMenu = ({ isOpen, onClose, activeSection }) => {
           >
             <SocialLinks />
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

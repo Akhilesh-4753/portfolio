@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
@@ -149,7 +149,7 @@ export const AboutAccordion = ({ items }) => {
               ) : (
                 <AnimatePresence initial={false}>
                   {isOpen && (
-                    <motion.div
+                    <m.div
                       id={panelId}
                       role="region"
                       aria-labelledby={buttonId}
@@ -160,7 +160,7 @@ export const AboutAccordion = ({ items }) => {
                       style={{ overflow: 'hidden' }}
                     >
                       {content}
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
               )}
