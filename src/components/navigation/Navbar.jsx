@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Code2, Menu } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 import { NavLinks, NAV_ITEMS } from './NavLinks';
 import { MobileMenu } from './MobileMenu';
+import './Navbar.css';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/#home');
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,38 +75,34 @@ export const Navbar = () => {
           }}
         >
           {/* Logo */}
-          <Link
-            to="/"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.65rem',
-              fontWeight: 800,
-              fontSize: '1.2rem',
-              color: 'var(--text-primary)',
-              textDecoration: 'none'
-            }}
+          <a
+            href="#home"
+            className="lg-link"
+            aria-label="Akhilesh P, full-stack developer, home"
+            onClick={handleLogoClick}
           >
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'var(--gradient-primary)',
-                color: '#ffffff',
-                boxShadow: '0 4px 14px rgba(249, 115, 22, 0.35)'
-              }}
-            >
-              <Code2 size={20} />
-            </div>
-            <div>
-              <span>Akhilesh</span>
-              <span className="gradient-text" style={{ marginLeft: '4px' }}>.dev</span>
-            </div>
-          </Link>
+            <span className="lg-tile" aria-hidden="true">
+              <svg
+                className="lg-icon"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14" />
+              </svg>
+            </span>
+            <span className="lg-text">
+              <span className="lg-name">Akhilesh P</span>
+              <span className="lg-role">FULL-STACK DEVELOPER</span>
+            </span>
+          </a>
 
           {/* Desktop Nav Items (Aligned to the right on desktop) */}
           <nav

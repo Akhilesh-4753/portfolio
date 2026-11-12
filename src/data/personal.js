@@ -55,16 +55,19 @@ export const personalInfo = {
         },
         {
           step: "05",
-          role: "Software Engineer",
-          company: "Continuing Career Goal",
+          badge: "NEXT FOCUS",
+          role: "AI & Data-Driven Engineer",
+          company: "Where I'm Heading",
           description:
-            "Combining business insights, full-stack engineering, and Generative AI to build intelligent, scalable software products.",
+            "Moving into Data Analytics, ML and RAG, blending accounting and full-stack skills into data-driven software.",
           skills: [
-            "Full-Stack Development",
-            "Generative AI",
-            "AI Chatbots & Agents",
-            "ERP & Web",
-            "Product Engineering"
+            "Data Analytics",
+            "Machine Learning",
+            "Python",
+            "Predictive Models",
+            "RAG & AI Agents",
+            "LLM APIs",
+            "ERP + AI"
           ],
           icon: "sparkles",
           isGoal: true

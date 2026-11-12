@@ -151,6 +151,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
                             fontFamily: 'var(--font-mono)',
                             fontWeight: 600,
                             letterSpacing: '0.05em',
+                            whiteSpace: 'nowrap',
                             padding: '0.16rem 0.5rem',
                             borderRadius: '9999px',
                             backgroundColor: 'rgba(249, 115, 22, 0.16)',
@@ -165,10 +166,11 @@ export const CareerJourneyTimeline = ({ journey }) => {
                               height: '5px',
                               borderRadius: '50%',
                               backgroundColor: '#F97316',
-                              boxShadow: '0 0 8px #F97316'
+                              boxShadow: '0 0 8px #F97316',
+                              flexShrink: 0
                             }}
                           />
-                          GOAL
+                          {stage.badge || 'NEXT FOCUS'}
                         </span>
                       ) : !isLast ? (
                         <ArrowRight
@@ -303,7 +305,6 @@ export const CareerJourneyTimeline = ({ journey }) => {
           flex: 1;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
           background: var(--bg-card);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
