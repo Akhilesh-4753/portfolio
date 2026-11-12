@@ -6,15 +6,162 @@ const CLIENT_REQUEST_TIMEOUT_MS = 45000;
 const AUTO_RETRY_DELAY_MS = 3000;
 const MOBILE_BREAKPOINT_PX = 519;
 
-const WELCOME_MESSAGE =
-  "Hi! I'm Akhilesh's portfolio assistant. Ask me about his projects, tech stack, ERP experience, or how to contact him.";
+const DEFAULT_PLACEHOLDER = 'Ask about projects, skills, experience...';
+const PLACEHOLDER_ROTATION_MS = 3500;
+const ROTATING_PLACEHOLDERS = [
+  'What projects has he built?',
+  'Which technologies does he use?',
+  'Tell me about his ERP work',
+  'How can I contact him?'
+];
 
 const SUGGESTED_QUESTIONS = [
-  'What projects have you built?',
-  'What is your tech stack?',
-  'Tell me about your ERP experience',
-  'How can I contact you?'
+  { icon: 'folder', text: 'What projects has Akhilesh built?' },
+  { icon: 'code', text: 'What is his tech stack?' },
+  { icon: 'building', text: 'Tell me about his ERP experience' },
+  { icon: 'mail', text: 'How can I contact him?' }
 ];
+
+function createStrokeIcon(size, paths) {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', String(size));
+  svg.setAttribute('height', String(size));
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.7');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+
+  for (const spec of paths) {
+    const el = document.createElementNS(svgNS, spec.tag);
+    for (const [attr, val] of Object.entries(spec.attrs)) {
+      el.setAttribute(attr, String(val));
+    }
+    svg.appendChild(el);
+  }
+  return svg;
+}
+
+function getNamedIcon(name, size) {
+  switch (name) {
+    case 'code':
+      return createStrokeIcon(size, [
+        { tag: 'path', attrs: { d: 'M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14' } }
+      ]);
+    case 'briefcase':
+      return createStrokeIcon(size, [
+        { tag: 'rect', attrs: { x: 2, y: 7, width: 20, height: 14, rx: 2 } },
+        { tag: 'path', attrs: { d: 'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2' } },
+        { tag: 'path', attrs: { d: 'M2 12h20' } }
+      ]);
+    case 'map-pin':
+      return createStrokeIcon(size, [
+        { tag: 'path', attrs: { d: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z' } },
+        { tag: 'circle', attrs: { cx: 12, cy: 10, r: 3 } }
+      ]);
+    case 'check-circle':
+      return createStrokeIcon(size, [
+        { tag: 'circle', attrs: { cx: 12, cy: 12, r: 10 } },
+        { tag: 'path', attrs: { d: 'm9 12 2 2 4-4' } }
+      ]);
+    case 'folder':
+      return createStrokeIcon(size, [
+        { tag: 'path', attrs: { d: 'M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z' } }
+      ]);
+    case 'building':
+      return createStrokeIcon(size, [
+        { tag: 'rect', attrs: { x: 4, y: 2, width: 16, height: 20, rx: 2 } },
+        { tag: 'path', attrs: { d: 'M9 22v-4h6v4' } },
+        { tag: 'path', attrs: { d: 'M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01' } }
+      ]);
+    case 'mail':
+    default:
+      return createStrokeIcon(size, [
+        { tag: 'rect', attrs: { x: 2, y: 4, width: 20, height: 16, rx: 2 } },
+        { tag: 'path', attrs: { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7' } }
+      ]);
+  }
+}
+
+function createSparkleStarSvg() {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '10');
+  svg.setAttribute('height', '10');
+  svg.setAttribute('fill', 'currentColor');
+  svg.setAttribute('aria-hidden', 'true');
+
+  const path = document.createElementNS(svgNS, 'path');
+  path.setAttribute('d', 'M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z');
+  svg.appendChild(path);
+  return svg;
+}
+
+function createIntroBlock() {
+  const intro = document.createElement('div');
+  intro.className = 'cb-intro';
+
+  const iconWrap = document.createElement('div');
+  iconWrap.className = 'cb-intro-icon-wrap';
+
+  const iconTile = document.createElement('span');
+  iconTile.className = 'cb-intro-icon';
+  iconTile.setAttribute('aria-hidden', 'true');
+  iconTile.appendChild(getNamedIcon('code', 22));
+  iconWrap.appendChild(iconTile);
+
+  const sparkle = document.createElement('span');
+  sparkle.className = 'cb-intro-sparkle';
+  sparkle.setAttribute('aria-hidden', 'true');
+  sparkle.appendChild(createSparkleStarSvg());
+  iconWrap.appendChild(sparkle);
+
+  intro.appendChild(iconWrap);
+
+  const heading = document.createElement('h3');
+  heading.className = 'cb-intro-heading';
+  heading.appendChild(document.createTextNode("Hi, I'm Akhilesh's AI assistant"));
+  intro.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'cb-intro-desc';
+  desc.appendChild(
+    document.createTextNode(
+      'I can tell you about his projects, tech stack, ERP experience and how to get in touch. Pick a topic below or ask your own question.'
+    )
+  );
+  intro.appendChild(desc);
+
+  const metaRow = document.createElement('div');
+  metaRow.className = 'cb-intro-meta';
+
+  const metaItems = [
+    { icon: 'briefcase', label: 'Software Developer' },
+    { icon: 'map-pin', label: 'Kozhikode, Kerala' },
+    { icon: 'check-circle', label: 'Open to opportunities' }
+  ];
+
+  for (const item of metaItems) {
+    const span = document.createElement('span');
+    span.className = 'cb-intro-meta-item';
+    span.appendChild(getNamedIcon(item.icon, 14));
+    span.appendChild(document.createTextNode(item.label));
+    metaRow.appendChild(span);
+  }
+
+  intro.appendChild(metaRow);
+
+  const tryLabel = document.createElement('p');
+  tryLabel.className = 'cb-try-label';
+  tryLabel.appendChild(document.createTextNode('Try asking'));
+  intro.appendChild(tryLabel);
+
+  return intro;
+}
 
 /**
  * Safely parses `**bold**` spans into a parent DOM node without ever invoking innerHTML.
@@ -198,6 +345,8 @@ export function initChatbot() {
   let hideTimerId = null;
   let autoRetryTimerId = null;
   let cooldownTimerId = null;
+  let placeholderTimerId = null;
+  let placeholderIndex = 0;
   let cooldownRemaining = 0;
   let hasAutoRetriedTurn = false;
   let focusRestoreEl = null;
@@ -268,7 +417,41 @@ export function initChatbot() {
 
   const resizeInput = () => {
     input.style.height = 'auto';
-    input.style.height = `${Math.min(input.scrollHeight, 108)}px`;
+    const nextHeight = Math.min(input.scrollHeight, 108);
+    input.style.height = `${nextHeight}px`;
+    input.style.overflowY = input.scrollHeight > 108 ? 'auto' : 'hidden';
+  };
+
+  const stopPlaceholderRotation = () => {
+    if (placeholderTimerId !== null) {
+      window.clearInterval(placeholderTimerId);
+      placeholderTimerId = null;
+    }
+    placeholderIndex = 0;
+    input.placeholder = DEFAULT_PLACEHOLDER;
+  };
+
+  const syncPlaceholderRotation = () => {
+    const isFocused = document.activeElement === input;
+    const hasText = input.value.length > 0;
+
+    if (prefersReducedMotion() || !isOpen || isFocused || hasText) {
+      stopPlaceholderRotation();
+      return;
+    }
+
+    if (placeholderTimerId !== null) {
+      return;
+    }
+
+    placeholderTimerId = window.setInterval(() => {
+      if (prefersReducedMotion() || !isOpen || document.activeElement === input || input.value.length > 0) {
+        stopPlaceholderRotation();
+        return;
+      }
+      input.placeholder = ROTATING_PLACEHOLDERS[placeholderIndex % ROTATING_PLACEHOLDERS.length];
+      placeholderIndex = (placeholderIndex + 1) % ROTATING_PLACEHOLDERS.length;
+    }, PLACEHOLDER_ROTATION_MS);
   };
 
   const updateControls = () => {
@@ -368,20 +551,23 @@ export function initChatbot() {
   const renderMessages = () => {
     messagesEl.replaceChildren();
 
-    appendMessageBubble('assistant', WELCOME_MESSAGE);
-
     if (history.length === 0 && !isPending && !lastErrorState) {
+      messagesEl.appendChild(createIntroBlock());
+
       const chipsWrap = document.createElement('div');
       chipsWrap.className = 'cb-chips';
 
-      for (const question of SUGGESTED_QUESTIONS) {
+      for (const item of SUGGESTED_QUESTIONS) {
         const chip = document.createElement('button');
         chip.type = 'button';
         chip.className = 'cb-chip';
-        chip.appendChild(document.createTextNode(question));
+        chip.appendChild(getNamedIcon(item.icon, 14));
+        const label = document.createElement('span');
+        label.appendChild(document.createTextNode(item.text));
+        chip.appendChild(label);
         chip.addEventListener('click', () => {
           if (isPending || cooldownRemaining > 0) return;
-          void submitUserMessage(question);
+          void submitUserMessage(item.text);
         });
         chipsWrap.appendChild(chip);
       }
@@ -630,6 +816,7 @@ export function initChatbot() {
     saveStoredMessages(history);
     input.value = '';
     resizeInput();
+    syncPlaceholderRotation();
 
     await sendConversationToApi();
   };
@@ -729,6 +916,7 @@ export function initChatbot() {
       void panel.offsetWidth;
       root.classList.add('cb-open');
     }
+    syncPlaceholderRotation();
     focusInputSafely();
   };
 
@@ -736,6 +924,7 @@ export function initChatbot() {
     if (!isOpen) return;
 
     isOpen = false;
+    stopPlaceholderRotation();
     root.classList.remove('cb-open');
     unlockBodyScroll();
 
@@ -769,7 +958,11 @@ export function initChatbot() {
   input.addEventListener('input', () => {
     resizeInput();
     updateControls();
+    syncPlaceholderRotation();
   });
+
+  input.addEventListener('focus', syncPlaceholderRotation);
+  input.addEventListener('blur', syncPlaceholderRotation);
 
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
