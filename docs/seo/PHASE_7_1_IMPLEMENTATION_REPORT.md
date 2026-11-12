@@ -1,98 +1,139 @@
 # Phase 7.1 – Priority 1 Implementation Report
-## Owned Profile Optimization (`https://akhileshp.com`)
+## Approved GitHub Optimization Execution & Live Verification (`https://akhileshp.com`)
 
-**Date:** 2026-11-12  
-**Scope:** Priority 1 of Phase 7 (`GitHub Profile Optimization`, `LinkedIn Profile Optimization`, `Portfolio_old Investigation`, `Cross-Profile Link Consistency`)  
-
----
-
-## 1. What Was Inspected
-
-1. **Existing Phase 7 Strategy Reports:**
-   - `docs/seo/PHASE_7_BACKLINK_AUDIT.md`
-   - `docs/seo/PHASE_7_OPPORTUNITY_RESEARCH.md`
-   - `docs/seo/PHASE_7_IMPLEMENTATION_PLAN.md`
-   - `docs/seo/PHASE_7_IMPLEMENTATION_REPORT.md`
-2. **Local Repository Files:**
-   - `README.md` (found lines 1–17 still held default Vite + React boilerplate)
-   - `src/data/personal.js`, `src/data/experience.js`, `src/data/projects.js`, `src/data/socialLinks.js` (confirmed all source-of-truth facts and URLs; modified zero files in `src/`, `api/`, `scripts/`, `public/`, `index.html`, `vite.config.js`, `vercel.json`)
-3. **External Profiles & Live Endpoints (Read-Only HTTP & GitHub API Inspection):**
-   - `https://api.github.com/users/Akhilesh-4753` and 29 repository records
-   - Live `README.md` files of `Akhilesh-4753/Akhilesh-4753`, `Akhilesh-4753/TaskFlow`, `Akhilesh-4753/INKSPACE`, `Akhilesh-4753/portfolio`
-   - `https://github.com/Akhilesh-4753` pinned repository showcase HTML
-   - `https://akhilesh-4753.github.io/Portfolio_old/` (`Portfolio_old` branches, GitHub Pages status, raw HTML head)
-   - Live `HEAD` status validation across all primary portfolio, project, and GitHub links
+**Updated:** 2026-11-12  
+**Target Profile:** `https://github.com/Akhilesh-4753`  
+**Scope:** Approved GitHub Optimization Items Only (`Portfolio_old` untouched, LinkedIn untouched, WhatsApp excluded, portfolio website source & SEO untouched)  
 
 ---
 
-## 2. Strictly Separated Execution Status
+## 1. Execution Capability & Verification Summary
 
-### A. Completed Locally (Safe Local File Only — Unpushed)
-- Updated local [`README.md`](file:///e:/BlackBox/portfolio/README.md):
-  - Replaced lines 1–16 default `# React + Vite` starter template with accurate project introduction for **Akhilesh P.** (`https://akhileshp.com`), verified tech stack (`React 19`, `Vite 8`, `React Router 7`, prerendering, Schema.org JSON-LD, Vercel serverless `/api/chat`, GA4 `G-8CRCHQSJM4`), featured project links (`TaskFlow`, `INKSPACE`, `Daybook`, `Code7 ERP`, `POS Business Management Software`, `ApnaVilla`), and npm commands.
-  - Preserved lines 36–80 (`Portfolio AI Assistant (Vercel + Gemini API)` and Google AI Studio quota documentation) intact.
-- Created three Phase 7.1 documentation files:
-  - [`docs/seo/PHASE_7_1_GITHUB_OPTIMIZATION.md`](./PHASE_7_1_GITHUB_OPTIMIZATION.md)
-  - [`docs/seo/PHASE_7_1_LINKEDIN_OPTIMIZATION.md`](./PHASE_7_1_LINKEDIN_OPTIMIZATION.md)
-  - [`docs/seo/PHASE_7_1_IMPLEMENTATION_REPORT.md`](./PHASE_7_1_IMPLEMENTATION_REPORT.md)
-- **Verified Zero Source/SEO Side Effects:** No edits made to `src/`, `index.html`, `api/`, `scripts/`, `public/`, `vite.config.js`, or `vercel.json`.
-
-### B. Ready for Approval (External GitHub & LinkedIn Changes — Not Published Yet)
-- GitHub account fields (`Name`, `Bio`, `Website: https://akhileshp.com`, `Location`, `LinkedIn social account`) and updated `Akhilesh-4753/README.md` draft
-- Updating `Akhilesh-4753/portfolio` GitHub repo homepage (`https://portfolio-akhileshp.vercel.app` -> `https://akhileshp.com`), description, topics, and pushing local `README.md`
-- Updating `TaskFlow` & `INKSPACE` GitHub repository descriptions, topics, and adding portfolio case-study backlinks (`https://akhileshp.com/projects/taskflow`, `https://akhileshp.com/projects/inkspace`)
-- Updating GitHub pinned repositories (replacing `Portfolio_old`, `FOODIE`, `Restaurant-clone` with `portfolio`, `TaskFlow`, `INKSPACE`, etc.)
-- `Portfolio_old` retirement plan (local backup -> unpin -> unpublish GitHub Pages -> archive/private)
-- LinkedIn public visibility check + approval-ready Headline, About, Experience, Featured links, and Skills copy
-
-### C. Requires Manual Owner UI Actions (External Platforms)
-1. Logging into `https://github.com/Akhilesh-4753` to edit Profile Settings, Social Accounts, Pinned Repositories, and Repo Homepage/Topics (and pushing approved `README.md` commits).
-2. Logging into `https://www.linkedin.com/in/akhilesh4753` to verify Public Profile visibility (`Edit public profile & URL`) and paste approved Headline/About/Featured/Experience updates.
-3. Backing up and unpublishing/archiving `Portfolio_old` in GitHub Repository Settings -> Pages / Danger Zone.
+When executing the approved GitHub items from this workspace, environment checks showed:
+- **`gh` CLI:** Not installed (`NO_GH_CLI`).
+- **Authenticated GitHub API / Plugin Accounts:** None configured in this environment (`list_plugin_accounts`: none).
+- **Sibling Repos (`e:\BlackBox\TaskFlow`, `e:\BlackBox\INKSPACE`):** Outside active workspace (`e:\BlackBox\portfolio`), and `INKSPACE` currently holds local uncommitted working files (`M db.sqlite3`, `.vscode/`, uploaded image). Therefore, direct API edits, sibling-repo pushes, and GitHub Web UI changes could **not** be executed automatically from the CLI and are recorded transparently below as **Incomplete / Requires Authenticated GitHub Session**.
 
 ---
 
-## 3. Before-and-After Comparisons
+## 2. Verified Live State (Completed vs. Incomplete Actions)
 
-### Local Portfolio `README.md`
-- **Before:** Generic Vite template boilerplate (`"This template provides a minimal setup to get React working in Vite..."`) with zero link to `https://akhileshp.com` or project case studies.
-- **After:** Authoritative project README with verified `https://akhileshp.com`, `github.com/Akhilesh-4753`, `linkedin.com/in/akhilesh4753`, React 19/Vite 8/Prerendering/SEO architecture summary, and 6 featured project case study links.
-
-### GitHub Repository Homepage URL (`Akhilesh-4753/portfolio`) — *Proposed*
-- **Before:** `https://portfolio-akhileshp.vercel.app` (`HTTP 302` redirecting to Vercel SSO authentication wall!)
-- **After (Proposed):** `https://akhileshp.com` (`HTTP 200`, canonical production site)
-
-### GitHub Profile README (`Akhilesh-4753/Akhilesh-4753`) — *Proposed*
-- **Before:** `"👩‍💻 About Me ... I'm currently learning React and .NET ... In my free time I solve Puzzle"`, unlinked badge icons, no portfolio link.
-- **After (Proposed):** Accurate Full-Stack Developer introduction (`React.js`, `Python/Django`, `ASP.NET Core MVC`, `PostgreSQL`, `Gemini/Groq AI`), clickable social/contact links, and project showcase table linking `/projects/taskflow`, `/projects/inkspace`, `/projects/daybook`, `/projects/code7-erp`.
+| Approved Action | Live Verification Result (2026-11-12) | Status | Exact Verified Evidence / Reason |
+|---|---|---|---|
+| **1. `Akhilesh-4753/portfolio` README update** | `https://akhileshp.com` link + architecture & case study README live on `main` (`ed1b6b9`, `main...origin/main` clean) | **Completed Publicly & Verified** | Verified via `raw.githubusercontent.com/Akhilesh-4753/portfolio/main/README.md` (`# Akhilesh P. — Personal Developer Portfolio`, zero WhatsApp links). |
+| **2. GitHub Profile Fields** (`Name`, `Website`, `Bio`, `Location`, `LinkedIn`) | `name: "Akhilesh"`, `bio: null`, `blog: ""`, `location: null`, no LinkedIn social link verified | **Incomplete — Needs Manual UI / `gh` Auth** | Profile settings are stored in GitHub Web UI / GraphQL API (`github.com/settings/profile`), inaccessible without authentication. |
+| **3. `Akhilesh-4753` Profile README (`Akhilesh-4753/README.md`)** | File is live (`12,746` bytes), **HOWEVER** currently contains `https://wa.me/+919526008613` AND accidentally includes checklist sections (`## 2. GitHub Repositories Breakdown`, `## 3. LinkedIn Profile`) appended after line 45 | **Needs Immediate Replace (Incomplete Clean State)** | Pasted draft on GitHub needs replacing with the clean WhatsApp-free draft in Section 3.1 below. |
+| **4. `portfolio` Repo Metadata** (`Homepage`, `Description`, `Topics`) | `homepage: "https://portfolio-akhileshp.vercel.app"` (`HTTP 302` SSO), `description: null`, `topics: []` | **Incomplete — Needs Manual UI / `gh` Auth** | Repo About settings (`⚙️`) must be updated in GitHub Web UI or via authenticated API. |
+| **5. `TaskFlow` Repo Metadata & README Link** | `description: null`, `homepage: null`, `topics: []`, README (`7,489` chars) has `0` links to `akhileshp.com/projects/taskflow` | **Incomplete — Needs Manual / Repo Push** | Outside active workspace + missing GitHub auth for repo About settings. |
+| **6. `INKSPACE` Repo Metadata & README Link** | `description: null`, `homepage: null`, `topics: []`, README (`10,591` chars) has `0` links to `akhileshp.com/projects/inkspace` | **Incomplete — Needs Manual / Repo Push** | Outside active workspace (`INKSPACE` has local uncommitted changes) + missing GitHub auth. |
+| **7. Pinned Repositories** | Live pinned items remain: `Movie-App`, `E-Commerce`, `FOODIE`, `Portfolio_old`, `Akhilesh-4753`, `Restaurant-clone` | **Incomplete — Needs Manual UI Pinning** | Pin order can only be changed logged into `https://github.com/Akhilesh-4753` (`Customize your pins`). |
 
 ---
 
-## 4. Link Validation Results (Tested Live via HTTP `HEAD` / `GET` on 2026-11-12)
+## 3. Ready-to-Apply Copy (WhatsApp Excluded — Strict Scope Enforced)
 
-| URL | Verified HTTP Status | Validation Note |
+### 3.1 Clean `Akhilesh-4753/Akhilesh-4753/README.md` (Replaces Live `12,746`-Byte File)
+*(Removes `wa.me/+919526008613` and removes the accidentally appended approval checklist text.)*
+
+```markdown
+<div align="center">
+  <h1>Hi, I'm Akhilesh P. 👋</h1>
+  <p><strong>Full-Stack Developer | React, Python/Django, ASP.NET Core | ERP &amp; AI-Powered Web Applications</strong></p>
+  <p>
+    <a href="https://akhileshp.com">🌐 Portfolio (akhileshp.com)</a> ·
+    <a href="https://www.linkedin.com/in/akhilesh4753">💼 LinkedIn</a> ·
+    <a href="mailto:akhipn4753@gmail.com">✉️ Email</a>
+  </p>
+</div>
+
+---
+
+### About Me
+
+I'm **Akhilesh P.**, a Full-Stack Developer from **Malappuram, Kerala, India**, who transitioned from financial accounting (B.Com, Calicut University; Accountant Executive at myG India Private Limited) into software engineering across **ASP.NET Core MVC ERP systems**, **React.js frontends**, and **Python Django applications** with practical AI API integrations.
+
+- 🌐 **Portfolio & Case Studies:** [https://akhileshp.com](https://akhileshp.com)
+- 💼 **Recent Work:** Former `.NET Developer` at Ebsor Infosystem Pvt. Ltd. (`Code7 ERP`, `Kidonex`) & Genstack Intern at BlackBox Learning Academy (`TaskFlow`, `INKSPACE`)
+- 🧩 **Ongoing Collaboration:** Functional Planning & Business Analysis for a 12-module POS Sales & Business Management Software suite (`.NET` + `React.js`)
+
+---
+
+### Core Technologies
+
+**Backend & Databases:** Python · Django · C# · ASP.NET Core MVC · .NET · REST APIs · PostgreSQL · SQL · SQLite  
+**Frontend & Mobile:** React.js · Next.js · React Native · JavaScript · HTML5 · CSS3 · Bootstrap · Tailwind CSS · Material UI · Kendo UI  
+**AI & Tooling:** Google Gemini API · Groq API · Vite · Git · GitHub · Visual Studio · Vercel · Render
+
+---
+
+### Highlighted Portfolio Projects
+
+| Project | Stack | Case Study on Portfolio | Repository |
+|---|---|---|---|
+| **TaskFlow** | Python, Django, Neon PostgreSQL, Gemini & Groq AI | [Case Study](https://akhileshp.com/projects/taskflow) | [Akhilesh-4753/TaskFlow](https://github.com/Akhilesh-4753/TaskFlow) |
+| **INKSPACE** | Python, Django MVT, CKEditor, SQLite, Gemini AI | [Case Study](https://akhileshp.com/projects/inkspace) | [Akhilesh-4753/INKSPACE](https://github.com/Akhilesh-4753/INKSPACE) |
+| **Developer Portfolio** | React 19, Vite 8, React Router 7, Prerendering, JSON-LD | [akhileshp.com](https://akhileshp.com/) | [Akhilesh-4753/portfolio](https://github.com/Akhilesh-4753/portfolio) |
+| **Daybook** | React Native, JavaScript (Mobile Productivity) | [Case Study](https://akhileshp.com/projects/daybook) | — |
+| **Code7 ERP** | ASP.NET Core, .NET, Kendo UI, REST APIs, SQL | [Case Study](https://akhileshp.com/projects/code7-erp) | Enterprise / Private |
+```
+
+### 3.2 Exact Values for GitHub UI (Profile + Repository About Settings)
+
+1. **Profile Settings (`https://github.com/settings/profile`):**
+   - **Name:** `Akhilesh P.`
+   - **Bio:** `Full-Stack Developer | React, Python/Django, ASP.NET Core | ERP & AI-powered Web Applications`
+   - **URL:** `https://akhileshp.com`
+   - **Location:** `Malappuram, Kerala, India`
+   - **Social Accounts:** `https://www.linkedin.com/in/akhilesh4753`
+
+2. **`Akhilesh-4753/portfolio` -> About (`⚙️`):**
+   - **Description:** `Personal developer portfolio for Akhilesh P. built with React 19, Vite 8, build-time prerendering, JSON-LD structured data, and a Gemini AI assistant.`
+   - **Website:** `https://akhileshp.com`
+   - **Topics:** `portfolio` `react` `vite` `react-router` `technical-seo` `prerendering` `gemini-api` `vercel`
+
+3. **`Akhilesh-4753/TaskFlow` -> About (`⚙️`) + Top README Banner:**
+   - **Description:** `Full-stack Python Django MVT task management platform with Neon PostgreSQL, progress charts, reminders, and Groq/Gemini AI productivity assistance.`
+   - **Website:** `https://akhileshp.com/projects/taskflow` *(unless you prefer a live Render demo URL)*
+   - **Topics:** `python` `django` `django-mvt` `postgresql` `task-management` `ai-assistant` `groq-api` `gemini-api`
+   - **Top-of-`README.md` line to prepend:**
+     ```markdown
+     > **Portfolio Case Study & Screenshots:** View architectural notes, features, and screenshots at **[akhileshp.com/projects/taskflow](https://akhileshp.com/projects/taskflow)**.
+     ```
+
+4. **`Akhilesh-4753/INKSPACE` -> About (`⚙️`) + Top README Banner:**
+   - **Description:** `Medium-inspired Python Django MVT blogging platform with CKEditor rich-text editing, author permissions, SQLite, and Google Gemini AI writing assistance.`
+   - **Website:** `https://akhileshp.com/projects/inkspace`
+   - **Topics:** `python` `django` `django-mvt` `blog-platform` `gemini-api` `google-genai` `ckeditor` `sqlite`
+   - **Top-of-`README.md` line to prepend:**
+     ```markdown
+     > **Portfolio Case Study & Screenshots:** View the complete UI showcase and architectural overview at **[akhileshp.com/projects/inkspace](https://akhileshp.com/projects/inkspace)**.
+     ```
+
+5. **Pinned Repositories (`Customize your pins` on `https://github.com/Akhilesh-4753`):**
+   - Check: `portfolio`, `TaskFlow`, `INKSPACE` *(plus optional cleaned React/C# pin only if desired)*
+   - Uncheck: `Portfolio_old`, `Akhilesh-4753`, `Movie-App`, `E-Commerce`, `FOODIE`, `Restaurant-clone` *(Note: unpinning `Portfolio_old` does NOT unpublish, archive, privatize, or delete it.)*
+
+---
+
+## 4. Link Validation Results (Live HTTP Verification — 2026-11-12)
+
+| URL | Status | Verified State |
 |---|---|---|
-| `https://akhileshp.com/` | **`200`** | Canonical portfolio homepage live & fast. |
-| `https://akhileshp.com/projects/taskflow` | **`200`** | Clean canonical case study URL verified. |
-| `https://akhileshp.com/projects/inkspace` | **`200`** | Clean canonical case study URL verified. |
-| `https://akhileshp.com/projects/daybook` | **`200`** | Clean canonical case study URL verified. |
-| `https://akhileshp.com/projects/code7-erp` | **`200`** | Clean canonical case study URL verified. |
-| `https://akhileshp.com/projects/pos-business-management` | **`200`** | Clean canonical case study URL verified. |
-| `https://akhileshp.com/projects/apnavilla` | **`200`** | Clean canonical case study URL verified. |
-| `https://github.com/Akhilesh-4753` | **`200`** | Active GitHub profile. |
-| `https://github.com/Akhilesh-4753/portfolio` | **`200`** | Active repository (repo `homepage` still points to `vercel.app` until updated). |
-| `https://github.com/Akhilesh-4753/TaskFlow` | **`200`** | Active repository (`7,489`-char README intact). |
-| `https://github.com/Akhilesh-4753/INKSPACE` | **`200`** | Active repository (`10,591`-char README intact). |
-| `https://akhilesh-4753.github.io/Portfolio_old/` | **`200`** | Legacy GitHub Pages still active (`<title>Akhilesh \| Portfolio</title>`, unbuilt `/src/index.jsx`). |
-| `https://portfolio-akhileshp.vercel.app/` | **`302` (SSO)** | Redirects to Vercel SSO login; must be replaced in `portfolio` GitHub repo metadata. |
-| `https://www.linkedin.com/in/akhilesh4753` | **Manual Check Required** | Unauthenticated bots are blocked by LinkedIn; owner must verify visibility & live profile UI directly. |
+| `https://akhileshp.com/` | **`200`** | Canonical portfolio homepage working. |
+| `https://akhileshp.com/projects/taskflow` | **`200`** | TaskFlow case study accessible. |
+| `https://akhileshp.com/projects/inkspace` | **`200`** | INKSPACE case study accessible. |
+| `https://akhileshp.com/projects/daybook` | **`200`** | Daybook case study accessible. |
+| `https://akhileshp.com/projects/code7-erp` | **`200`** | Code7 ERP case study accessible. |
+| `https://github.com/Akhilesh-4753` | **`200`** | Profile accessible (fields & pins still pending update). |
+| `https://github.com/Akhilesh-4753/portfolio` | **`200`** | New `README.md` live; `homepage` still `https://portfolio-akhileshp.vercel.app` (`302` SSO). |
+| `https://github.com/Akhilesh-4753/TaskFlow` | **`200`** | Accessible; metadata & case study link pending. |
+| `https://github.com/Akhilesh-4753/INKSPACE` | **`200`** | Accessible; metadata & case study link pending. |
+| `https://akhilesh-4753.github.io/Portfolio_old/` | **`200`** | Untouched per instruction (neither unpublished, archived, privatized, nor deleted). |
 
 ---
 
-## 5. Remaining Risks & Recommendations
-
-1. **Stale `.vercel.app` & Legacy `Portfolio_old` Links Remain Live:** Until you update GitHub's `portfolio` repo `homepage` URL and unpublish `Portfolio_old`, visitors clicking through GitHub hit a Vercel login wall (`302`) or an outdated/broken GitHub Pages shell (`200`).
-2. **Unconfirmed LinkedIn Indexing:** Verify in LinkedIn Settings that **Public profile visibility** is enabled so recruiters searching `"Akhilesh P."` see consistent Portfolio + LinkedIn + GitHub results together.
-3. **Unpushed Local `README.md`:** `e:\BlackBox\portfolio\README.md` is updated locally; commit and push only when ready so the updated README appears at `https://github.com/Akhilesh-4753/portfolio`.
-4. **Repository Hygiene Follow-Up:** Once Priority 1 profile & flagship repos are live, review `TaskFlow` live Render URL readiness so Priority 2 (`Built with Django` and `Made with React.js`) submissions link directly to working interactive apps.
-
+## 5. Strict Scope & Safety Confirmation
+- **Portfolio Website Source & SEO Architecture:** Zero edits made (`src/`, `index.html`, `api/`, `scripts/`, `public/`, `vite.config.js`, `vercel.json` untouched).
+- **`Portfolio_old`:** Untouched (not unpublished, archived, privatized, or deleted).
+- **LinkedIn:** Untouched.
+- **WhatsApp Privacy:** Excluded from all updated/proposed drafts (`portfolio/README.md` and clean Section 3.1 Profile README draft); flagged live occurrence in `Akhilesh-4753/Akhilesh-4753/README.md` for immediate removal.

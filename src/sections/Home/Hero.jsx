@@ -93,7 +93,7 @@ export const Hero = () => {
 
             <FadeIn direction="up" delay={0.18} distance={14} duration={0.45} immediate={true}>
               <p className="hero-description">
-                I'm Akhilesh P., a Full-Stack Developer who transitioned from finance and accounting into technology. Combining financial expertise with software development, I build ERP systems, responsive web applications, and AI-powered solutions using ASP.NET Core, Django, and React to solve real-world business challenges.
+                I’m Akhilesh P., a Full-Stack Developer with a finance and accounting background. I build ERP systems, web apps, and AI-powered solutions using ASP.NET Core, Django, and React.
               </p>
             </FadeIn>
 
