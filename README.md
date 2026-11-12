@@ -1,19 +1,37 @@
-# React + Vite
+# Akhilesh P. — Personal Developer Portfolio (`https://akhileshp.com`)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal developer portfolio website for **Akhilesh P.**, a Full-Stack Developer based in Malappuram, Kerala, India, showcasing full-stack web applications, enterprise `.NET` ERP experience, mobile productivity tools, and practical Gemini/Groq AI integrations.
 
-Currently, two official plugins are available:
+- **Live Website:** [https://akhileshp.com](https://akhileshp.com)
+- **GitHub:** [https://github.com/Akhilesh-4753](https://github.com/Akhilesh-4753)
+- **LinkedIn:** [https://www.linkedin.com/in/akhilesh4753](https://www.linkedin.com/in/akhilesh4753)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Stack & Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 19, Vite 8, React Router 7, Framer Motion (`LazyMotion`), Lucide React, Plain CSS
+- **SEO & Rendering:** Build-time static prerendering (`src/entry-server.jsx` + `scripts/prerender.mjs`) + React `hydrateRoot`, dynamic XML sitemap (`vite.config.js`), Schema.org JSON-LD (`src/data/seo.js`), genuine HTTP `404` handling on Vercel
+- **Deployment & Serverless API:** Vercel Hosting (`vercel.json`) + Vercel Serverless Functions (`/api/chat.js`)
+- **Analytics:** Google Analytics 4 (`G-8CRCHQSJM4`) with SPA route tracking
 
-## Expanding the Oxlint configuration
+## Featured Case Studies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **[TaskFlow](https://akhileshp.com/projects/taskflow)** — Python Django MVT task management platform with Neon PostgreSQL, reminders, analytics, and Gemini/Groq AI planning ([GitHub Repo](https://github.com/Akhilesh-4753/TaskFlow))
+- **[INKSPACE](https://akhileshp.com/projects/inkspace)** — Python Django blogging platform with CKEditor rich-text editing and Google Gemini AI writing assistance ([GitHub Repo](https://github.com/Akhilesh-4753/INKSPACE))
+- **[Daybook](https://akhileshp.com/projects/daybook)** — React Native mobile daily planning, habit tracking, and self-reflection app
+- **[Code7 ERP](https://akhileshp.com/projects/code7-erp)** — Enterprise resource planning modules built with ASP.NET Core MVC, Kendo UI, SQL, and REST APIs
+- **[POS Business Management Software](https://akhileshp.com/projects/pos-business-management)** — Collaborative 12-module POS functional architecture planned with ASP.NET Core / .NET and React.js
+- **[ApnaVilla](https://akhileshp.com/projects/apnavilla)** — Collaborative real estate web application built with Next.js/React frontend and Laravel backend
+
+## Local Development & Build
+
+```bash
+npm install
+npm run dev      # Local development server
+npm run lint     # Oxlint checks
+npm run build    # Client + SSR build + prerendering for / and 12 project pages
+```
 
 ---
 
