@@ -76,7 +76,7 @@ export const Navbar = () => {
         >
           {/* Logo */}
           <a
-            href="#home"
+            href="/"
             className="lg-link"
             aria-label="Akhilesh P, full-stack developer, home"
             onClick={handleLogoClick}

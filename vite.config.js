@@ -1,6 +1,55 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 import chatHandler from './api/chat.js';
+import { projects } from './src/data/projects.js';
+
+const SITE_ORIGIN = 'https://akhileshp.com';
+
+function escapeXml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
+}
+
+function buildSitemapXml() {
+  const urls = new Set([`${SITE_ORIGIN}/`]);
+
+  for (const project of projects) {
+    const slug = typeof project?.slug === 'string' ? project.slug.trim() : '';
+    if (!slug || /[?#\s]/.test(slug) || slug.startsWith('api/')) {
+      continue;
+    }
+    urls.add(`${SITE_ORIGIN}/projects/${slug}`);
+  }
+
+  const urlNodes = Array.from(urls)
+    .map((loc) => `  <url>\n    <loc>${escapeXml(loc)}</loc>\n  </url>`)
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlNodes}\n</urlset>\n`;
+}
+
+function sitemapGeneratorPlugin() {
+  return {
+    name: 'portfolio-sitemap-generator',
+    buildStart() {
+      const publicDir = path.resolve(process.cwd(), 'public');
+      const sitemapPath = path.join(publicDir, 'sitemap.xml');
+      const nextContent = buildSitemapXml();
+      const existingContent = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : null;
+
+      if (existingContent !== nextContent) {
+        fs.mkdirSync(publicDir, { recursive: true });
+        fs.writeFileSync(sitemapPath, nextContent, 'utf8');
+      }
+    }
+  };
+}
 
 function syncChatEnvVars(env) {
   const keys = ['GEMINI_API_KEY', 'GEMINI_MODEL', 'GEMINI_FALLBACK_MODELS', 'GEMINI_TIMEOUT_MS'];
@@ -73,7 +122,7 @@ export default defineConfig(({ mode }) => {
   const proxyTarget = typeof env.VITE_API_PROXY_TARGET === 'string' ? env.VITE_API_PROXY_TARGET.trim() : '';
 
   return {
-    plugins: [react(), localApiChatPlugin({ mode, proxyTarget })],
+    plugins: [react(), sitemapGeneratorPlugin(), localApiChatPlugin({ mode, proxyTarget })],
     ...(proxyTarget
       ? {
           server: {

@@ -1,12 +1,38 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { personalInfo } from '../../data/personal';
 import { SocialLinks } from './SocialLinks';
 import { Code2, ArrowUp } from 'lucide-react';
 import { MagneticButton } from '../animations/MagneticButton';
 
+const FOOTER_SECTION_LINKS = [
+  { label: 'About Me', id: 'about', path: '/#about' },
+  { label: 'Experience', id: 'experience', path: '/#experience' },
+  { label: 'Tech Stack', id: 'skills', path: '/#skills' },
+  { label: 'Featured Work', id: 'projects', path: '/#projects' },
+  { label: 'Contact', id: 'contact', path: '/#contact' }
+];
+
 export const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSectionClick = (e, item) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate(item.path);
+      return;
+    }
+    const element = document.getElementById(item.id);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -73,11 +99,16 @@ export const Footer = () => {
               Navigation
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              <a href="#about" style={{ transition: 'var(--transition-smooth)' }}>About Me</a>
-              <a href="#experience" style={{ transition: 'var(--transition-smooth)' }}>Experience</a>
-              <a href="#skills" style={{ transition: 'var(--transition-smooth)' }}>Tech Stack</a>
-              <a href="#projects" style={{ transition: 'var(--transition-smooth)' }}>Featured Work</a>
-              <a href="#contact" style={{ transition: 'var(--transition-smooth)' }}>Contact</a>
+              {FOOTER_SECTION_LINKS.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.path}
+                  onClick={(e) => handleSectionClick(e, item)}
+                  style={{ transition: 'var(--transition-smooth)' }}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
 
