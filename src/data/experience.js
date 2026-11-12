@@ -132,7 +132,7 @@ export const experiences = [
       "Developed Master, Transaction, and Report modules with responsive MVC views, forms, data binding, validations, CRUD operations, filtering, and dynamic UI interactions.",
       "Developed and managed ASP.NET Core MVC Controller.cs files to handle HTTP requests, business workflows, API calls, data processing, and communication between views and backend services.",
       "Integrated and managed REST APIs for communication between frontend MVC applications and backend services.",
-      "Developed Kidonex Customer Feedback & Review",
+      "Developed the Kidonex Customer Feedback & Review module.",
       "Worked on the Code7 ERP project using Kendo UI for advanced enterprise UI controls and data tables.",
       "Used Visual Studio for development, debugging, testing, and issue resolution."
     ],

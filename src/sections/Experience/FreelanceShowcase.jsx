@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Users,
   Code2,
   Server,
   Home,
   CheckCircle2,
-  GitMerge
+  GitMerge,
+  ArrowUpRight
 } from 'lucide-react';
 import { freelanceExperience } from '../../data/experience';
 import { FadeIn } from '../../components/animations/FadeIn';
@@ -353,6 +355,23 @@ export const FreelanceShowcase = () => {
                 </span>
               ))}
             </div>
+          </div>
+
+          <div style={{ marginTop: '1rem' }}>
+            <Link
+              to="/projects/apnavilla"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                fontSize: '0.88rem',
+                fontWeight: 600,
+                color: '#FDBA74'
+              }}
+            >
+              <span>Read the ApnaVilla project case study</span>
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </FadeIn>

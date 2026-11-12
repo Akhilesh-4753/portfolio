@@ -158,21 +158,21 @@ const PROJECT_SEO_OVERRIDES = {
   taskflow: {
     title: 'TaskFlow — Django & AI Task Management App | Akhilesh P.',
     description:
-      'TaskFlow is a full-stack Python Django task management application featuring authentication, CRUD workflows, productivity analytics, reminders, and Gemini/Groq AI planning.',
+      'TaskFlow is a full-stack Python Django task management application featuring authentication, CRUD workflows, progress analytics, email reminders, and Gemini/Groq AI planning.',
     image: `${SITE_URL}/images/projects/taskflow/taskflow-dashboard.webp`,
     imageAlt:
       'TaskFlow Django productivity dashboard showing task metrics, overview widgets, and navigation'
   },
   inkspace: {
-    title: 'INKSPACE — Django Blogging Platform with Gemini AI | Akhilesh P.',
+    title: 'INKSPACE — Django Blog & Gemini AI Platform | Akhilesh P.',
     description:
-      'INKSPACE is a Python Django blogging platform featuring CKEditor rich-text editing, ownership authentication, searchable articles, and Google Gemini AI writing assistance.',
+      'INKSPACE is a Python Django blogging platform featuring CKEditor rich-text authoring, author ownership controls, searchable stories, and Google Gemini AI writing assistance.',
     image: `${SITE_URL}/images/projects/inkspace/blog-home-page.webp`,
     imageAlt:
       'INKSPACE Django blogging platform homepage displaying featured stories and editorial layout'
   },
   daybook: {
-    title: 'Daybook — React Native Daily Planning & Reflection App | Akhilesh P.',
+    title: 'Daybook — React Native Daily Planning App | Akhilesh P.',
     description:
       'Daybook is a React Native mobile productivity app combining daily tasks, reminders, habit tracking, Plan vs. Action analytics, Planning Grade, and self-reflection.',
     image: `${SITE_URL}/images/projects/daybook/dashboard.webp`,
@@ -182,61 +182,61 @@ const PROJECT_SEO_OVERRIDES = {
   'pos-business-management': {
     title: 'POS Business Management Software Architecture | Akhilesh P.',
     description:
-      'Collaborative retail POS and business management software planned with ASP.NET Core, .NET, and React.js, aligning sales, billing, inventory, purchases, and reporting workflows.',
+      'Collaborative retail POS and business management software planned with ASP.NET Core, .NET, and React.js, aligning billing, inventory, purchases, tax, and reporting workflows.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'POS Business Management Software case study by Akhilesh P.'
   },
   apnavilla: {
-    title: 'ApnaVilla — Next.js Real Estate Web Application | Akhilesh P.',
+    title: 'ApnaVilla — Next.js Real Estate Web App | Akhilesh P.',
     description:
-      'ApnaVilla is a real estate web application built with responsive Next.js frontend interfaces in collaboration with a Laravel backend team at Branding Hut.',
+      'ApnaVilla is a real estate web application built with responsive Next.js and React.js frontend interfaces integrated with Laravel and PostgreSQL backend services at Branding Hut.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'ApnaVilla Next.js real estate web application case study by Akhilesh P.'
   },
   'code7-erp': {
-    title: 'Code7 ERP — ASP.NET Core & Kendo UI ERP Modules | Akhilesh P.',
+    title: 'Code7 ERP — ASP.NET Core & Kendo UI Modules | Akhilesh P.',
     description:
-      'Code7 ERP is an enterprise resource planning web application developed at Ebsor Infosystem using ASP.NET Core, .NET, SQL, REST APIs, and Kendo UI components.',
+      'Code7 ERP is an enterprise resource planning web application developed at Ebsor Infosystem using ASP.NET Core MVC, .NET, SQL, REST APIs, and Kendo UI data grids.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'Code7 ERP ASP.NET Core and Kendo UI case study by Akhilesh P.'
   },
   'kidonex-feedback': {
-    title: 'Kidonex Customer Feedback & Review — ASP.NET Core MVC | Akhilesh P.',
+    title: 'Kidonex Feedback & Review — ASP.NET Core MVC | Akhilesh P.',
     description:
-      'Kidonex Customer Feedback & Review module built with ASP.NET Core MVC views, JavaScript validations, controller workflows, and REST API integration.',
+      'Kidonex Customer Feedback & Review module built with ASP.NET Core MVC views, client-side JavaScript validations, controller pipelines, and REST API integration.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'Kidonex Customer Feedback and Review ASP.NET Core MVC case study by Akhilesh P.'
   },
   movie: {
     title: 'Movie Web Application — React.js & Material UI | Akhilesh P.',
     description:
-      'Responsive movie discovery web application built with reusable React.js components, React Bootstrap, Material UI, and asynchronous API data fetching.',
+      'Responsive movie discovery web application built with reusable React.js components, React Bootstrap, Material UI, and third-party REST API integration.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'Movie Web Application React.js case study by Akhilesh P.'
   },
   ecommerce: {
-    title: 'E-commerce Web Application — React.js Shopping UI | Akhilesh P.',
+    title: 'E-commerce Web Application — React.js Storefront | Akhilesh P.',
     description:
-      'Responsive e-commerce web application built with React.js, REST APIs, React Bootstrap, and Material UI with dynamic product rendering and cart workflows.',
+      'Responsive React.js e-commerce web application featuring dynamic product catalog filtering, Material UI components, React Router navigation, and real-time shopping cart updates.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'E-commerce Web Application React.js case study by Akhilesh P.'
   },
   streamline: {
-    title: 'Streamline Consortium Website — React.js Corporate Site | Akhilesh P.',
+    title: 'Streamline Consortium — React Corporate Site | Akhilesh P.',
     description:
       'Official corporate website developed with React.js to showcase Streamline Consortium’s engineering consultancy services, project portfolio, and company profile.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'Streamline Consortium React.js website case study by Akhilesh P.'
   },
   aishka: {
-    title: 'Aishka Clothing Website — Responsive React Storefront | Akhilesh P.',
+    title: 'Aishka Clothing Website — React Fashion Storefront | Akhilesh P.',
     description:
       'Modern fashion and clothing showcase web application built with React.js, JavaScript, HTML, and CSS for responsive browsing across desktop and mobile devices.',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'Aishka Clothing Website React.js case study by Akhilesh P.'
   },
   'urban-escape': {
-    title: 'Urban Escape Travel Website — Responsive Frontend | Akhilesh P.',
+    title: 'Urban Escape — Responsive Travel Showcase | Akhilesh P.',
     description:
       'Responsive travel and tourism showcase website built with HTML5, CSS3, JavaScript, and Bootstrap for clear cross-device destination browsing.',
     image: DEFAULT_OG_IMAGE,

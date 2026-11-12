@@ -23,7 +23,7 @@ export const personalInfo = {
           company: "myG India Private Limited",
           description:
             "Built a strong foundation in financial accounting, reporting, GST compliance, and business operations.",
-          skills: ["SAP B1", "Microsoft Excel", "Microsoft Word", "Microsoft PowerPoint", "GST Compliance", "Excel", "Reporting"],
+          skills: ["SAP B1", "Microsoft Excel", "Microsoft Word", "Microsoft PowerPoint", "GST Compliance", "Reporting"],
           icon: "briefcase"
         },
         {
@@ -41,7 +41,7 @@ export const personalInfo = {
           company: "Ebsor Infosystem Pvt. Ltd.",
           description:
             "Developed enterprise ERP modules and REST API integrations using ASP.NET Core MVC and Kendo UI.",
-          skills: ["ASP.NET Core", "C#", "MVC", "jQuery", "Bootstrap", "Entity Framework", "SQL", "HTML", "CSS", "JavaScript", "Kendo UI", "SQL", "REST APIs"],
+          skills: ["ASP.NET Core", "C#", "MVC", "jQuery", "Bootstrap", "Entity Framework", "SQL", "HTML", "CSS", "JavaScript", "Kendo UI", "REST APIs"],
           icon: "server"
         },
         {

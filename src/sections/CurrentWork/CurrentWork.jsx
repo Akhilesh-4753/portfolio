@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   ShoppingBag,
   Compass,
@@ -16,6 +17,7 @@ import {
   ShieldCheck,
   Settings,
   ArrowRight,
+  ArrowUpRight,
   Server,
   Code2,
   Workflow
@@ -613,6 +615,23 @@ export const CurrentWork = () => {
                       </p>
                     </div>
                   </div>
+                </div>
+
+                <div style={{ marginTop: '1.15rem' }}>
+                  <Link
+                    to="/projects/pos-business-management"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      fontSize: '0.88rem',
+                      fontWeight: 600,
+                      color: '#FDBA74'
+                    }}
+                  >
+                    <span>Explore POS Business Management Architecture</span>
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
                 </div>
               </div>
             </div>

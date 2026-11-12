@@ -1,4 +1,6 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 import { services } from '../../data/services';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
@@ -161,6 +163,15 @@ export const Services = () => {
                           </li>
                         ))}
                       </ul>
+
+                      {service.relatedProject && (
+                        <div className="sig-project-link-wrap">
+                          <Link to={service.relatedProject.path} className="sig-project-link">
+                            <span>{service.relatedProject.label}</span>
+                            <ArrowUpRight size={14} aria-hidden="true" />
+                          </Link>
+                        </div>
+                      )}
                     </div>
 
                     <div className="sig-wave-bay" aria-hidden="true">

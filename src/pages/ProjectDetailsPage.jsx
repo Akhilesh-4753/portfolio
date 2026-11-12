@@ -1,6 +1,16 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ChevronRight, CheckCircle2, Award, Sparkles, Target, Activity } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  ChevronRight,
+  CheckCircle2,
+  Award,
+  Sparkles,
+  Target,
+  Activity
+} from 'lucide-react';
 import { projects } from '../data/projects';
 import { getProjectSeo } from '../data/seo';
 import { SeoHead } from '../components/seo/SeoHead';
@@ -38,6 +48,10 @@ export const ProjectDetailsPage = () => {
 
   const isDaybook = project.slug === 'daybook';
   const seo = getProjectSeo(project);
+  const relatedProjects = (project.relatedSlugs || [])
+    .map((relSlug) => projects.find((p) => p.slug === relSlug))
+    .filter(Boolean)
+    .slice(0, 3);
 
   return (
     <div style={{ paddingTop: '7rem', paddingBottom: '6rem' }}>
@@ -509,7 +523,7 @@ export const ProjectDetailsPage = () => {
 
                 <TiltCard style={{ padding: '2.5rem' }}>
                   <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                    Project Purpose & Objective
+                    Purpose &amp; Problem Addressed
                   </h2>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.purpose || 'Designed to address core operational requirements with modular architecture and reliable execution.'}
@@ -600,10 +614,92 @@ export const ProjectDetailsPage = () => {
           </div>
         )}
 
-        {/* Back to Projects Action Footer */}
-        <div style={{ marginTop: '5rem', textAlign: 'center' }}>
+        {/* Related Projects Internal Linking Cluster */}
+        {relatedProjects.length > 0 && (
+          <section aria-labelledby="related-projects-heading" style={{ marginTop: '4.5rem' }}>
+            <h2
+              id="related-projects-heading"
+              style={{
+                fontSize: '1.5rem',
+                fontWeight: 700,
+                marginBottom: '1.5rem',
+                color: 'var(--text-primary)'
+              }}
+            >
+              Related Projects &amp; Case Studies
+            </h2>
+            <div className="grid-3">
+              {relatedProjects.map((rel) => (
+                <Link
+                  key={rel.slug}
+                  to={`/projects/${rel.slug}`}
+                  style={{ display: 'block', textDecoration: 'none', color: 'inherit', height: '100%' }}
+                >
+                  <TiltCard
+                    style={{
+                      padding: '1.5rem',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '0.85rem'
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '0.74rem',
+                          color: 'var(--color-blue)',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em',
+                          marginBottom: '0.4rem'
+                        }}
+                      >
+                        {rel.category}
+                      </div>
+                      <h3 style={{ fontSize: '1.12rem', fontWeight: 700, marginBottom: '0.45rem' }}>
+                        {rel.title}
+                      </h3>
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: 0 }}>
+                        {rel.shortDescription}
+                      </p>
+                    </div>
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        fontSize: '0.85rem',
+                        fontWeight: 600,
+                        color: '#FDBA74'
+                      }}
+                    >
+                      <span>{rel.ctaLabel || `${rel.title} Case Study`}</span>
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </span>
+                  </TiltCard>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Back to Projects & Contact Action Footer */}
+        <div
+          style={{
+            marginTop: '4rem',
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            gap: '1rem'
+          }}
+        >
           <Button to="/#projects" variant="primary" icon={ArrowLeft} iconPosition="left">
             Back to Projects Portfolio
+          </Button>
+          <Button to="/#contact" variant="outline" icon={ArrowRight} iconPosition="right">
+            Discuss a Similar Project
           </Button>
         </div>
       </Container>

@@ -89,7 +89,7 @@ export const Footer = () => {
               {personalInfo.title}
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Building digital experiences with code. Focused on scalable React frontend solutions and robust ASP.NET Core backend integrations.
+              Full-stack web developer focused on React.js, Python Django, ASP.NET Core ERP systems, and practical AI integrations.
             </p>
           </div>
 

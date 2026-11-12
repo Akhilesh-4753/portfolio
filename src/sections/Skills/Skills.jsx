@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Calculator, Code2 } from 'lucide-react';
 import { skillGroups } from '../../data/skills';
 import { SectionTitle } from '../../components/common/SectionTitle';
@@ -9,6 +10,14 @@ const GROUP_ICONS = {
   Calculator,
   Code2
 };
+
+const SKILL_PROJECT_LINKS = [
+  { label: 'Django & AI → TaskFlow', path: '/projects/taskflow' },
+  { label: 'Django & Gemini → INKSPACE', path: '/projects/inkspace' },
+  { label: 'ASP.NET Core & Kendo UI → Code7 ERP', path: '/projects/code7-erp' },
+  { label: 'React.js Storefront → E-commerce App', path: '/projects/ecommerce' },
+  { label: 'React Native → Daybook', path: '/projects/daybook' }
+];
 
 export const Skills = () => {
   return (
@@ -116,6 +125,45 @@ export const Skills = () => {
                       />
                     ))}
                   </div>
+
+                  {group.id === 'software-development' && (
+                    <div
+                      style={{
+                        marginTop: '1.6rem',
+                        paddingTop: '1.15rem',
+                        borderTop: '1px solid var(--border-subtle)',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        gap: '0.55rem'
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: '0.78rem',
+                          fontFamily: 'var(--font-mono)',
+                          color: 'var(--text-muted)',
+                          marginRight: '0.35rem'
+                        }}
+                      >
+                        Applied in projects:
+                      </span>
+                      {SKILL_PROJECT_LINKS.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className="tech-tag"
+                          style={{
+                            fontSize: '0.76rem',
+                            color: '#FDBA74',
+                            borderColor: 'rgba(249, 115, 22, 0.28)'
+                          }}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </FadeIn>
             );

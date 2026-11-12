@@ -117,7 +117,7 @@ export const ProjectCard = ({ project }) => {
               transition: 'color 0.25s ease'
             }}
           >
-            <span>Explore Project Details</span>
+            <span>{project.ctaLabel || 'Explore Project Details'}</span>
             <ArrowUpRight size={16} className="project-card-arrow" />
           </span>
         </div>

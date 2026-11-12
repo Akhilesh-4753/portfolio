@@ -11,6 +11,8 @@ export const projects = [
     status: "Deployed on Render",
     ownership: "Independent Learning Project",
     role: "Full-Stack Developer",
+    ctaLabel: "TaskFlow Case Study",
+    relatedSlugs: ["inkspace", "daybook", "code7-erp"],
     previewType: "taskflow",
     image: "/images/projects/taskflow/taskflow-dashboard.webp",
     imageFit: "cover",
@@ -36,23 +38,23 @@ export const projects = [
       { label: "Deployment", value: "Render" }
     ],
     overview:
-      "TaskFlow is a Django-based task management application developed during the Genstack Internship at BlackBox Learning Academy to implement Django's MVT architecture alongside real-world authentication, notifications, reporting, and AI-powered productivity workflows.",
+      "TaskFlow is a full-stack Python Django task management application developed during the Genstack Internship at BlackBox Learning Academy. Built to apply Django's Model-View-Template (MVT) architecture in a real product workflow, it brings together authenticated task management, visual progress reporting, deadline email reminders, and generative AI productivity tools.",
     purpose:
-      "Combine structured daily task tracking, automated email reminders, productivity analytics, and AI-assisted planning within one cohesive web application.",
+      "Address fragmented daily task tracking by uniting priority-based CRUD task management, automated reminders for overdue schedules, visual completion reports, and AI-assisted planning and learning roadmap generation in one platform.",
     myRole:
-      "Designed and implemented the full-stack Django MVT application, user authentication flows, PostgreSQL persistence, reminder logic, dashboard statistics, and AI API integrations.",
+      "Architected and built the complete Django MVT application, including user registration and session protection, PostgreSQL models via Neon, dashboard reporting views, scheduled-date email reminder workflows, and REST integrations with Google Gemini and Groq APIs.",
     keyFeatures: [
-      "User authentication with registration, login, logout, and protected routes",
-      "Full task CRUD management with priority levels and completed/pending status tracking",
-      "Dashboard displaying task statistics, productivity insights, and reports",
-      "Pending task notifications and scheduled email reminders for incomplete tasks",
-      "AI task suggestions, AI productivity assistant, and learning roadmap generation",
-      "Persistent data storage with Neon PostgreSQL and deployment on Render"
+      "User authentication with registration, login, logout, and protected workspace views",
+      "Complete task CRUD workflows with priority levels and pending/completed status tracking",
+      "Analytics dashboard visualizing completion rates and productivity trends with donut, bar, and trend charts",
+      "In-app pending task notifications paired with scheduled-date email reminders for incomplete tasks",
+      "AI task suggestions, AI productivity assistant, and structured technology learning roadmap generator powered by Gemini and Groq APIs",
+      "Persistent relational storage in Neon PostgreSQL and production deployment on Render"
     ],
     developmentApproach:
-      "Structured around Django's Model-View-Template pattern with relational database persistence in Neon PostgreSQL and REST-based AI API integration.",
+      "Structured cleanly around Django's Model-View-Template pattern, separating relational data modeling in Neon PostgreSQL from template views and external Gemini/Groq API integrations.",
     outcome:
-      "Delivered a deployed full-stack Django web application integrating practical CRUD workflows with AI-assisted productivity features.",
+      "Delivered and deployed a production full-stack Django web application on Render that integrates practical task management workflows with AI-assisted planning.",
     gallery: [
       {
         src: "/images/projects/taskflow/taskflow-dashboard.webp",
@@ -103,6 +105,8 @@ export const projects = [
     status: null,
     ownership: "Independent Learning Project",
     role: "Full-Stack Developer",
+    ctaLabel: "INKSPACE Case Study",
+    relatedSlugs: ["taskflow", "apnavilla", "daybook"],
     previewType: "inkspace",
     image: "/images/projects/inkspace/blog-home-page.webp",
     imageFit: "cover",
@@ -126,22 +130,22 @@ export const projects = [
       { label: "Scope", value: "Full-Stack Web App" }
     ],
     overview:
-      "INKSPACE is a Django-based blogging platform created to provide a clean, interactive environment for writing, publishing, managing, and reading structured blog articles.",
+      "INKSPACE is a full-stack Python Django blogging platform designed to give writers and readers an interactive environment to draft, publish, browse, and manage long-form blog content. Combining structured Django MVT publishing workflows with rich text editing and Google Gemini API assistance, it streamlines both content creation and editorial discovery.",
     purpose:
-      "Implement end-to-end content management, user ownership controls, responsive reading views, and AI-assisted content ideation using Google's Gemini API.",
+      "Provide an end-to-end editorial publishing platform where authors retain clear ownership controls over drafts and published posts while accessing integrated AI writing support during article creation.",
     myRole:
-      "Built the Django MVT backend models, views, authentication and post ownership logic, rich text editing experience, responsive templates, and Gemini API writing assistant integration.",
+      "Developed the Django MVT models, authentication and author-scoped permissions, rich text editor workflow, searchable article feed, responsive HTML/CSS/JavaScript templates, SQLite persistence, and Google Gemini API writing assistant.",
     keyFeatures: [
-      "Blog creation, publishing, editing, and deletion restricted to authenticated authors",
-      "Structured blog listing pages and individual article reading detail views",
-      "Integrated rich text editor for formatted content authoring",
-      "Google Gemini API integration for AI writing assistance and content ideas",
-      "Responsive navigation, blog cards, and SQLite persistence across viewports"
+      "Blog creation, publishing, editing, and deletion gated by authenticated author ownership",
+      "Featured homepage showcase, searchable Explore Stories feed, and dedicated article reading pages",
+      "Rich text editing workspace paired with a Gemini AI Assist panel for drafting and ideation",
+      "Author management dashboard listing personal posts with quick update and publish controls",
+      "Responsive navigation and blog card layouts backed by SQLite storage"
     ],
     developmentApproach:
-      "Focused on clean Django MVT separation, author-scoped permissions, responsive UI layouts, and seamless Gemini API prompt workflows.",
+      "Built on clean Django MVT separation with author-level access checks, responsive frontend templates, CKEditor-style formatted authoring, and direct Gemini API content generation prompts.",
     outcome:
-      "Built a complete publishing platform combining standard content workflows with practical AI writing support.",
+      "Delivered a complete multi-user blogging platform unifying editorial publishing, content discovery, and practical Gemini AI writing assistance.",
     gallery: [
       {
         src: "/images/projects/inkspace/blog-home-page.webp",
@@ -191,6 +195,8 @@ export const projects = [
     status: "Active Product Project",
     ownership: "Independent Product",
     role: "Creator & React Native Developer",
+    ctaLabel: "Daybook Case Study",
+    relatedSlugs: ["taskflow", "inkspace", "pos-business-management"],
     previewType: "daybook",
     image: "/images/projects/daybook/dashboard.webp",
     imageFit: "contain",
@@ -334,6 +340,8 @@ export const projects = [
     status: "Currently in Development",
     ownership: "Independent Team Collaboration",
     role: "Functional Planning & Business Analysis",
+    ctaLabel: "POS Architecture Study",
+    relatedSlugs: ["code7-erp", "kidonex-feedback", "ecommerce"],
     previewType: "pos",
     featured: true,
     shortDescription:
@@ -352,21 +360,21 @@ export const projects = [
       { label: "Status", value: "Currently in Development" }
     ],
     overview:
-      "An independent Point of Sale (POS) and business management software project started collaboratively with former colleagues and fellow developers, combining accounting domain insight with modern web architecture.",
+      "An independent Point of Sale (POS) and business management software suite started collaboratively with former colleagues and fellow developers. Combining practical financial accounting experience with modern ASP.NET Core / .NET and React.js engineering, the project models retail billing, inventory movement, supplier procurement, tax records, and operational analytics.",
     purpose:
-      "Plan a structured retail and business management platform connecting billing, payments, stock control, supplier purchases, tax records, and operational reporting.",
+      "Prevent disconnected retail and accounting spreadsheets by planning a unified POS architecture where every sales invoice, customer payment, return, and stock adjustment flows cleanly into financial and management reports.",
     myRole:
-      "Contributing functional planning, POS module identification, input field mapping, module relationships, accounting-aligned workflows, and reporting structure while the development team implements backend ASP.NET Core / .NET APIs and React.js frontend views.",
+      "Leading functional planning and business analysis—defining the 12 planned POS modules, structured input field mapping, cross-module data relationships, GST/tax and billing validation rules, and reporting structures—while collaborating closely with the team developing ASP.NET Core / .NET APIs and React.js frontend views.",
     keyFeatures: [
-      "12 planned functional modules spanning Sales & Billing, Inventory, Purchases, Payments, Tax, and Reporting",
-      "Structured input field mapping and validation rules across operational forms",
-      "Connected transaction flow linking Sales -> Payments -> Inventory -> Reports",
-      "Clear separation of functional planning from collaborative .NET and React.js implementation"
+      "12 planned functional modules across Core POS (Dashboard, Sales & Billing, Returns & Refunds, Customer Management), Procurement & Stock (Products & Categories, Inventory & Stock, Purchases & Suppliers), and Finance & Governance (Payments & Expenses, Tax & Transactions, Reports & Analytics, User & Role Management, System Settings)",
+      "4-stage transaction pipeline linking Sales & Billing -> Payments & Expenses -> Inventory & Stock -> Reports & Analytics",
+      "Structured form input mapping, reorder threshold checks, and accounting-aligned business validation rules",
+      "Clear collaborative split between domain specification, ASP.NET Core / .NET backend APIs, and React.js UI components"
     ],
     developmentApproach:
-      "Domain-first functional specification driven by accounting principles, translated iteratively with the collaborative backend and frontend engineering team.",
+      "Domain-first functional specification rooted in accounting principles, iteratively translated into REST-ready backend contracts (.NET) and componentized frontend screens (React.js) with the collaborative development team.",
     outcome:
-      "Ongoing collaborative development advancing planned business modules from functional blueprints into active implementation."
+      "Ongoing collaborative product development moving the 12-module retail and business operations blueprint steadily through implementation."
   },
   {
     id: "apnavilla",
@@ -379,6 +387,8 @@ export const projects = [
     status: null,
     ownership: "Branding Hut Team Collaboration",
     role: "Frontend Developer",
+    ctaLabel: "ApnaVilla Case Study",
+    relatedSlugs: ["streamline", "ecommerce", "aishka"],
     previewType: "apnavilla",
     featured: true,
     shortDescription:
@@ -399,21 +409,21 @@ export const projects = [
       { label: "Backend Team", value: "Laravel" }
     ],
     overview:
-      "ApnaVilla is a real estate web application built collaboratively by the Branding Hut team to support property-related digital services.",
+      "ApnaVilla is a real estate web application built collaboratively with the Branding Hut team (Govt. Cyberpark, Kozhikode) to deliver property discovery and real estate digital services. Pairing a Next.js and React.js frontend with Laravel and PostgreSQL backend services, the project focused on responsive cross-device property browsing.",
     purpose:
-      "Provide property browsing and real estate service interfaces powered by clean frontend architecture integrated with backend Laravel endpoints.",
+      "Enable property seekers to browse real estate listings and service pages smoothly across mobile and desktop viewports while maintaining clean decoupling from the team's Laravel backend.",
     myRole:
-      "Worked as Frontend Developer building responsive user interfaces using Next.js and React components, collaborating directly with the Laravel backend development team on frontend-backend integration and team project discussions.",
+      "Served as Frontend Developer building responsive user interfaces with Next.js, React.js, JavaScript, HTML, CSS, and Bootstrap, integrating client views with the Branding Hut Laravel backend team and participating in project planning discussions.",
     keyFeatures: [
-      "Responsive property and real estate UI interfaces developed with Next.js and React components",
-      "User-friendly layouts built using HTML, CSS, JavaScript, and Bootstrap",
-      "Cross-team frontend integration with Laravel backend services",
-      "Collaborative sprint discussions and requirement alignment with the Branding Hut team"
+      "Responsive property and real estate UI views built with Next.js and React.js components",
+      "Mobile-friendly layouts crafted using HTML, CSS, JavaScript, and Bootstrap",
+      "API coordination between client-side React views and Laravel / PostgreSQL backend services",
+      "Agile team collaboration with Branding Hut developers and designers on feature requirements"
     ],
     developmentApproach:
-      "Modular frontend development coordinated with the backend Laravel developers to ensure clean data integration and responsive cross-device behavior.",
+      "Modular React and Next.js frontend engineering synchronized closely with Branding Hut's Laravel API contracts to keep data rendering clean and responsive.",
     outcome:
-      "Delivered collaborative frontend interfaces integrated seamlessly with the team's Laravel backend workflows."
+      "Delivered collaborative, responsive real estate frontend interfaces integrated cleanly with the team's Laravel backend workflows."
   },
   {
     id: "code7-erp",
@@ -426,6 +436,8 @@ export const projects = [
     status: null,
     ownership: "Ebsor Infosystem",
     role: "Dot Net Developer",
+    ctaLabel: "Code7 ERP Case Study",
+    relatedSlugs: ["kidonex-feedback", "pos-business-management", "taskflow"],
     previewType: "code7",
     featured: false,
     shortDescription:
@@ -439,21 +451,21 @@ export const projects = [
       { label: "Organization", value: "Ebsor Infosystem" }
     ],
     overview:
-      "Code7 ERP is a comprehensive business software suite created to manage enterprise operations with high data density, real-time validations, and reliable transactional integrity.",
+      "Code7 ERP is an enterprise resource planning web application developed at Ebsor Infosystem Pvt. Ltd. (Malappuram, Kerala) using ASP.NET Core MVC, .NET, SQL, REST APIs, and Kendo UI. It supports structured Master, Transaction, and Report modules across data-heavy enterprise workflows.",
     purpose:
-      "Built to streamline multi-department business processes through robust data grids, Master records, and standardized transaction processing.",
+      "Streamline multi-department enterprise operations by standardizing Master records, validated transactional forms, and filterable Kendo UI reporting grids in a unified business system.",
     myRole:
-      "Developed business-oriented UI modules utilizing Kendo UI controls, integrated REST API endpoints, handled server communication, and participated in MVC controller logic and debugging.",
+      "Developed and maintained business ERP modules as a .NET Developer—building Master, Transaction, and Report views with Kendo UI controls, writing ASP.NET Core MVC Controller.cs handlers for business workflows and API communication, and debugging releases in Visual Studio.",
     keyFeatures: [
-      "Rich Kendo UI data grids with multi-column sorting, grouping, and server-side filtering",
-      "Master and transaction views with comprehensive client and server data validation",
-      "Optimized API calls for high-frequency enterprise data operations",
-      "Visual Studio workflow for testing, debugging, and iterative release cycles"
+      "Enterprise Kendo UI data grids with multi-column sorting, grouping, filtering, and CRUD binding",
+      "Master, Transaction, and Report MVC modules with responsive views and form validation",
+      "ASP.NET Core MVC Controller.cs pipelines handling HTTP requests, business workflows, and REST APIs",
+      "SQL-backed enterprise operations tested and debugged iteratively in Visual Studio"
     ],
     developmentApproach:
-      "Strict separation of concerns following ASP.NET Core MVC architectural guidelines, leveraging Kendo UI components for heavy tabular data.",
+      "Strict ASP.NET Core MVC separation between Controller request orchestration, REST service communication, SQL persistence, and Kendo UI tabular interfaces.",
     outcome:
-      "Delivered stable, responsive business modules capable of handling extensive operational workflows reliably."
+      "Delivered reliable, responsive business ERP modules capable of supporting extensive operational workflows."
   },
   {
     id: "kidonex-feedback",
@@ -466,6 +478,8 @@ export const projects = [
     status: null,
     ownership: "Ebsor Infosystem",
     role: "Dot Net Developer",
+    ctaLabel: "Kidonex Case Study",
+    relatedSlugs: ["code7-erp", "pos-business-management", "taskflow"],
     previewType: "kidonex",
     featured: false,
     shortDescription:
@@ -479,21 +493,21 @@ export const projects = [
       { label: "UI Layer", value: "Responsive Views" }
     ],
     overview:
-      "A dedicated customer engagement module enabling clients to capture, review, and analyze authentic customer feedback and satisfaction ratings.",
+      "The Kidonex Customer Feedback & Review module is a customer-experience application built during my .NET Developer tenure at Ebsor Infosystem. Using ASP.NET Core MVC, JavaScript, and REST APIs, it captures, validates, and routes structured customer satisfaction reviews.",
     purpose:
-      "Provide a clean, user-friendly review workflow that feeds structured customer sentiment directly into business operational records.",
+      "Provide an accessible, validated digital feedback workflow so businesses can collect structured customer ratings and feed insights reliably into operational records.",
     myRole:
-      "Implemented responsive MVC views, client-side input validations, controller request pipelines, and REST API communications.",
+      "Built responsive ASP.NET Core MVC views, implemented JavaScript input validations, developed Controller.cs submission handlers, and connected backend REST API services in Visual Studio.",
     keyFeatures: [
-      "Intuitive review and rating submission forms with real-time field validation",
-      "Controller endpoints managing submission pipelines and verification",
-      "REST API integration for feedback storage and review moderation",
-      "Responsive layout for mobile and desktop feedback submission"
+      "Intuitive review and rating submission forms with real-time client-side field validation",
+      "ASP.NET Core MVC Controller.cs endpoints managing submission pipelines and verification",
+      "REST API integration for feedback persistence and structured review handling",
+      "Responsive HTML/CSS layout supporting seamless desktop and mobile submissions"
     ],
     developmentApproach:
-      "Ensured smooth user experience for customers providing reviews while maintaining secure, structured payload handling on the server.",
+      "Combined smooth customer-facing form usability with reliable ASP.NET Core MVC controller validation and structured REST API payloads.",
     outcome:
-      "Successfully deployed module enabling structured feedback gathering and customer rating insights."
+      "Successfully delivered a production module enabling structured customer feedback capture and review insights."
   },
   {
     id: "movie",
@@ -506,6 +520,8 @@ export const projects = [
     status: null,
     ownership: "AllPro TechLabs",
     role: "Frontend Developer",
+    ctaLabel: "Movie App Case Study",
+    relatedSlugs: ["ecommerce", "apnavilla", "streamline"],
     previewType: "movie",
     featured: false,
     shortDescription:
@@ -519,21 +535,21 @@ export const projects = [
       { label: "Layout", value: "Multi-device Responsive" }
     ],
     overview:
-      "A rich media exploration web application featuring dynamic catalog browsing, search filters, and rich movie details.",
+      "A responsive movie browsing web application built at AllPro TechLabs (UL CyberPark, Calicut) using React.js, React Bootstrap, Material UI, and third-party REST APIs. Users can search films by title and view real-time ratings, release dates, genres, posters, and overviews.",
     purpose:
-      "Demonstrate component reusability, asynchronous API data fetching, and responsive entertainment UI engineering.",
+      "Deliver a responsive entertainment catalog demonstrating reusable React component design, asynchronous REST API data fetching, and React hook state management.",
     myRole:
-      "Built the responsive React component architecture, integrated movie data APIs, implemented search/filter states using useState and useEffect.",
+      "Developed modular React components (movie cards, navigation bar, and detail views), handled loading states and third-party API calls with useState and useEffect, and structured responsive grids via React Bootstrap and React Icons.",
     keyFeatures: [
-      "Dynamic movie catalog grid with responsive posters and metadata",
-      "Reusable modal and card components with clean transitions",
-      "Search, genre filtering, and real-time query rendering",
-      "Mobile-first responsive design across phones, tablets, and desktops"
+      "Real-time movie catalog fetched from a third-party REST API with loading state management",
+      "Title search and detail pages presenting poster, rating, release date, genre, and overview",
+      "Modular React components separating cards, navigation bars, and detail views",
+      "Responsive React Bootstrap grid paired with Material UI elements and React Icons"
     ],
     developmentApproach:
-      "Component-driven React development combining Material UI controls with React Bootstrap layouts for fast rendering.",
+      "Component-driven React development using useState and useEffect lifecycle hooks alongside React Bootstrap breakpoints for consistent rendering.",
     outcome:
-      "Created an engaging, responsive media web app demonstrating strong frontend skills."
+      "Created an engaging, responsive movie discovery web application highlighting reusable React and API integration skills."
   },
   {
     id: "ecommerce",
@@ -546,6 +562,8 @@ export const projects = [
     status: null,
     ownership: "AllPro TechLabs",
     role: "Frontend Developer",
+    ctaLabel: "E-commerce Case Study",
+    relatedSlugs: ["aishka", "movie", "pos-business-management"],
     previewType: "ecommerce",
     featured: false,
     shortDescription:
@@ -559,21 +577,21 @@ export const projects = [
       { label: "Experience", value: "Cart & Checkout UI" }
     ],
     overview:
-      "A full-featured e-commerce platform prototype showcasing seamless browsing, category navigation, product filters, and cart calculations.",
+      "A responsive React e-commerce frontend developed at AllPro TechLabs featuring product listing, product detail, and shopping cart views integrated with live REST APIs. Shoppers can filter categories, search items, adjust cart quantities, and view dynamic order totals.",
     purpose:
-      "Provide a fluid consumer shopping experience with instantaneous state updates and reliable API payload binding.",
+      "Deliver an intuitive online retail interface uniting multi-page React Router navigation, dynamic REST catalog loading, and real-time shopping cart state updates.",
     myRole:
-      "Developed reusable React components, managed client cart states, implemented responsive layouts, and integrated REST APIs.",
+      "Implemented reusable React components and Material UI controls (cards, grids, buttons, dialogs), wired REST API product fetching with useState and useEffect, configured React Router routes, and built dynamic cart and filtering logic.",
     keyFeatures: [
-      "Dynamic product grid with instant category filtering and price sorting",
-      "Cart state management with real-time quantity adjustments and subtotal tallying",
-      "Responsive layout optimized across mobile viewports and large desktop displays",
-      "REST API communication for product catalogs and inventory status"
+      "Product listing, product detail, and shopping cart views navigated via React Router",
+      "Add-to-cart, remove-from-cart, and quantity update controls with dynamic total calculation",
+      "Category filtering and search powered by live REST API product catalog data",
+      "Material UI and React Bootstrap layout tuned for mobile, tablet, and desktop shopping"
     ],
     developmentApproach:
-      "Leveraged modern React Hooks (useState, useEffect, useMemo) for responsive interactions without UI latency.",
+      "Built modular React components powered by Hooks (useState, useEffect) and Material UI primitives for snappy cart and catalog updates.",
     outcome:
-      "Delivered a dependable, highly responsive online shopping interface."
+      "Delivered a dependable, responsive React e-commerce storefront frontend showcasing dynamic state management and API synchronization."
   },
   {
     id: "streamline",
@@ -586,6 +604,8 @@ export const projects = [
     status: null,
     ownership: "Streamline Consortium",
     role: "Web Developer",
+    ctaLabel: "Streamline Case Study",
+    relatedSlugs: ["apnavilla", "urban-escape", "aishka"],
     previewType: "streamline",
     featured: false,
     shortDescription:
@@ -599,21 +619,21 @@ export const projects = [
       { label: "Target", value: "Corporate Presence" }
     ],
     overview:
-      "The official digital web presence for Streamline Consortium, an engineering consultancy firm.",
+      "The official digital corporate website for Streamline Consortium, an engineering consultancy firm, built with React.js to present services, project credentials, and company background clearly.",
     purpose:
-      "Present company credentials, past engineering project portfolios, specialized service offerings, and communication channels.",
+      "Establish a structured corporate web presence where prospective engineering clients can evaluate services, inspect completed project credentials, and locate contact channels.",
     myRole:
-      "Developed and maintained the official corporate website using React.js, structuring reusable components and optimizing mobile responsiveness.",
+      "Developed and maintained the corporate website using React.js and JavaScript, organizing reusable UI components and optimizing layouts for cross-device readability.",
     keyFeatures: [
-      "Modern corporate showcase with clear information architecture",
-      "Service and project portfolio grids highlighting engineering credentials",
-      "Performance-optimized static and dynamic assets",
-      "Flawless display across mobile, tablet, and executive desktop viewports"
+      "Clear corporate information architecture showcasing engineering consultancy capabilities",
+      "Dedicated project portfolio and service showcase sections",
+      "Modular React.js component structure simplifying future content updates",
+      "Responsive cross-device presentation across mobile, tablet, and desktop screens"
     ],
     developmentApproach:
-      "Constructed a clean, maintainable React codebase allowing company personnel to easily update project showcases.",
+      "Constructed a clean, maintainable React codebase structured around reusable section components and responsive layout rules.",
     outcome:
-      "Elevated the corporate digital brand identity for the consultancy with modern React performance."
+      "Delivered a reliable corporate digital presence presenting Streamline Consortium's consultancy services cleanly with modern React performance."
   },
   {
     id: "aishka",
@@ -626,6 +646,8 @@ export const projects = [
     status: null,
     ownership: "Frontend Web Project",
     role: "Frontend Developer",
+    ctaLabel: "Aishka Case Study",
+    relatedSlugs: ["ecommerce", "urban-escape", "movie"],
     previewType: "aishka",
     featured: false,
     shortDescription:
@@ -638,21 +660,21 @@ export const projects = [
       { label: "Focus", value: "Responsive UI" }
     ],
     overview:
-      "Aishka is a modern clothing showcase website engineered with React.js to present fashion collections and apparel items in a clean, accessible interface.",
+      "Aishka is a modern clothing showcase web application engineered with React.js to present fashion collections and apparel items in a clean, accessible storefront layout.",
     purpose:
-      "Deliver an inviting digital storefront experience with clear fashion product presentation and smooth navigation across desktop and mobile devices.",
+      "Provide fashion shoppers with a visually balanced digital catalog featuring intuitive collection browsing and smooth navigation across desktop and mobile devices.",
     myRole:
-      "Built the frontend user interface in React.js using JavaScript, HTML, and CSS, structuring reusable product showcase views and responsive layouts.",
+      "Built the frontend interface in React.js using JavaScript, HTML, and CSS, structuring reusable product showcase cards and responsive collection grids.",
     keyFeatures: [
-      "Modern clothing and fashion product showcase layout",
-      "Clean, user-friendly navigation across collections",
-      "Reusable React.js frontend UI components",
-      "Responsive styling optimized for mobile, tablet, and desktop screens"
+      "Modern clothing and fashion collection showcase cards and sections",
+      "Clean, user-friendly navigation across featured apparel items",
+      "Reusable React.js frontend UI components with semantic HTML",
+      "Responsive CSS styling calibrated for mobile, tablet, and desktop viewports"
     ],
     developmentApproach:
-      "Structured modular React components paired with clean semantic HTML and responsive CSS styling for intuitive apparel browsing.",
+      "Structured modular React components paired with clean semantic HTML and custom CSS responsive rules for intuitive apparel browsing.",
     outcome:
-      "Created a refined fashion showcase web application delivering clean product presentation and responsive usability."
+      "Created a refined fashion showcase web application delivering crisp product presentation and smooth cross-device usability."
   },
   {
     id: "urban-escape",
@@ -665,6 +687,8 @@ export const projects = [
     status: null,
     ownership: "Frontend Web Project",
     role: "Frontend Developer",
+    ctaLabel: "Urban Escape Study",
+    relatedSlugs: ["aishka", "streamline", "apnavilla"],
     previewType: "urban-escape",
     featured: false,
     shortDescription:
@@ -677,19 +701,19 @@ export const projects = [
       { label: "Interactivity", value: "JavaScript" }
     ],
     overview:
-      "Urban Escape is a responsive travel website designed to present travel destinations and tourism details through an engaging layout and intuitive site navigation.",
+      "Urban Escape is a responsive travel website designed to present travel destinations and tourism guides through an engaging editorial layout and straightforward navigation.",
     purpose:
-      "Make exploring travel destinations and tourism information effortless across desktop, tablet, and mobile viewports.",
+      "Help travelers explore featured destinations and tourism details effortlessly without layout clutter on smartphones, tablets, or desktops.",
     myRole:
-      "Designed and developed the frontend pages using HTML5, CSS3, JavaScript, and Bootstrap, focusing on layout hierarchy and accessible navigation.",
+      "Designed and developed the frontend pages using HTML5, CSS3, JavaScript, and Bootstrap, focusing on clear destination hierarchy and intuitive navigation.",
     keyFeatures: [
-      "Engaging destination showcase sections for travel & tourism content",
-      "User-friendly navigation tailored for exploring travel information",
+      "Engaging destination showcase sections tailored for travel and tourism discovery",
+      "Clear, user-friendly navigation across featured destinations and information blocks",
       "Responsive Bootstrap grid adapting smoothly across device breakpoints",
-      "Clean semantic HTML5 structure combined with custom CSS3 styling and JavaScript"
+      "Semantic HTML5 markup combined with custom CSS3 styling and JavaScript interactivity"
     ],
     developmentApproach:
-      "Paired Bootstrap's responsive grid system with custom CSS3 presentation and JavaScript interactions for cross-device consistency.",
+      "Paired Bootstrap's responsive grid system with custom CSS3 presentation and lightweight JavaScript interactions for consistent multi-device display.",
     outcome:
       "Delivered a responsive travel showcase website highlighting destinations cleanly across all screen sizes."
   }
