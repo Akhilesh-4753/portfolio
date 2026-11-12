@@ -3,6 +3,7 @@ import { BrowserRouter, useLocation } from 'react-router-dom';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { AppRoutes } from './routes/AppRoutes';
+import { getSeoForPath } from './data/seo';
 
 function AnalyticsTracker() {
   const location = useLocation();
@@ -14,11 +15,12 @@ function AnalyticsTracker() {
 
     const rafId = window.requestAnimationFrame(() => {
       lastTrackedRef.current = pagePath;
+      const resolvedTitle = getSeoForPath(location.pathname)?.title || document.title;
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'page_view', {
           page_path: pagePath,
           page_location: window.location.href,
-          page_title: document.title
+          page_title: resolvedTitle
         });
       }
     });
