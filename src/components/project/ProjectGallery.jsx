@@ -199,9 +199,9 @@ export const ProjectGallery = ({ gallery = [], projectTitle }) => {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Images size={22} color="var(--color-blue)" />
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, margin: 0 }}>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, margin: 0 }}>
               Project Screenshots
-            </h3>
+            </h2>
           </div>
           <span
             className="tech-tag"
@@ -294,7 +294,7 @@ export const ProjectGallery = ({ gallery = [], projectTitle }) => {
                 >
                   Visual Summary
                 </div>
-                <h4
+                <h3
                   style={{
                     fontSize: '1.2rem',
                     fontWeight: 700,
@@ -303,7 +303,7 @@ export const ProjectGallery = ({ gallery = [], projectTitle }) => {
                   }}
                 >
                   {overviewItem.title}
-                </h4>
+                </h3>
                 {overviewItem.caption && (
                   <p
                     style={{

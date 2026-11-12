@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:ipv4": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

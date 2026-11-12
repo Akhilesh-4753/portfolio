@@ -1,9 +1,11 @@
-import React, { useState, useRef, useLayoutEffect, useMemo } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
 import { services } from '../../data/services';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { WAVEFORM_VIEWBOX, getWaveformPath } from './waveforms';
 import './Services.css';
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -12,7 +14,7 @@ export const Services = () => {
   const isCompact = useMediaQuery('(max-width: 860px)');
 
   // Progressive enhancement: inactive panels stay visible in CSS unless JS marks the shell interactive.
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (shellRef.current) {
       shellRef.current.dataset.sigInteractive = 'true';
     }

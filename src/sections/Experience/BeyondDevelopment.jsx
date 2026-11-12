@@ -10,12 +10,14 @@ const CONTRIBUTION_ICONS = {
   Users
 };
 
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 export const BeyondDevelopment = () => {
   const { heading, mainCollaboration, contributions } = freelanceExperience;
   const sectionRef = useRef(null);
 
   // Progressive enhancement: elements stay visible if JS fails or reduced motion is preferred.
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = sectionRef.current;
     if (!root || typeof window === 'undefined') return;
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowLeft, Terminal } from 'lucide-react';
 import { Container } from '../components/common/Container';
 import { Button } from '../components/common/Button';
+import { SeoHead } from '../components/seo/SeoHead';
+import { NOT_FOUND_SEO } from '../data/seo';
 
 export const NotFound = () => {
   return (
@@ -14,6 +16,7 @@ export const NotFound = () => {
         padding: '6rem 0'
       }}
     >
+      <SeoHead {...NOT_FOUND_SEO} />
       <Container>
         <div
           className="glass-panel"

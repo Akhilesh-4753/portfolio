@@ -18,17 +18,23 @@ function AnalyticsTracker() {
   return null;
 }
 
-export function App() {
+export function AppShell() {
   const [loading, setLoading] = useState(true);
 
   return (
     <ThemeProvider>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-      <BrowserRouter>
-        <AnalyticsTracker />
-        <AppRoutes />
-      </BrowserRouter>
+      <AnalyticsTracker />
+      <AppRoutes />
     </ThemeProvider>
+  );
+}
+
+export function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   );
 }
 

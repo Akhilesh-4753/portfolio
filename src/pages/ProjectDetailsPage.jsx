@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, Award, Calendar, Layers, Sparkles, Target, Activity } from 'lucide-react';
 import { projects } from '../data/projects';
+import { getProjectSeo } from '../data/seo';
+import { SeoHead } from '../components/seo/SeoHead';
 import { Container } from '../components/common/Container';
 import { Button } from '../components/common/Button';
 import { TiltCard } from '../components/animations/TiltCard';
@@ -21,8 +23,9 @@ export const ProjectDetailsPage = () => {
   if (!project) {
     return (
       <div style={{ padding: '10rem 0', textAlign: 'center' }}>
+        <SeoHead {...getProjectSeo(null)} />
         <Container>
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Project Not Found</h2>
+          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Project Not Found</h1>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
             The project you are looking for does not exist or has been relocated.
           </p>
@@ -35,9 +38,11 @@ export const ProjectDetailsPage = () => {
   }
 
   const isDaybook = project.slug === 'daybook';
+  const seo = getProjectSeo(project);
 
   return (
     <div style={{ paddingTop: '7rem', paddingBottom: '6rem' }}>
+      <SeoHead {...seo} />
       <Container>
         {/* Navigation Bar */}
         <div style={{ marginBottom: '2.5rem' }}>
@@ -176,9 +181,9 @@ export const ProjectDetailsPage = () => {
                 </div>
 
                 <div style={{ marginTop: '1.5rem' }}>
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--text-primary)' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--text-primary)' }}>
                     Daybook was designed to help people:
-                  </h4>
+                  </h3>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.85rem' }}>
                     {project.story.objectives.map((obj, oIdx) => (
                       <div
@@ -215,9 +220,9 @@ export const ProjectDetailsPage = () => {
               >
                 {/* Core Idea */}
                 <TiltCard style={{ padding: '2.5rem', height: '100%' }}>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>
                     What Is Daybook & The Core Idea
-                  </h3>
+                  </h2>
                   <p style={{ fontSize: '1.02rem', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
                     {project.shortDescription}
                   </p>
@@ -283,9 +288,9 @@ export const ProjectDetailsPage = () => {
             {/* Core Features Grid */}
             <FadeIn direction="up">
               <div>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'center' }}>
+                <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'center' }}>
                   Core System Features
-                </h3>
+                </h2>
                 <div className="grid-3">
                   {project.features.map((feat, fIdx) => (
                     <TiltCard key={fIdx} style={{ padding: '1.75rem' }}>
@@ -304,9 +309,9 @@ export const ProjectDetailsPage = () => {
                       >
                         <Target size={18} />
                       </div>
-                      <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                      <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.6rem' }}>
                         {feat.title}
-                      </h4>
+                      </h3>
                       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                         {feat.desc}
                       </p>
@@ -330,7 +335,7 @@ export const ProjectDetailsPage = () => {
                 <TiltCard style={{ padding: '2.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1rem' }}>
                     <Award size={22} style={{ color: 'var(--color-violet)' }} />
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: 700 }}>The Planning Grade</h3>
+                    <h2 style={{ fontSize: '1.4rem', fontWeight: 700 }}>The Planning Grade</h2>
                   </div>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.planningGrade}
@@ -354,7 +359,7 @@ export const ProjectDetailsPage = () => {
                 <TiltCard style={{ padding: '2.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1rem' }}>
                     <Activity size={22} style={{ color: 'var(--color-cyan)' }} />
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: 700 }}>Self-Reflection</h3>
+                    <h2 style={{ fontSize: '1.4rem', fontWeight: 700 }}>Self-Reflection</h2>
                   </div>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.selfReflection}
@@ -421,9 +426,9 @@ export const ProjectDetailsPage = () => {
             {/* My Contribution & Outcome */}
             <FadeIn direction="up">
               <TiltCard style={{ padding: '2.5rem' }}>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                   Engineering Contribution & Status
-                </h3>
+                </h2>
                 <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '1rem' }}>
                   {project.myContribution}
                 </p>
@@ -449,18 +454,18 @@ export const ProjectDetailsPage = () => {
                 className="case-study-split"
               >
                 <TiltCard style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     Project Overview
-                  </h3>
+                  </h2>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.overview || project.shortDescription}
                   </p>
                 </TiltCard>
 
                 <TiltCard style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     Project Purpose & Objective
-                  </h3>
+                  </h2>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.purpose || 'Designed to address core operational requirements with modular architecture and reliable execution.'}
                   </p>
@@ -479,18 +484,18 @@ export const ProjectDetailsPage = () => {
                 className="case-study-split"
               >
                 <TiltCard style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     My Role & Responsibilities
-                  </h3>
+                  </h2>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.myRole || 'Developed modules, structured components, and implemented communication pipelines.'}
                   </p>
                 </TiltCard>
 
                 <TiltCard style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     Development Approach
-                  </h3>
+                  </h2>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.developmentApproach || 'Employed scalable engineering best practices with strict separation of concerns.'}
                   </p>
@@ -502,9 +507,9 @@ export const ProjectDetailsPage = () => {
             {project.keyFeatures && (
               <FadeIn direction="up">
                 <TiltCard style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.25rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.25rem' }}>
                     Key Architectural Features
-                  </h3>
+                  </h2>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
                     {project.keyFeatures.map((feat, fIdx) => (
                       <div
@@ -538,9 +543,9 @@ export const ProjectDetailsPage = () => {
             {project.outcome && (
               <FadeIn direction="up">
                 <TiltCard style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     Project Outcome
-                  </h3>
+                  </h2>
                   <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                     {project.outcome}
                   </p>

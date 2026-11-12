@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { SeoHead } from '../components/seo/SeoHead';
+import { HOME_SEO } from '../data/seo';
 import { Hero } from '../sections/Home/Hero';
 import { About } from '../sections/About/About';
 import { Experience } from '../sections/Experience/Experience';
@@ -29,6 +31,7 @@ export const HomePage = () => {
 
   return (
     <>
+      <SeoHead {...HOME_SEO} />
       <Hero />
       <About />
       <Experience />

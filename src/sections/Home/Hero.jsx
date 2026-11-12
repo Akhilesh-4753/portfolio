@@ -79,9 +79,9 @@ export const Hero = () => {
 
             <FadeIn direction="up" delay={0.09} distance={14} duration={0.45} immediate={true}>
               <h1 className="hero-title">
-                Building{' '}
-                <span className="gradient-text">Digital Experiences</span>{' '}
-                That Make a Difference.
+                Full-Stack Developer Building{' '}
+                <span className="gradient-text">ERP, Web &amp; AI</span>{' '}
+                Solutions.
               </h1>
             </FadeIn>
 
@@ -155,7 +155,7 @@ export const Hero = () => {
                 <div className="hero-frame">
                   <img
                     src="/Akhilesh/hero-portrait.webp"
-                    alt="Akhilesh P., Software Developer in Kozhikode, Kerala"
+                    alt="Akhilesh P., Full-Stack Developer in Malappuram, Kerala"
                     className="hero-photo"
                     onError={(e) => {
                       const img = e.currentTarget;
