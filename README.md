@@ -27,28 +27,26 @@ The floating AI launcher opens a Gemini-powered chat modal backed by a Vercel se
 - `src/components/chatbot/chatbot.css`, `src/components/chatbot/chatbot.js`, `src/components/chatbot/chatbot.html`: Scoped (`.cb-*`) vanilla CSS/JS/HTML chat modal connected to `[data-ai-open]`, `window.openAIChat()`, `window.closeAIChat()`, and `"ai:open"`, with `429` live countdown cooldown and `503` 3-second auto-retry + manual Retry.
 - `.env.example`: Environment template listing `GEMINI_API_KEY`, `GEMINI_MODEL`, `GEMINI_FALLBACK_MODELS`, and `GEMINI_TIMEOUT_MS`.
 
-### 2. Local Testing with `npm run dev` or `vercel dev`
-You can test both the portfolio UI and `/api/chat` locally using `npm run dev` (via Vite's dev middleware in `vite.config.js`) or `vercel dev`:
+### Running the chatbot locally
+You have four options to test the portfolio chatbot on `localhost`:
 
-1. Copy `.env.example` to `.env.local` (already ignored by `.gitignore`):
-   ```bash
-   cp .env.example .env.local
-   ```
-2. Add your Google AI Studio API key (and optional models/timeout) to `.env.local`:
-   ```env
-   GEMINI_API_KEY=your_actual_gemini_api_key
-   GEMINI_MODEL=gemini-3.5-flash-lite
-   GEMINI_FALLBACK_MODELS=gemini-3.1-flash-lite,gemini-3.5-flash
-   GEMINI_TIMEOUT_MS=30000
-   ```
-3. Start the local dev server:
+1. **`npm run dev` (Default Vite + shared `/api/chat` middleware)**
+   Copy `.env.example` to `.env.local` (ignored by `.gitignore`) and set `GEMINI_API_KEY`, `GEMINI_MODEL`, and `GEMINI_FALLBACK_MODELS`, then run:
    ```bash
    npm run dev
    ```
-   Or test the full Vercel runtime using the Vercel CLI (`npm i -g vercel`):
+2. **`npm run dev:ipv4` (Windows IPv4-first DNS fix)**
+   If Node `fetch` hangs on IPv6 resolution on local networks, start Vite with IPv4-first DNS ordering:
+   ```bash
+   npm run dev:ipv4
+   ```
+3. **`vercel dev` (Full Vercel Serverless Runtime)**
+   Install the Vercel CLI (`npm i -g vercel`) and run:
    ```bash
    vercel dev
    ```
+4. **Proxy `/api` to your deployed Vercel site**
+   Set `VITE_API_PROXY_TARGET=https://your-portfolio.vercel.app` inside `.env.local` and restart `npm run dev` to forward all `/api` requests to production instead of running the local handler.
 
 ### 3. Configuring Environment Variables in Vercel
 1. Open your project in the **Vercel Dashboard**.
