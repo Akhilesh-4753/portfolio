@@ -140,8 +140,8 @@ function createIntroBlock() {
   metaRow.className = 'cb-intro-meta';
 
   const metaItems = [
-    { icon: 'briefcase', label: 'Software Developer' },
-    { icon: 'map-pin', label: 'Kozhikode, Kerala' },
+    { icon: 'briefcase', label: 'Full-Stack Developer' },
+    { icon: 'map-pin', label: 'Malappuram, Kerala' },
     { icon: 'check-circle', label: 'Open to opportunities' }
   ];
 

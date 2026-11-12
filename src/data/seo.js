@@ -429,6 +429,12 @@ export function renderSeoHeadHtml(seo) {
     `<meta name="twitter:image:alt" content="${escapeHtmlAttr(seo.imageAlt || DEFAULT_OG_IMAGE_ALT)}" />`
   );
 
+  if (seo.canonical === `${SITE_URL}/`) {
+    lines.push(
+      '<link rel="preload" as="image" type="image/avif" href="/Akhilesh/hero-portrait.avif" imagesrcset="/Akhilesh/hero-portrait-640.avif 640w, /Akhilesh/hero-portrait.avif 1200w" imagesizes="(max-width: 900px) 92vw, 535px" fetchpriority="high" />'
+    );
+  }
+
   if (seo.jsonLd) {
     const safeJson = JSON.stringify(seo.jsonLd).replaceAll('<', '\\u003c');
     lines.push(`<script type="application/ld+json" data-seo-jsonld="true">${safeJson}</script>`);

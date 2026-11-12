@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { X } from 'lucide-react';
+import { ensureChatbotInit } from '../chatbot/loadChatbot';
 import './AIButton.css';
 
 const HINT_STORAGE_KEY = 'ai_assistant_hint_seen';
@@ -79,9 +80,11 @@ export const AIButton = ({ onClick, className = '' }) => {
       if (typeof window.openAIChat === 'function') {
         window.openAIChat();
       } else {
-        event.currentTarget.dispatchEvent(
-          new CustomEvent('ai:open', { bubbles: true, composed: true })
-        );
+        void ensureChatbotInit().then(() => {
+          if (typeof window.openAIChat === 'function') {
+            window.openAIChat();
+          }
+        });
       }
     }
   };
@@ -110,6 +113,8 @@ export const AIButton = ({ onClick, className = '' }) => {
         data-ai-open
         data-label="Ask AI"
         aria-label="Open AI assistant"
+        onMouseEnter={() => { void ensureChatbotInit(); }}
+        onFocus={() => { void ensureChatbotInit(); }}
         onClick={handleLauncherClick}
       >
         <svg

@@ -14,16 +14,16 @@ export const MouseGlow = () => {
     <div
       style={{
         position: 'fixed',
-        left: `${x}px`,
-        top: `${y}px`,
+        left: 0,
+        top: 0,
         width: '500px',
         height: '500px',
-        transform: 'translate(-50%, -50%)',
+        transform: `translate3d(${x - 250}px, ${y - 250}px, 0)`,
+        willChange: 'transform',
         borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, rgba(124, 45, 18, 0.04) 40%, transparent 70%)',
         pointerEvents: 'none',
-        zIndex: 1,
-        transition: 'transform 0.08s ease-out'
+        zIndex: 1
       }}
       aria-hidden="true"
     />

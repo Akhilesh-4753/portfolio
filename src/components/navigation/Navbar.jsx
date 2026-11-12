@@ -22,31 +22,43 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    let rafId = null;
+
+    const updateNavOnScroll = () => {
+      rafId = null;
+      const y = window.scrollY;
+      const nextScrolled = y > 20;
+      setScrolled((prev) => (prev === nextScrolled ? prev : nextScrolled));
 
       if (location.pathname === '/') {
-        const scrollPosition = window.scrollY + 120;
-        for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
-          const item = NAV_ITEMS[i];
-          if (item.id === 'home' && window.scrollY < 200) {
-            setActiveSection('home');
-            break;
-          }
-          const element = document.getElementById(item.id);
-          if (element) {
-            const top = element.offsetTop;
-            if (scrollPosition >= top) {
-              setActiveSection(item.id);
+        const scrollPosition = y + 120;
+        let nextActive = 'home';
+
+        if (y >= 200) {
+          for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+            const item = NAV_ITEMS[i];
+            const element = document.getElementById(item.id);
+            if (element && scrollPosition >= element.offsetTop) {
+              nextActive = item.id;
               break;
             }
           }
         }
+
+        setActiveSection((prev) => (prev === nextActive ? prev : nextActive));
       }
     };
 
+    const handleScroll = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(updateNavOnScroll);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
   }, [location.pathname]);
 
   return (

@@ -63,7 +63,10 @@ const GalleryImageButton = ({
           <img
             src={item.src}
             alt={item.alt || `${projectTitle} — ${item.title}`}
+            width={isPortrait ? 480 : 1600}
+            height={isPortrait ? 1015 : 800}
             loading="lazy"
+            decoding="async"
             style={{
               width: isPortrait && !isOverview ? 'auto' : '100%',
               maxWidth: '100%',
@@ -272,7 +275,10 @@ export const ProjectGallery = ({ gallery = [], projectTitle }) => {
                 <img
                   src={overviewItem.src}
                   alt={overviewItem.alt || `${projectTitle} — ${overviewItem.title}`}
+                  width="800"
+                  height="1066"
                   loading="lazy"
+                  decoding="async"
                   style={{
                     width: '100%',
                     height: 'auto',

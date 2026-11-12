@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ChevronRight, CheckCircle2, Award, Calendar, Layers, Sparkles, Target, Activity } from 'lucide-react';
+import { ArrowLeft, ChevronRight, CheckCircle2, Award, Sparkles, Target, Activity } from 'lucide-react';
 import { projects } from '../data/projects';
 import { getProjectSeo } from '../data/seo';
 import { SeoHead } from '../components/seo/SeoHead';

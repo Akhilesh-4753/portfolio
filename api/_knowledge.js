@@ -9,10 +9,10 @@
 export const KNOWLEDGE_BASE = {
   profile: {
     name: 'Akhilesh P',
-    title: 'Software / Web Developer',
-    location: 'Kozhikode (Calicut), Kerala, India',
+    title: 'Full-Stack Developer',
+    location: 'Malappuram, Kerala, India',
     availability: 'Available for opportunities', // TODO: Verify exact availability (full-time, freelance, remote/relocation)
-    bio: 'Software developer combining a commerce & accounting background with hands-on full-stack experience across enterprise .NET ERP systems, Python Django web applications, React.js interfaces, and practical AI API integrations.'
+    bio: 'Full-Stack Developer combining a commerce & accounting background with hands-on full-stack experience across enterprise .NET ERP systems, Python Django web applications, React.js interfaces, and practical AI API integrations.'
   },
   education: [
     {

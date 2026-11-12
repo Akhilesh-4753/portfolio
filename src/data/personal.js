@@ -1,10 +1,10 @@
 // Personal information source of truth
 export const personalInfo = {
   name: "Akhilesh P",
-  title: "Software Developer",
-  positioning: "Software Developer | React.js | ASP.NET Core | REST APIs",
-  heroLabel: "SOFTWARE DEVELOPER",
-  heroHeadline: "Web Developer in Kozhikode, Kerala",
+  title: "Full-Stack Developer",
+  positioning: "Full-Stack Developer | React.js | Django | ASP.NET Core | AI Integration",
+  heroLabel: "FULL-STACK DEVELOPER",
+  heroHeadline: "Full-Stack Developer in Malappuram, Kerala",
   heroBio:
     "Hi, I'm Akhilesh P. With a strong commerce foundation and hands-on experience across enterprise .NET ERP systems and full-stack Python Django web applications, I build performant digital products enhanced with practical AI API integrations.",
   about: {
@@ -107,8 +107,8 @@ export const personalInfo = {
   },
   email: "akhipn4753@gmail.com",
   phone: "+91 9526008613",
-  location: "Kerala, India",
-  profileImage: "/Akhilesh/hero_image.png",
+  location: "Malappuram, Kerala, India",
+  profileImage: "/Akhilesh/hero-portrait.webp",
   resumeUrl: "/documents/Akhilesh_P_Resume_2026.pdf",
   status: "Building real-world software",
   activeWork: {

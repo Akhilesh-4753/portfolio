@@ -1,39 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { AppRoutes } from './routes/AppRoutes';
-import { LoadingScreen } from './components/common/LoadingScreen';
 
 function AnalyticsTracker() {
   const location = useLocation();
+  const lastTrackedRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      window.gtag('config', 'G-8CRCHQSJM4', {
-        page_path: location.pathname + location.search + location.hash
-      });
-    }
-  }, [location]);
+    const pagePath = location.pathname + location.search + location.hash;
+    if (lastTrackedRef.current === pagePath) return undefined;
+
+    const rafId = window.requestAnimationFrame(() => {
+      lastTrackedRef.current = pagePath;
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'page_view', {
+          page_path: pagePath,
+          page_location: window.location.href,
+          page_title: document.title
+        });
+      }
+    });
+
+    return () => window.cancelAnimationFrame(rafId);
+  }, [location.pathname, location.search, location.hash]);
 
   return null;
 }
 
-export function AppShell() {
-  const [loading, setLoading] = useState(true);
-
+export function AppShell({ projectDetailsPage, notFound } = {}) {
   return (
     <ThemeProvider>
-      {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <AnalyticsTracker />
-      <AppRoutes />
+      <AppRoutes projectDetailsPage={projectDetailsPage} notFound={notFound} />
     </ThemeProvider>
   );
 }
 
-export function App() {
+export function App({ projectDetailsPage, notFound } = {}) {
   return (
     <BrowserRouter>
-      <AppShell />
+      <AppShell projectDetailsPage={projectDetailsPage} notFound={notFound} />
     </BrowserRouter>
   );
 }

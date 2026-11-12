@@ -153,21 +153,37 @@ export const Hero = () => {
               <div className="hero-frame-wrap">
                 <div className="hero-frame-glow" aria-hidden="true" />
                 <div className="hero-frame">
-                  <img
-                    src="/Akhilesh/hero-portrait.webp"
-                    alt="Akhilesh P., Full-Stack Developer in Malappuram, Kerala"
-                    className="hero-photo"
-                    onError={(e) => {
-                      const img = e.currentTarget;
-                      if (!img.dataset.fallbackStep) {
-                        img.dataset.fallbackStep = '1';
-                        img.src = '/Akhilesh/hero_image.png';
-                      } else if (img.dataset.fallbackStep === '1') {
-                        img.dataset.fallbackStep = '2';
-                        img.src = '/Akhilesh/Akhilesh.jpeg';
-                      }
-                    }}
-                  />
+                  <picture>
+                    <source
+                      type="image/avif"
+                      srcSet="/Akhilesh/hero-portrait-640.avif 640w, /Akhilesh/hero-portrait.avif 1200w"
+                      sizes="(max-width: 900px) 92vw, 535px"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="/Akhilesh/hero-portrait-640.webp 640w, /Akhilesh/hero-portrait.webp 1200w"
+                      sizes="(max-width: 900px) 92vw, 535px"
+                    />
+                    <img
+                      src="/Akhilesh/hero-portrait.webp"
+                      alt="Akhilesh P., Full-Stack Developer in Malappuram, Kerala"
+                      width="1200"
+                      height="800"
+                      fetchPriority="high"
+                      decoding="sync"
+                      className="hero-photo"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (!img.dataset.fallbackStep) {
+                          img.dataset.fallbackStep = '1';
+                          img.src = '/Akhilesh/hero-portrait.jpg';
+                        } else if (img.dataset.fallbackStep === '1') {
+                          img.dataset.fallbackStep = '2';
+                          img.src = '/Akhilesh/Akhilesh.jpeg';
+                        }
+                      }}
+                    />
+                  </picture>
                 </div>
               </div>
             </FadeIn>

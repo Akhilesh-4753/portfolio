@@ -3,7 +3,7 @@ import { Terminal } from 'lucide-react';
 
 const COMMAND_SEQUENCE = [
   { cmd: 'whoami', output: 'Akhilesh P' },
-  { cmd: 'role', output: 'Software Developer' },
+  { cmd: 'role', output: 'Full-Stack Developer' },
   { cmd: 'stack', output: 'React.js · ASP.NET Core · REST APIs · SQL' },
   { cmd: 'status', output: '● Building real-world software', isStatus: true }
 ];

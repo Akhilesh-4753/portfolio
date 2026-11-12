@@ -14,7 +14,7 @@ export const FadeIn = ({
 }) => {
   const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || immediate) {
     return <div className={className} style={style}>{children}</div>;
   }
 

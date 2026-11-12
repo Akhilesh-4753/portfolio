@@ -119,7 +119,7 @@ export const Footer = () => {
             </div>
             <SocialLinks />
             <div style={{ marginTop: '1.2rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-              Kerala, India • Available for opportunities
+              {personalInfo.location} • Available for opportunities
             </div>
           </div>
         </div>

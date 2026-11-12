@@ -334,7 +334,10 @@ export const ProjectPreview = ({ project, aspectRatio = '16 / 9' }) => {
         <img
           src={project.image}
           alt={project.imageAlt || `${project.title} preview`}
+          width="800"
+          height="450"
           loading="lazy"
+          decoding="async"
           onError={() => setImgFailed(true)}
           className="project-preview-media"
           style={{
