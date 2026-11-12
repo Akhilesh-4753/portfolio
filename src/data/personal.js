@@ -50,7 +50,7 @@ export const personalInfo = {
           company: "BlackBox Learning Academy",
           description:
             "Strengthened full-stack backend skills by building TaskFlow and INKSPACE with AI API integrations.",
-          skills: ["Python", "Django", "SQLite", "HTML", "CSS", "JavaScript", "Gemini API", "Groq API", "PostgreSQL"],
+          skills: ["Python", "Django", "SQLite", "HTML", "CSS", "JavaScript", "Gemini API", "Groq API", "PostgreSQL", "Codewars", "Tailwind CSS"],
           icon: "code"
         },
         {
