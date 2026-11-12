@@ -107,6 +107,7 @@ export const AIButton = ({ onClick, className = '' }) => {
       <button
         type="button"
         className="ai-btn"
+        data-ai-open
         data-label="Ask AI"
         aria-label="Open AI assistant"
         onClick={handleLauncherClick}

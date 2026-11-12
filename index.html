@@ -56,6 +56,100 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- AI Assistant Chat Modal -->
+    <div id="cb-chatbot" class="cb-root" hidden>
+      <div class="cb-backdrop" data-cb-backdrop aria-hidden="true"></div>
+      <section
+        id="cb-panel"
+        class="cb-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="AI assistant chat"
+        tabindex="-1"
+      >
+        <header class="cb-header">
+          <div class="cb-brand">
+            <span class="cb-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14" />
+              </svg>
+            </span>
+            <div class="cb-brand-text">
+              <h2 class="cb-title">Akhilesh's AI Assistant</h2>
+              <p class="cb-subtitle">Powered by Gemini</p>
+            </div>
+          </div>
+
+          <div class="cb-header-actions">
+            <button
+              type="button"
+              id="cb-clear"
+              class="cb-icon-btn cb-clear-btn"
+              aria-label="Clear chat"
+              title="Clear chat"
+            >
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 6h18" />
+                <path d="M8 6V4h8v2" />
+                <path d="M19 6l-1 14H6L5 6" />
+              </svg>
+              <span>Clear</span>
+            </button>
+
+            <button
+              type="button"
+              id="cb-close"
+              class="cb-icon-btn cb-close-btn"
+              aria-label="Close AI assistant chat"
+              title="Close"
+            >
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6L6 18" />
+                <path d="M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div
+          id="cb-messages"
+          class="cb-messages"
+          aria-live="polite"
+          aria-relevant="additions"
+        ></div>
+
+        <form id="cb-form" class="cb-form" novalidate>
+          <div class="cb-input-wrap">
+            <textarea
+              id="cb-input"
+              class="cb-input"
+              rows="1"
+              maxlength="500"
+              placeholder="Ask about Akhilesh's projects, skills..."
+              aria-label="Message Akhilesh's AI assistant"
+            ></textarea>
+            <button
+              type="submit"
+              id="cb-send"
+              class="cb-send-btn"
+              aria-label="Send message"
+              disabled
+            >
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 2L11 13" />
+                <path d="M22 2L15 22l-4-9-9-4 20-7z" />
+              </svg>
+            </button>
+          </div>
+          <div class="cb-input-meta">
+            <span class="cb-hint">Enter to send · Shift+Enter newline</span>
+            <span id="cb-counter" class="cb-counter">0 / 500</span>
+          </div>
+        </form>
+      </section>
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
