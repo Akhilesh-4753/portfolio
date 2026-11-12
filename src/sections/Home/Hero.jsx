@@ -38,8 +38,42 @@ export const Hero = () => {
           <div className="hero-content">
             <FadeIn direction="up" delay={0.04} distance={14} duration={0.45} immediate={true}>
               <div className="hero-eyebrow">
-                <span className="hero-eyebrow-rule" aria-hidden="true" />
-                <span>SOFTWARE DEVELOPER · MALAPPURAM, KERALA</span>
+                <span className="hero-eyebrow-item">
+                  <svg
+                    className="hero-eyebrow-icon"
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14" />
+                  </svg>
+                  <span>FULL-STACK DEVELOPER</span>
+                </span>
+                <span className="hero-eyebrow-sep" aria-hidden="true">·</span>
+                <span className="hero-eyebrow-item">
+                  <svg
+                    className="hero-eyebrow-icon"
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>MALAPPURAM, KERALA</span>
+                </span>
               </div>
             </FadeIn>
 
@@ -59,7 +93,7 @@ export const Hero = () => {
 
             <FadeIn direction="up" delay={0.18} distance={14} duration={0.45} immediate={true}>
               <p className="hero-description">
-                I'm Akhilesh P., a software developer combining business knowledge with full-stack engineering. I build web applications, ERP solutions, and AI-powered experiences using modern technologies.
+                I'm Akhilesh P., a full-stack developer with a background in commerce and accounting. I build ERP systems, web applications and AI-powered features with ASP.NET Core, Django and React, turning real business workflows into fast, reliable software.
               </p>
             </FadeIn>
 

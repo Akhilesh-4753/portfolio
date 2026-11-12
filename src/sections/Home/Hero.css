@@ -51,7 +51,7 @@
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem 0.6rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
@@ -62,11 +62,21 @@
   max-width: 100%;
 }
 
-.hero-eyebrow-rule {
-  width: 22px;
-  height: 1px;
-  background: var(--hero-accent);
+.hero-eyebrow-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.hero-eyebrow-icon {
+  color: #ff6a1a;
   flex-shrink: 0;
+  display: block;
+}
+
+.hero-eyebrow-sep {
+  opacity: 0.85;
 }
 
 .hero-title {
@@ -284,11 +294,11 @@
   .hero-eyebrow {
     font-size: 0.68rem;
     letter-spacing: 0.08em;
-    gap: 0.45rem;
+    gap: 0.35rem 0.5rem;
   }
 
-  .hero-eyebrow-rule {
-    width: 16px;
+  .hero-eyebrow-item {
+    gap: 0.5rem;
   }
 
   .hero-title {
