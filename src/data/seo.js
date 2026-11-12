@@ -1,9 +1,91 @@
 import { projects } from './projects.js';
+import { socialLinks } from './socialLinks.js';
 
 export const SITE_URL = 'https://akhileshp.com';
 export const SITE_NAME = 'Akhilesh P.';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/Akhilesh/Akhilesh.jpeg`;
 export const DEFAULT_OG_IMAGE_ALT = 'Akhilesh P., Full-Stack Developer in Malappuram, Kerala';
+
+const PERSON_ID = `${SITE_URL}/#person`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const PROFILE_PAGE_ID = `${SITE_URL}/#profilepage`;
+
+const PROFILE_SAME_AS = socialLinks
+  .map((item) => item.url)
+  .filter((url) => typeof url === 'string' && url.startsWith('https://') && !url.startsWith('https://wa.me'));
+
+const PERSON_ENTITY = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: 'Akhilesh P.',
+  jobTitle: 'Full-Stack Developer',
+  url: `${SITE_URL}/`,
+  image: DEFAULT_OG_IMAGE,
+  email: 'mailto:akhipn4753@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Malappuram',
+    addressRegion: 'Kerala',
+    addressCountry: 'IN'
+  },
+  knowsAbout: [
+    'Full-Stack Web Development',
+    'React.js',
+    'Python',
+    'Django',
+    'ASP.NET Core',
+    'C#',
+    'JavaScript',
+    'REST APIs',
+    'ERP Systems',
+    'SQL',
+    'PostgreSQL',
+    'AI Integration',
+    'Accounting & Financial Operations'
+  ],
+  sameAs: PROFILE_SAME_AS
+};
+
+const WEBSITE_ENTITY = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  url: `${SITE_URL}/`,
+  name: 'Akhilesh P. | Full-Stack Developer',
+  description:
+    'Akhilesh P. is a Full-Stack Developer from Malappuram, Kerala, specializing in React, Django, ASP.NET Core, ERP systems and AI-powered web applications.',
+  inLanguage: 'en',
+  publisher: {
+    '@id': PERSON_ID
+  }
+};
+
+export function buildHomeJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      PERSON_ENTITY,
+      WEBSITE_ENTITY,
+      {
+        '@type': 'ProfilePage',
+        '@id': PROFILE_PAGE_ID,
+        url: `${SITE_URL}/`,
+        name: 'Akhilesh P. | Full-Stack Developer in Malappuram, Kerala',
+        description:
+          'Akhilesh P. is a Full-Stack Developer from Malappuram, Kerala, specializing in React, Django, ASP.NET Core, ERP systems and AI-powered web applications.',
+        inLanguage: 'en',
+        isPartOf: {
+          '@id': WEBSITE_ID
+        },
+        about: {
+          '@id': PERSON_ID
+        },
+        mainEntity: {
+          '@id': PERSON_ID
+        }
+      }
+    ]
+  };
+}
 
 export const HOME_SEO = {
   title: 'Akhilesh P. | Full-Stack Developer in Malappuram, Kerala',
@@ -13,7 +95,8 @@ export const HOME_SEO = {
   type: 'website',
   image: DEFAULT_OG_IMAGE,
   imageAlt: DEFAULT_OG_IMAGE_ALT,
-  noindex: false
+  noindex: false,
+  jsonLd: buildHomeJsonLd()
 };
 
 export const NOT_FOUND_SEO = {
@@ -24,7 +107,8 @@ export const NOT_FOUND_SEO = {
   type: 'website',
   image: DEFAULT_OG_IMAGE,
   imageAlt: DEFAULT_OG_IMAGE_ALT,
-  noindex: true
+  noindex: true,
+  jsonLd: null
 };
 
 export const PROJECT_NOT_FOUND_SEO = {
@@ -35,7 +119,39 @@ export const PROJECT_NOT_FOUND_SEO = {
   type: 'website',
   image: DEFAULT_OG_IMAGE,
   imageAlt: DEFAULT_OG_IMAGE_ALT,
-  noindex: true
+  noindex: true,
+  jsonLd: null
+};
+
+const PROJECT_SCHEMA_CLASSIFICATION = {
+  taskflow: {
+    type: 'SoftwareApplication',
+    applicationCategory: 'ProductivityApplication',
+    operatingSystem: 'Web'
+  },
+  inkspace: {
+    type: 'SoftwareApplication',
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'Web'
+  },
+  daybook: {
+    type: 'SoftwareApplication',
+    applicationCategory: 'ProductivityApplication',
+    operatingSystem: 'Mobile'
+  },
+  'code7-erp': {
+    type: 'SoftwareApplication',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web'
+  },
+  'pos-business-management': { type: 'CreativeWork' },
+  apnavilla: { type: 'CreativeWork' },
+  'kidonex-feedback': { type: 'CreativeWork' },
+  movie: { type: 'CreativeWork' },
+  ecommerce: { type: 'CreativeWork' },
+  streamline: { type: 'CreativeWork' },
+  aishka: { type: 'CreativeWork' },
+  'urban-escape': { type: 'CreativeWork' }
 };
 
 const PROJECT_SEO_OVERRIDES = {
@@ -135,13 +251,103 @@ export function toAbsoluteUrl(pathOrUrl) {
   return `${SITE_URL}${normalized}`;
 }
 
+export function buildProjectJsonLd(project, meta) {
+  const canonicalUrl = `${SITE_URL}/projects/${project.slug}`;
+  const webPageId = `${canonicalUrl}#webpage`;
+  const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+  const projectEntityId = `${canonicalUrl}#project`;
+  const classification = PROJECT_SCHEMA_CLASSIFICATION[project.slug] || { type: 'CreativeWork' };
+
+  const projectEntity = {
+    '@type': classification.type,
+    '@id': projectEntityId,
+    name: project.title,
+    description: meta.description,
+    url: canonicalUrl,
+    image: meta.image,
+    author: {
+      '@id': PERSON_ID
+    },
+    ...(Array.isArray(project.technologies) && project.technologies.length > 0
+      ? { keywords: project.technologies }
+      : {}),
+    ...(classification.type === 'SoftwareApplication'
+      ? {
+          applicationCategory: classification.applicationCategory,
+          operatingSystem: classification.operatingSystem
+        }
+      : {
+          ...(project.category ? { genre: project.category } : {})
+        })
+  };
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': PERSON_ID,
+        name: 'Akhilesh P.',
+        url: `${SITE_URL}/`
+      },
+      {
+        '@type': 'WebSite',
+        '@id': WEBSITE_ID,
+        url: `${SITE_URL}/`,
+        name: SITE_NAME
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': breadcrumbId,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SITE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Projects',
+            item: `${SITE_URL}/#projects`
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: project.title,
+            item: canonicalUrl
+          }
+        ]
+      },
+      {
+        '@type': 'WebPage',
+        '@id': webPageId,
+        url: canonicalUrl,
+        name: meta.title,
+        description: meta.description,
+        inLanguage: 'en',
+        isPartOf: {
+          '@id': WEBSITE_ID
+        },
+        breadcrumb: {
+          '@id': breadcrumbId
+        },
+        mainEntity: {
+          '@id': projectEntityId
+        }
+      },
+      projectEntity
+    ]
+  };
+}
+
 export function getProjectSeo(project) {
   if (!project) return PROJECT_NOT_FOUND_SEO;
 
   const override = PROJECT_SEO_OVERRIDES[project.slug] || {};
   const imageUrl = override.image || (project.image ? toAbsoluteUrl(project.image) : DEFAULT_OG_IMAGE);
-
-  return {
+  const meta = {
     title: override.title || `${project.title} | ${SITE_NAME}`,
     description: override.description || project.shortDescription || HOME_SEO.description,
     canonical: `${SITE_URL}/projects/${project.slug}`,
@@ -149,6 +355,11 @@ export function getProjectSeo(project) {
     image: imageUrl,
     imageAlt: override.imageAlt || project.imageAlt || `${project.title} — ${SITE_NAME}`,
     noindex: false
+  };
+
+  return {
+    ...meta,
+    jsonLd: buildProjectJsonLd(project, meta)
   };
 }
 
@@ -217,6 +428,11 @@ export function renderSeoHeadHtml(seo) {
     `<meta name="twitter:image" content="${escapeHtmlAttr(seo.image || DEFAULT_OG_IMAGE)}" />`,
     `<meta name="twitter:image:alt" content="${escapeHtmlAttr(seo.imageAlt || DEFAULT_OG_IMAGE_ALT)}" />`
   );
+
+  if (seo.jsonLd) {
+    const safeJson = JSON.stringify(seo.jsonLd).replaceAll('<', '\\u003c');
+    lines.push(`<script type="application/ld+json" data-seo-jsonld="true">${safeJson}</script>`);
+  }
 
   return lines.join('\n    ');
 }

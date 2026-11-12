@@ -32,6 +32,22 @@ function upsertCanonical(href) {
   el.setAttribute('href', href);
 }
 
+function upsertJsonLd(jsonLd) {
+  const selector = 'script[type="application/ld+json"][data-seo-jsonld="true"]';
+  let el = document.head.querySelector(selector);
+  if (!jsonLd) {
+    if (el) el.remove();
+    return;
+  }
+  if (!el) {
+    el = document.createElement('script');
+    el.setAttribute('type', 'application/ld+json');
+    el.setAttribute('data-seo-jsonld', 'true');
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify(jsonLd);
+}
+
 export const SeoHead = ({
   title,
   description,
@@ -39,7 +55,8 @@ export const SeoHead = ({
   type = 'website',
   image = DEFAULT_OG_IMAGE,
   imageAlt = DEFAULT_OG_IMAGE_ALT,
-  noindex = false
+  noindex = false,
+  jsonLd = null
 }) => {
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -77,7 +94,9 @@ export const SeoHead = ({
     if (description) upsertMeta('name', 'twitter:description', description);
     upsertMeta('name', 'twitter:image', image);
     upsertMeta('name', 'twitter:image:alt', imageAlt);
-  }, [title, description, canonical, type, image, imageAlt, noindex]);
+
+    upsertJsonLd(jsonLd);
+  }, [title, description, canonical, type, image, imageAlt, noindex, jsonLd]);
 
   return null;
 };

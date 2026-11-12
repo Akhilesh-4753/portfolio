@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle2, Award, Calendar, Layers, Sparkles, Target, Activity } from 'lucide-react';
+import { useParams, Link } from 'react-router-dom';
+import { ArrowLeft, ChevronRight, CheckCircle2, Award, Calendar, Layers, Sparkles, Target, Activity } from 'lucide-react';
 import { projects } from '../data/projects';
 import { getProjectSeo } from '../data/seo';
 import { SeoHead } from '../components/seo/SeoHead';
@@ -12,7 +12,6 @@ import { ProjectGallery } from '../components/project/ProjectGallery';
 
 export const ProjectDetailsPage = () => {
   const { slug } = useParams();
-  const navigate = useNavigate();
 
   const project = projects.find((p) => p.slug === slug);
 
@@ -44,8 +43,54 @@ export const ProjectDetailsPage = () => {
     <div style={{ paddingTop: '7rem', paddingBottom: '6rem' }}>
       <SeoHead {...seo} />
       <Container>
-        {/* Navigation Bar */}
-        <div style={{ marginBottom: '2.5rem' }}>
+        {/* Breadcrumb & Back Navigation */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            marginBottom: '2rem'
+          }}
+        >
+          <nav aria-label="Breadcrumb">
+            <ol
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '0.45rem',
+                listStyle: 'none',
+                margin: 0,
+                padding: 0,
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.82rem',
+                color: 'var(--text-muted)'
+              }}
+            >
+              <li>
+                <Link to="/" className="project-breadcrumb-link">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <ChevronRight size={13} />
+              </li>
+              <li>
+                <Link to="/#projects" className="project-breadcrumb-link">
+                  Projects
+                </Link>
+              </li>
+              <li aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <ChevronRight size={13} />
+              </li>
+              <li aria-current="page" style={{ color: 'var(--color-blue)', fontWeight: 600 }}>
+                {project.title}
+              </li>
+            </ol>
+          </nav>
+
           <Button to="/#projects" variant="secondary" icon={ArrowLeft} iconPosition="left">
             Back to All Projects
           </Button>
@@ -564,6 +609,14 @@ export const ProjectDetailsPage = () => {
       </Container>
 
       <style>{`
+        .project-breadcrumb-link {
+          color: var(--text-secondary);
+          transition: var(--transition-smooth);
+        }
+        .project-breadcrumb-link:hover,
+        .project-breadcrumb-link:focus-visible {
+          color: var(--text-primary);
+        }
         @media (max-width: 840px) {
           .case-study-split {
             grid-template-columns: 1fr !important;
