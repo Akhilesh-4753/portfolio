@@ -1,125 +1,185 @@
-# Phase 7.1 – Priority 1 Implementation Report
+# Phase 7.1 – Master Implementation & Verification Report
 
-## Approved GitHub Optimization Execution & Live Verification (`https://akhileshp.com`)
+## Complete Owned Profile Optimization (`https://akhileshp.com`)
 
-**Updated:** 2026-11-13  
-**Target Profile:** `https://github.com/Akhilesh-4753`  
-**Scope:** Approved GitHub Optimization Items Only (`Portfolio_old` untouched, LinkedIn untouched, WhatsApp excluded, portfolio website source & SEO untouched)  
-
----
-
-## 1. Execution & Verification Summary
-
-| Priority Level | Scope | Status | Verification Summary |
-|---|---|---|---|
-| **Priority 1: GitHub Profile Fields** | Name, Bio, Website, Location, Social Link | **Completed Publicly & Verified** | Live verified via GitHub API & HTML scrape on 2026-11-13. Name, Bio, Website (`akhileshp.com`), Location (`Malappuram, Kerala, India`), and LinkedIn are publicly active. |
-| **Priority 2: GitHub Profile README** | `Akhilesh-4753/Akhilesh-4753/README.md` | **Prepared Locally (Pending Approval)** | Prepared locally in `docs/seo/GITHUB_PROFILE_README.md`. Includes intro, skills, 5 projects, portfolio, LinkedIn, and Instagram. Zero WhatsApp links. |
-| **Priority 3: Portfolio Repo Metadata** | `Akhilesh-4753/portfolio` | **Pending Approval & Save** | `README.md` completed and live on `origin/main` (`ed1b6b9`). Repo About metadata (`homepage`, `description`, `topics`) pending user save. |
-| **Priority 4: TaskFlow & INKSPACE** | Descriptions, Topics, Case Study Links | **Pending Approval** | Top README case study links and About metadata ready to apply. |
-| **Priority 5: Pinned Repositories** | Profile Showcase | **Pending Approval** | Pin recommendations prepared (`portfolio`, `TaskFlow`, `INKSPACE`). |
+**Date:** 2026-11-13  
+**Target Profiles:**
+- **Portfolio:** `https://akhileshp.com`
+- **GitHub:** `https://github.com/Akhilesh-4753`
+- **LinkedIn:** `https://www.linkedin.com/in/akhilesh4753`
+- **Instagram:** `https://www.instagram.com/_akhiles___h__`
 
 ---
 
-## 2. Detailed Verified Live State
+## 1. Master Task Status Summary
 
-| Approved Action | Live Verification Result (2026-11-13) | Status | Exact Verified Evidence / Reason |
-|---|---|---|---|
-| **1. GitHub Profile Fields** (`Name`, `Website`, `Bio`, `Location`, `LinkedIn`) | `name: "Akhilesh P"`, `bio: "Full-Stack Developer \| React, Python/Django, ASP.NET Core \| ERP & AI-powered Web Applications"`, `blog: "https://akhileshp.com"`, `location: "Malappuram, Kerala, India"`, `linkedin.com/in/akhilesh4753` visible | **Completed Publicly & Verified** | Verified via `https://api.github.com/users/Akhilesh-4753` (`updated_at: 2026-11-13T13:42:20Z`) and profile sidebar scraping. |
-| **2. `Akhilesh-4753/portfolio` README update** | `https://akhileshp.com` link + architecture & case study README live on `main` (`ed1b6b9`, `main...origin/main` clean) | **Completed Publicly & Verified** | Verified via `raw.githubusercontent.com/Akhilesh-4753/portfolio/main/README.md` (`# Akhilesh P. — Personal Developer Portfolio`, zero WhatsApp links). |
-| **3. `Akhilesh-4753` Profile README (`Akhilesh-4753/README.md`)** | Clean draft prepared locally in `docs/seo/GITHUB_PROFILE_README.md`. Live file currently still contains legacy leak & WhatsApp link until user approves and replaces it. | **Prepared Locally — Awaiting Approval** | Ready for user review and 1-click update. Strictly excludes WhatsApp; includes Instagram, LinkedIn, portfolio, and 5 case study links. |
-| **4. `portfolio` Repo Metadata** (`Homepage`, `Description`, `Topics`) | `homepage: "https://portfolio-akhileshp.vercel.app"` (`HTTP 302` SSO), `description: null`, `topics: []` | **Pending Action** | Repo About settings (`⚙️`) must be updated in GitHub Web UI to set homepage to `https://akhileshp.com`. |
-| **5. `TaskFlow` Repo Metadata & README Link** | `description: null`, `homepage: null`, `topics: []`, README (`7,489` chars) has `0` links to `akhileshp.com/projects/taskflow` | **Pending Action** | Ready to prepend top case study banner and update About settings once approved. |
-| **6. `INKSPACE` Repo Metadata & README Link** | `description: null`, `homepage: null`, `topics: []`, README (`10,591` chars) has `0` links to `akhileshp.com/projects/inkspace` | **Pending Action** | Ready to prepend top case study banner and update About settings once approved. |
-| **7. Pinned Repositories** | Live pinned items remain: `Movie-App`, `E-Commerce`, `FOODIE`, `Portfolio_old`, `Akhilesh-4753`, `Restaurant-clone` | **Pending Action** | Pin order can only be customized logged into `https://github.com/Akhilesh-4753` (`Customize your pins`). |
-
----
-
-## 3. Ready-to-Apply Copy for Priority 2
-
-### Prepared Local File: `docs/seo/GITHUB_PROFILE_README.md`
-
-*(Removes WhatsApp and personal phone number; removes checklist leakage; includes Instagram, LinkedIn, Portfolio, and 5 verified case studies.)*
-
-```markdown
-<div align="center">
-  <h1>Hi, I'm Akhilesh P. 👋</h1>
-  <p><strong>Full-Stack Developer | React, Python/Django, ASP.NET Core | ERP &amp; AI-Powered Web Applications</strong></p>
-  <p>📍 Malappuram, Kerala, India</p>
-  <p>
-    <a href="https://akhileshp.com">🌐 Portfolio (akhileshp.com)</a> ·
-    <a href="https://www.linkedin.com/in/akhilesh4753">💼 LinkedIn</a> ·
-    <a href="https://www.instagram.com/_akhiles___h__">📸 Instagram</a> ·
-    <a href="mailto:akhipn4753@gmail.com">✉️ Email</a>
-  </p>
-</div>
+| Step | Area | Scope | Status | Verification Summary |
+|---|---|---|---|---|
+| **Step 1** | GitHub Profile Fields | Name, Bio, Website, Location, LinkedIn | **Completed & Live Verified** | Verified live via GitHub REST API (`2026-11-13T13:42:20Z`) and public profile sidebar. |
+| **Step 1** | GitHub Profile README | `Akhilesh-4753/Akhilesh-4753` | **Completed & Live Verified** | Verified live (`3,270` bytes). Zero WhatsApp links, zero leak, includes Instagram, LinkedIn, Portfolio, and 5 case studies. |
+| **Step 2** | Portfolio Repository | `Akhilesh-4753/portfolio` | **README Live / About Pending Save** | `README.md` live on `origin/main` (`ed1b6b9`); all 11 outbound links return `200`. About settings ready to save. |
+| **Step 3** | TaskFlow Repository | `Akhilesh-4753/TaskFlow` | **README Live / About Pending Save** | Top case-study banner added, committed (`72be35c`), and pushed to `origin/main`. About settings ready to save. |
+| **Step 3** | INKSPACE Repository | `Akhilesh-4753/INKSPACE` | **README Live / About Pending Save** | Top case-study banner added, committed (`3569e57`), and pushed to `origin/main`. About settings ready to save. |
+| **Step 4** | Pinned Repositories | Profile Showcase | **Audit Complete / Pending User Pins** | Evaluated 29 repos. Recommended 6 strongest pins (`portfolio`, `TaskFlow`, `INKSPACE`, `Movie-Hub`, `FormPage`, `Django-mvt-basics`). |
+| **Step 5** | LinkedIn Profile | Headline, About, Experience, Skills, Featured | **Drafts Ready / Pending User Action** | Complete 100% portfolio-aligned copy prepared. 5 items flagged for confirmation before saving. |
+| **Step 6** | `Portfolio_old` Backup | Legacy GitHub Pages Site | **Backup Verified / Pending Retirement** | Complete repository cloned & verified at `e:\BlackBox\Portfolio_old-backup` (9 commits, all files intact). |
+| **Step 7** | Master Verification | Cross-platform Link & Data Audit | **Completed & Verified** | All portfolio case-study URLs return `HTTP 200`. Zero source code or technical SEO architecture modified. |
 
 ---
 
-### About Me
+## 2. Publicly Verified Live Changes (Evidence Log)
 
-I am a **Full-Stack Developer** based in **Malappuram, Kerala, India**, who transitioned from a financial accounting foundation (Bachelor of Commerce, Calicut University; Accountant Executive at myG India Private Limited) into software engineering.
+### 2.1 GitHub Profile Fields (`https://github.com/Akhilesh-4753`)
+- **API Endpoint:** `https://api.github.com/users/Akhilesh-4753`
+- **Name:** `Akhilesh P` (Verified)
+- **Bio:** `Full-Stack Developer | React, Python/Django, ASP.NET Core | ERP & AI-powered Web Applications` (Verified)
+- **Website (`blog`):** `https://akhileshp.com` (Verified)
+- **Location:** `Malappuram, Kerala, India` (Verified)
+- **Social Link:** `https://www.linkedin.com/in/akhilesh4753` (Verified on public sidebar)
 
-My experience spans **ASP.NET Core MVC enterprise ERP systems**, responsive **React.js web applications**, and full-stack **Python Django platforms** integrated with modern AI APIs.
+### 2.2 GitHub Profile README (`Akhilesh-4753/Akhilesh-4753/README.md`)
+- **Raw URL:** `https://raw.githubusercontent.com/Akhilesh-4753/Akhilesh-4753/main/README.md`
+- **File Length:** `3,270` bytes
+- **WhatsApp Privacy Check:** `false` (Zero phone numbers or `wa.me` links)
+- **Instagram Link Check:** `true` (`https://www.instagram.com/_akhiles___h__`)
+- **Portfolio Link Check:** `true` (`https://akhileshp.com`)
+- **Checklist Leak Check:** `false` (Cleaned completely)
+- **Featured Project Links:** All 5 projects (`taskflow`, `inkspace`, `portfolio`, `daybook`, `code7-erp`) properly linked.
 
-- 🌐 **Portfolio & Case Studies:** [akhileshp.com](https://akhileshp.com)
-- 💼 **Professional Experience:** Former `.NET Developer` at Ebsor Infosystem Pvt. Ltd. (`Code7 ERP`, `Kidonex`) & Genstack Intern at BlackBox Learning Academy (`TaskFlow`, `INKSPACE`)
-- 🧩 **Ongoing Collaboration:** Functional planning, business logic, and workflow design for a 12-module POS Sales & Business Management Software suite (`.NET` + `React.js`)
-
----
-
-### Core Technologies & Tools
-
-- **Backend & Databases:** Python · Django · C# · ASP.NET Core MVC · .NET · REST APIs · PostgreSQL · SQL · SQLite
-- **Frontend & Mobile:** React.js · Next.js · React Native · JavaScript · HTML5 · CSS3 · Bootstrap · Tailwind CSS · Material UI · Kendo UI
-- **AI & Integrations:** Google Gemini API · Groq API · RESTful Integrations
-- **Tools & Platforms:** Git · GitHub · Vite · Visual Studio · VS Code · Vercel · Render
-
----
-
-### Highlighted Projects & Case Studies
-
-| Project | Tech Stack | Case Study & Live Architecture | Repository |
-|---|---|---|---|
-| **TaskFlow** | Python, Django MVT, Neon PostgreSQL, Gemini & Groq AI | [Case Study on akhileshp.com](https://akhileshp.com/projects/taskflow) | [Akhilesh-4753/TaskFlow](https://github.com/Akhilesh-4753/TaskFlow) |
-| **INKSPACE** | Python, Django MVT, CKEditor, SQLite, Gemini AI | [Case Study on akhileshp.com](https://akhileshp.com/projects/inkspace) | [Akhilesh-4753/INKSPACE](https://github.com/Akhilesh-4753/INKSPACE) |
-| **Developer Portfolio** | React 19, Vite 8, React Router 7, Prerendering, JSON-LD | [akhileshp.com](https://akhileshp.com/) | [Akhilesh-4753/portfolio](https://github.com/Akhilesh-4753/portfolio) |
-| **Daybook** | React Native, JavaScript (Mobile Daily Productivity) | [Case Study on akhileshp.com](https://akhileshp.com/projects/daybook) | Mobile App |
-| **Code7 ERP** | ASP.NET Core, .NET, Kendo UI, REST APIs, SQL | [Case Study on akhileshp.com](https://akhileshp.com/projects/code7-erp) | Enterprise / Proprietary |
+### 2.3 Repository README Case-Study Links
+- **`Akhilesh-4753/portfolio`:** Commit `ed1b6b9` on `main`. 11 outbound links verified responding with HTTP 200.
+- **`Akhilesh-4753/TaskFlow`:** Commit `72be35c` on `main`. Prepend banner verified live:  
+  `> 🌐 **Portfolio Case Study & Architecture:** Explore full architectural breakdowns, screenshots, and features at **[akhileshp.com/projects/taskflow](https://akhileshp.com/projects/taskflow)**.`
+- **`Akhilesh-4753/INKSPACE`:** Commit `3569e57` on `main`. Prepend banner verified live:  
+  `> 🌐 **Portfolio Case Study & Architecture:** Explore full architectural breakdowns, screenshots, and features at **[akhileshp.com/projects/inkspace](https://akhileshp.com/projects/inkspace)**.`
 
 ---
 
-### Connect With Me
+## 3. Manual Actions Required in GitHub Web UI (5 Minutes)
 
-- 🌐 **Portfolio:** [https://akhileshp.com](https://akhileshp.com)
-- 💼 **LinkedIn:** [linkedin.com/in/akhilesh4753](https://www.linkedin.com/in/akhilesh4753)
-- 📸 **Instagram:** [@_akhiles___h__](https://www.instagram.com/_akhiles___h__)
-- ✉️ **Email:** [akhipn4753@gmail.com](mailto:akhipn4753@gmail.com)
+Because GitHub repository About settings (`⚙️`) and pinned showcase items cannot be modified without a private access token with `repo` and `user` scopes, apply these exact values in your browser:
+
+### 3.1 `Akhilesh-4753/portfolio` -> Click `⚙️` next to About:
+- **Description:** `Personal developer portfolio for Akhilesh P. built with React 19, Vite 8, build-time prerendering, JSON-LD structured data, and a Gemini AI assistant.`
+- **Website:** `https://akhileshp.com`
+- **Topics:** `portfolio` `react` `vite` `react-router` `technical-seo` `prerendering` `gemini-api` `vercel`
+
+### 3.2 `Akhilesh-4753/TaskFlow` -> Click `⚙️` next to About:
+- **Description:** `Full-stack Python Django MVT task management platform with Neon PostgreSQL, progress charts, reminders, and Groq/Gemini AI productivity assistance.`
+- **Website:** `https://akhileshp.com/projects/taskflow`
+- **Topics:** `python` `django` `django-mvt` `postgresql` `task-management` `ai-assistant` `groq-api` `gemini-api`
+
+### 3.3 `Akhilesh-4753/INKSPACE` -> Click `⚙️` next to About:
+- **Description:** `Medium-inspired Python Django MVT blogging platform with CKEditor rich-text editing, author permissions, SQLite, and Google Gemini AI writing assistance.`
+- **Website:** `https://akhileshp.com/projects/inkspace`
+- **Topics:** `python` `django` `django-mvt` `blog-platform` `gemini-api` `google-genai` `ckeditor` `sqlite`
+
+### 3.4 Pinned Repositories (`Customize your pins` on `https://github.com/Akhilesh-4753`):
+- **Check (Pin):**
+  1. `portfolio`
+  2. `TaskFlow`
+  3. `INKSPACE`
+  4. `Movie-Hub`
+  5. `FormPage`
+  6. `Django-mvt-basics`
+- **Uncheck (Unpin):**
+  - `Movie-App`
+  - `E-Commerce`
+  - `FOODIE`
+  - `Portfolio_old`
+  - `Akhilesh-4753`
+  - `Restaurant-clone`
+
+---
+
+## 4. `Portfolio_old` Investigation & Backup Status
+
+- **Live URL:** `https://akhilesh-4753.github.io/Portfolio_old/` (Currently returns broken `/src/index.jsx` client tag).
+- **Backup Location:** `e:\BlackBox\Portfolio_old-backup`
+- **Backup Verification:**
+  - Complete git commit history verified (9 commits, `master` branch up to `f1fc48e`).
+  - Full source directory (`src/`, `public/`, `dist/`, `package.json`, `vite.config.mjs`) verified on local disk.
+- **Unpublishing & Archival Analysis:**
+  - **Unpublishing GitHub Pages:** Stops Google and visitors from encountering the broken legacy site.
+  - **Switching Repo to Private (Recommended):** Keeps full commit history accessible to you in GitHub while completely removing legacy noise from public view and recruiter search results.
+  - **Archiving Repo (Alternative):** Leaves code publicly visible as read-only.
+- **Recommendation:**
+  1. Unpin `Portfolio_old` from profile pins immediately.
+  2. Disable GitHub Pages in `Portfolio_old` -> Settings -> Pages.
+  3. Switch repository to **Private** (or Archive it with a deprecation notice).
+
+---
+
+## 5. LinkedIn Profile Optimization (Ready to Apply)
+
+### 5.1 Headline
+```text
+Full-Stack Developer | React.js, Python Django & ASP.NET Core MVC | ERP Systems & AI Integrations
 ```
 
+### 5.2 About Section
+```text
+I am a Full-Stack Developer based in Malappuram, Kerala, combining a Bachelor of Commerce and financial accounting background with practical engineering experience across ASP.NET Core MVC enterprise ERP systems, Python Django web applications, and responsive React.js frontends.
+
+My journey from financial operations to software development shapes how I build software:
+
+• Accounting & Operations Foundation (myG India Pvt. Ltd.): Worked with financial statements, General Ledger, bank reconciliations, GST/TDS compliance, inventory registers, and SAP Business One. This domain experience helps me design structured business validation rules and connected workflows in ERP and retail systems.
+
+• Enterprise .NET ERP Engineering (Ebsor Infosystem Pvt. Ltd.): Developed and maintained Master, Transaction, and Report modules using ASP.NET Core MVC, .NET, SQL, REST APIs, Kendo UI, and Controller.cs business logic pipelines—including Code7 ERP and the Kidonex Customer Feedback & Review module.
+
+• Python Django & Practical AI Integration (BlackBox Learning Academy): Built TaskFlow (task management with Neon PostgreSQL, progress charts, reminders, and Gemini/Groq AI assistance) and INKSPACE (Django MVT blogging platform with CKEditor and Google Gemini AI writing assistance).
+
+• Frontend & Collaborative Team Delivery (AllPro TechLabs & Branding Hut): Built responsive React.js applications (E-commerce, Movie Web App, Streamline Consortium, Aishka) and collaborated with Laravel backend teams on ApnaVilla. Currently contributing functional planning and accounting-aligned workflow design for a 12-module POS Sales & Business Management Software suite (.NET + React.js).
+
+Explore detailed case studies and interactive demos at:
+Portfolio: https://akhileshp.com
+GitHub: https://github.com/Akhilesh-4753
+```
+
+### 5.3 Confirmation Flags (Verify Before Saving on LinkedIn)
+1. **BlackBox Learning Academy:** Confirm dates `Sept 2026 – Nov 2026`.
+2. **Ebsor Infosystem:** Confirm dates `Dec 2024 – Mar 2026` and job title (`.NET Developer` vs `Dot Net Developer`).
+3. **AllPro TechLabs:** Add missing start/end dates (omitted in repo).
+4. **Branding Hut:** Add missing start/end dates (omitted in repo).
+5. **ApnaVilla:** Confirm whether frontend utilized `Next.js` or `React.js` alongside Branding Hut's Laravel team.
+
+### 5.4 Featured Section
+1. `https://akhileshp.com/` — *Akhilesh P. | Full-Stack Developer Portfolio*
+2. `https://akhileshp.com/projects/taskflow` — *TaskFlow — Python Django & AI Task Management Platform*
+3. `https://akhileshp.com/projects/daybook` — *Daybook — React Native Daily Planning App*
+4. `https://akhileshp.com/projects/code7-erp` — *Code7 ERP — ASP.NET Core & Kendo UI Modules*
+
 ---
 
-## 4. Link Validation Results (Live HTTP Verification — 2026-11-13)
+## 6. Strict Scope & Safety Confirmation
 
-| URL | Status | Verified State |
-|---|---|---|
-| `https://akhileshp.com/` | **`200`** | Canonical portfolio homepage live and working. |
-| `https://akhileshp.com/projects/taskflow` | **`200`** | TaskFlow case study accessible. |
-| `https://akhileshp.com/projects/inkspace` | **`200`** | INKSPACE case study accessible. |
-| `https://akhileshp.com/projects/daybook` | **`200`** | Daybook case study accessible. |
-| `https://akhileshp.com/projects/code7-erp` | **`200`** | Code7 ERP case study accessible. |
-| `https://github.com/Akhilesh-4753` | **`200`** | Profile accessible; Priority 1 fields live and verified. |
-| `https://github.com/Akhilesh-4753/portfolio` | **`200`** | New `README.md` live; About metadata pending. |
-| `https://github.com/Akhilesh-4753/TaskFlow` | **`200`** | Accessible; metadata & case study link pending. |
-| `https://github.com/Akhilesh-4753/INKSPACE` | **`200`** | Accessible; metadata & case study link pending. |
-| `https://www.linkedin.com/in/akhilesh4753` | **`200`** | Live LinkedIn profile matching social link. |
-| `https://www.instagram.com/_akhiles___h__` | **`200`** | Live Instagram handle matching social link. |
-| `https://akhilesh-4753.github.io/Portfolio_old/` | **`200`** | Untouched per instruction (neither unpublished, archived, privatized, nor deleted). |
+- **Portfolio Website Source Code:** Untouched (`src/`, `index.html`, `api/`, `scripts/`, `public/`, `vite.config.js`, `vercel.json`).
+- **Prerendering & SEO Architecture:** Unchanged.
+- **Analytics & Webmaster Tools:** GA4 and Search Console configurations untouched.
+- **WhatsApp Privacy:** 100% excluded across all files, commits, and profiles.
 
 ---
 
-## 5. Strict Scope & Safety Confirmation
+## 7. Preparation Checklist for Phase 7.2: External Backlinks & Authority Building
 
-- **Portfolio Website Source Code:** Untouched (`src/`, `index.html`, `api/`, `scripts/`, `public/`, `vite.config.js`, `vercel.json` have zero edits).
-- **`Portfolio_old`:** Untouched (not unpublished, archived, privatized, or deleted).
-- **LinkedIn:** Untouched (held for Phase 7.1 Priority 2 review).
-- **WhatsApp Privacy:** Zero WhatsApp links or personal phone numbers included.
+> [!IMPORTANT]
+> **Rules for Phase 7.2:** Zero automated mass submissions, zero paid links, zero PBNs, zero spam directories. Every link must be an authentic, high-quality, professional developer profile or platform.
+
+### Planned Candidate Platforms (To Submit in Phase 7.2):
+- [ ] **Developer Profiles:**
+  - [ ] Dev.to (`dev.to/akhilesh4753`) — Bio & canonical link to `akhileshp.com`
+  - [ ] Hashnode (`hashnode.com/@akhilesh4753`) — Developer blog & portfolio link
+  - [ ] Medium (`medium.com/@akhilesh4753`) — Author profile link
+  - [ ] Daily.dev — Developer feed profile
+- [ ] **Technical Communities & Coding Platforms:**
+  - [ ] Stack Overflow (`stackoverflow.com/users/...`) — Profile link
+  - [ ] Codewars (`codewars.com/users/akhilesh4753`) — Verified coding profile
+  - [ ] LeetCode / HackerRank — Profile website link
+  - [ ] Exercism (`exercism.org`) — Python / C# / JavaScript profile
+- [ ] **Curated Tech & Designer Directories:**
+  - [ ] Peerlist (`peerlist.io/akhilesh4753`) — Verified portfolio & project showcase
+  - [ ] Bento.me (`bento.me/akhilesh`) — Personal links hub
+- [ ] **Local & Regional Business Citations (Non-Spam):**
+  - [ ] Kerala / Malappuram developer network listings
+- [ ] **Technical Project Showcases:**
+  - [ ] Submit TaskFlow & INKSPACE to curated Django and Python project directories.
