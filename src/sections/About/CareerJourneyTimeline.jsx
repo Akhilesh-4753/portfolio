@@ -22,31 +22,6 @@ export const CareerJourneyTimeline = ({ journey }) => {
 
   if (!journey?.stages?.length) return null;
 
-  const railStyle = {
-    position: 'absolute',
-    zIndex: 1,
-    pointerEvents: 'none',
-    ...(isDesktop
-      ? {
-          top: '21px',
-          left: '10%',
-          right: '10%',
-          height: '2px',
-          background:
-            'linear-gradient(90deg, rgba(124, 45, 18, 0.5) 0%, #F97316 60%, #FDBA74 100%)',
-          boxShadow: '0 0 12px rgba(249, 115, 22, 0.35)'
-        }
-      : {
-          top: '21px',
-          bottom: '21px',
-          left: '20px',
-          width: '2px',
-          background:
-            'linear-gradient(to bottom, rgba(124, 45, 18, 0.5) 0%, #F97316 65%, #FDBA74 100%)',
-          boxShadow: '0 0 12px rgba(249, 115, 22, 0.35)'
-        })
-  };
-
   return (
     <div style={{ margin: '0 auto 4rem auto' }}>
       {/* Section Sub-Header */}
@@ -79,24 +54,6 @@ export const CareerJourneyTimeline = ({ journey }) => {
 
       {/* Connected Timeline Container */}
       <div className="career-timeline-grid">
-        {/* Animated Glowing Connector Rail */}
-        {prefersReducedMotion ? (
-          <div style={railStyle} aria-hidden="true" />
-        ) : (
-          <m.div
-            key={isDesktop ? 'desktop-rail' : 'mobile-rail'}
-            style={{
-              ...railStyle,
-              transformOrigin: isDesktop ? 'left center' : 'top center'
-            }}
-            initial={isDesktop ? { scaleX: 0 } : { scaleY: 0 }}
-            whileInView={isDesktop ? { scaleX: 1 } : { scaleY: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            aria-hidden="true"
-          />
-        )}
-
         {journey.stages.map((stage, idx) => {
           const Icon = STAGE_ICONS[stage.icon] || Code2;
           const isGoal = Boolean(stage.isGoal);
@@ -110,12 +67,34 @@ export const CareerJourneyTimeline = ({ journey }) => {
               style={{ display: 'flex' }}
             >
               <div className="career-step">
-                {/* Circular Timeline Node */}
-                <div
-                  className={`career-node ${isGoal ? 'career-node-goal' : ''}`}
-                  aria-hidden="true"
-                >
-                  <Icon size={18} />
+                {/* Circular Timeline Node with Segment Connector */}
+                <div className="career-node-wrapper">
+                  <div
+                    className={`career-node ${isGoal ? 'career-node-goal' : ''}`}
+                    aria-hidden="true"
+                  >
+                    <Icon size={18} />
+                  </div>
+
+                  {/* Individual Connector Segment (only between nodes, leaving 10px air-gap) */}
+                  {!isLast && (
+                    prefersReducedMotion ? (
+                      <div className="career-connector-segment" aria-hidden="true" />
+                    ) : (
+                      <m.div
+                        className="career-connector-segment"
+                        initial={isDesktop ? { scaleX: 0 } : { scaleY: 0 }}
+                        whileInView={isDesktop ? { scaleX: 1 } : { scaleY: 1 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{
+                          duration: 0.65,
+                          delay: 0.18 + idx * 0.09,
+                          ease: [0.22, 1, 0.36, 1]
+                        }}
+                        aria-hidden="true"
+                      />
+                    )
+                  )}
                 </div>
 
                 {/* Stage Detail Card */}
@@ -271,17 +250,28 @@ export const CareerJourneyTimeline = ({ journey }) => {
           z-index: 2;
         }
 
+        .career-node-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+
         .career-node {
+          position: relative;
+          z-index: 2;
           width: 42px;
           height: 42px;
           border-radius: 50%;
-          background: var(--bg-secondary);
+          background: #111111;
           border: 2px solid rgba(249, 115, 22, 0.55);
           color: #F97316;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 1rem;
+          margin-bottom: 0;
           flex-shrink: 0;
           box-shadow: 0 0 18px rgba(249, 115, 22, 0.22);
           transition: var(--transition-smooth);
@@ -298,6 +288,20 @@ export const CareerJourneyTimeline = ({ journey }) => {
           border-color: #FDBA74;
           color: #ffffff;
           box-shadow: 0 0 24px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Connecting segment: stops 10px before adjacent node borders */
+        .career-connector-segment {
+          position: absolute;
+          z-index: 1;
+          pointer-events: none;
+          top: 20px;
+          left: calc(50% + 31px);
+          width: calc(100% + 1rem - 62px);
+          height: 2px;
+          transform-origin: left center;
+          background: linear-gradient(90deg, rgba(249, 115, 22, 0.6) 0%, #F97316 55%, #FDBA74 100%);
+          box-shadow: 0 0 10px rgba(249, 115, 22, 0.45);
         }
 
         .career-card {
@@ -343,11 +347,31 @@ export const CareerJourneyTimeline = ({ journey }) => {
             display: grid;
             grid-template-columns: 42px 1fr;
             gap: 1rem;
-            align-items: start;
+            align-items: stretch;
+          }
+
+          .career-node-wrapper {
+            width: 42px;
+            height: 100%;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
           }
 
           .career-node {
             margin-bottom: 0;
+          }
+
+          .career-connector-segment {
+            top: 52px;
+            left: 20px;
+            width: 2px;
+            height: calc(100% + 1.25rem - 62px);
+            transform-origin: top center;
+            background: linear-gradient(to bottom, rgba(249, 115, 22, 0.6) 0%, #F97316 65%, #FDBA74 100%);
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.45);
           }
 
           .career-step-arrow {
