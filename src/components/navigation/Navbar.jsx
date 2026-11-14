@@ -6,17 +6,35 @@ import { NavLinks, NAV_ITEMS } from './NavLinks';
 import { MobileMenu } from './MobileMenu';
 import './Navbar.css';
 
-// Helper to resolve section from location path or hash
-const resolveCurrentSection = (pathname = '', hash = '') => {
-  const hashTarget = hash.replace('#', '');
+// Helper to resolve active nav section from URL pathname segments or hash
+export const resolveCurrentSection = (pathname = '', hash = '') => {
+  // 1. If a hash is present, check if it matches a valid section (e.g. /#about, /#projects)
+  const hashTarget = hash.replace(/^#/, '');
   if (hashTarget && NAV_ITEMS.some((item) => item.id === hashTarget)) {
     return hashTarget;
   }
-  const pathTarget = pathname.replace(/^\//, '');
-  if (pathTarget && NAV_ITEMS.some((item) => item.id === pathTarget)) {
-    return pathTarget;
+
+  // 2. Extract path segments (e.g. '/projects/inkspace' -> ['projects', 'inkspace'])
+  const segments = pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+  const firstSegment = segments[0] || '';
+
+  // 3. Match against non-home NAV_ITEMS by root segment (e.g. /projects and /projects/:slug -> 'projects')
+  if (firstSegment) {
+    const matchedItem = NAV_ITEMS.find(
+      (item) => item.id !== 'home' && (item.id === firstSegment || item.path.replace(/^\/+|\/+$/g, '') === firstSegment)
+    );
+    if (matchedItem) {
+      return matchedItem.id;
+    }
   }
-  return 'home';
+
+  // 4. Exact Home route only ('/' with no non-home hash)
+  if (pathname === '/' || pathname === '') {
+    return 'home';
+  }
+
+  // 5. No fallback to home on 404 or unknown routes
+  return null;
 };
 
 export const Navbar = () => {
@@ -28,9 +46,10 @@ export const Navbar = () => {
 
   // Initialize active state synchronously from current URL
   const [activeSection, setActiveSection] = useState(() =>
-    typeof window !== 'undefined'
-      ? resolveCurrentSection(window.location.pathname, window.location.hash)
-      : 'home'
+    resolveCurrentSection(
+      location.pathname || (typeof window !== 'undefined' ? window.location.pathname : '/'),
+      location.hash || (typeof window !== 'undefined' ? window.location.hash : '')
+    )
   );
 
   const isScrollLockedRef = useRef(false);
