@@ -1,8 +1,6 @@
 import React from 'react';
-import { m } from 'framer-motion';
 import { Briefcase, Globe, Server, Code2, Sparkles, ArrowRight } from 'lucide-react';
 import { FadeIn } from '../../components/animations/FadeIn';
-import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 const STAGE_ICONS = {
@@ -17,10 +15,12 @@ const STAGE_ICONS = {
  * Connected career progression timeline (horizontal on desktop, vertical on tablet/mobile).
  */
 export const CareerJourneyTimeline = ({ journey }) => {
-  const prefersReducedMotion = useReducedMotion();
   const isDesktop = useMediaQuery('(min-width: 1025px)');
 
   if (!journey?.stages?.length) return null;
+
+  const stageCount = journey.stages.length;
+  const insetPercent = `${(100 / (stageCount * 2)).toFixed(2)}%`;
 
   return (
     <div style={{ margin: '0 auto 4rem auto' }}>
@@ -53,7 +53,10 @@ export const CareerJourneyTimeline = ({ journey }) => {
       </FadeIn>
 
       {/* Connected Timeline Container */}
-      <div className="career-timeline-grid">
+      <div
+        className="career-timeline-grid"
+        style={{ '--timeline-inset': insetPercent }}
+      >
         {journey.stages.map((stage, idx) => {
           const Icon = STAGE_ICONS[stage.icon] || Code2;
           const isGoal = Boolean(stage.isGoal);
@@ -67,7 +70,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
               style={{ display: 'flex' }}
             >
               <div className="career-step">
-                {/* Circular Timeline Node with Segment Connector */}
+                {/* Circular Timeline Node */}
                 <div className="career-node-wrapper">
                   <div
                     className={`career-node ${isGoal ? 'career-node-goal' : ''}`}
@@ -76,24 +79,9 @@ export const CareerJourneyTimeline = ({ journey }) => {
                     <Icon size={18} />
                   </div>
 
-                  {/* Individual Connector Segment (only between nodes, leaving 10px air-gap) */}
+                  {/* Vertical connector for mobile/tablet layout (pure CSS, hidden on desktop) */}
                   {!isLast && (
-                    prefersReducedMotion ? (
-                      <div className="career-connector-segment" aria-hidden="true" />
-                    ) : (
-                      <m.div
-                        className="career-connector-segment"
-                        initial={isDesktop ? { scaleX: 0 } : { scaleY: 0 }}
-                        whileInView={isDesktop ? { scaleX: 1 } : { scaleY: 1 }}
-                        viewport={{ once: true, amount: 0.15 }}
-                        transition={{
-                          duration: 0.65,
-                          delay: 0.18 + idx * 0.09,
-                          ease: [0.22, 1, 0.36, 1]
-                        }}
-                        aria-hidden="true"
-                      />
-                    )
+                    <div className="career-connector-segment" aria-hidden="true" />
                   )}
                 </div>
 
@@ -241,13 +229,28 @@ export const CareerJourneyTimeline = ({ journey }) => {
           align-items: stretch;
         }
 
+        /* Pure CSS continuous horizontal connector running from 1st icon center to last icon center */
+        .career-timeline-grid::before {
+          content: '';
+          position: absolute;
+          top: 21px;
+          left: var(--timeline-inset, 10%);
+          right: var(--timeline-inset, 10%);
+          height: 2px;
+          transform: translateY(-50%);
+          background: linear-gradient(90deg, rgba(249, 115, 22, 0.4) 0%, #F97316 50%, #FDBA74 100%);
+          box-shadow: 0 0 10px rgba(249, 115, 22, 0.45);
+          z-index: 0;
+          pointer-events: none;
+        }
+
         .career-step {
           display: flex;
           flex-direction: column;
           align-items: center;
           width: 100%;
           position: relative;
-          z-index: 2;
+          z-index: 1;
         }
 
         .career-node-wrapper {
@@ -257,6 +260,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
           justify-content: center;
           width: 100%;
           margin-bottom: 1rem;
+          z-index: 1;
         }
 
         .career-node {
@@ -265,7 +269,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
           width: 42px;
           height: 42px;
           border-radius: 50%;
-          background: #111111;
+          background: var(--bg-secondary, #111111);
           border: 2px solid rgba(249, 115, 22, 0.55);
           color: #F97316;
           display: flex;
@@ -290,18 +294,9 @@ export const CareerJourneyTimeline = ({ journey }) => {
           box-shadow: 0 0 24px rgba(249, 115, 22, 0.5);
         }
 
-        /* Connecting segment: stops 10px before adjacent node borders */
+        /* Hidden on desktop; used for vertical mobile/tablet layout */
         .career-connector-segment {
-          position: absolute;
-          z-index: 1;
-          pointer-events: none;
-          top: 20px;
-          left: calc(50% + 31px);
-          width: calc(100% + 1rem - 62px);
-          height: 2px;
-          transform-origin: left center;
-          background: linear-gradient(90deg, rgba(249, 115, 22, 0.6) 0%, #F97316 55%, #FDBA74 100%);
-          box-shadow: 0 0 10px rgba(249, 115, 22, 0.45);
+          display: none;
         }
 
         .career-card {
@@ -343,6 +338,11 @@ export const CareerJourneyTimeline = ({ journey }) => {
             margin: 0 auto;
           }
 
+          /* Hide desktop horizontal line on mobile/tablet */
+          .career-timeline-grid::before {
+            display: none;
+          }
+
           .career-step {
             display: grid;
             grid-template-columns: 42px 1fr;
@@ -364,12 +364,16 @@ export const CareerJourneyTimeline = ({ journey }) => {
             margin-bottom: 0;
           }
 
+          /* Pure CSS vertical connector for mobile/tablet */
           .career-connector-segment {
+            display: block;
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
             top: 52px;
             left: 20px;
             width: 2px;
             height: calc(100% + 1.25rem - 62px);
-            transform-origin: top center;
             background: linear-gradient(to bottom, rgba(249, 115, 22, 0.6) 0%, #F97316 65%, #FDBA74 100%);
             box-shadow: 0 0 10px rgba(249, 115, 22, 0.45);
           }
