@@ -19,15 +19,17 @@ import { Button } from '../components/common/Button';
 import { TiltCard } from '../components/animations/TiltCard';
 import { FadeIn } from '../components/animations/FadeIn';
 import { ProjectGallery } from '../components/project/ProjectGallery';
+import { useSmoothScroll } from '../context/SmoothScrollContext';
 
 export const ProjectDetailsPage = () => {
   const { slug } = useParams();
+  const { scrollTo } = useSmoothScroll();
 
   const project = projects.find((p) => p.slug === slug);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
+    scrollTo(0, { immediate: true });
+  }, [slug, scrollTo]);
 
   if (!project) {
     return (

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { SeoHead } from '../components/seo/SeoHead';
 import { HOME_SEO } from '../data/seo';
+import { useSmoothScroll } from '../context/SmoothScrollContext';
 import { Hero } from '../sections/Home/Hero';
 import { About } from '../sections/About/About';
 import { Experience } from '../sections/Experience/Experience';
@@ -11,23 +12,24 @@ import { Projects } from '../sections/Projects/Projects';
 import { Services } from '../sections/Services/Services';
 import { Contact } from '../sections/Contact/Contact';
 
-export const HomePage = () => {
+export const HomePage = ({ targetSection } = {}) => {
   const location = useLocation();
+  const { scrollTo } = useSmoothScroll();
 
   useEffect(() => {
-    // Handle anchor scrolling from external or cross-page transitions
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          const yOffset = -80;
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }, 100);
-      }
+    // Determine target section from prop, URL hash, or semantic pathname
+    const rawSection =
+      targetSection ||
+      (location.hash ? location.hash.replace('#', '') : null) ||
+      (location.pathname !== '/' ? location.pathname.replace(/^\//, '') : null);
+
+    if (rawSection && rawSection !== 'home') {
+      const timer = setTimeout(() => {
+        scrollTo('#' + rawSection, { offset: -80, duration: 1.4 });
+      }, 120);
+      return () => clearTimeout(timer);
     }
-  }, [location]);
+  }, [location.pathname, location.hash, targetSection, scrollTo]);
 
   return (
     <>

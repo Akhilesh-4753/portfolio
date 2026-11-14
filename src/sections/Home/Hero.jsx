@@ -10,6 +10,7 @@ import {
   WhatsappIcon
 } from '../../components/common/BrandIcons';
 import { FadeIn } from '../../components/animations/FadeIn';
+import { useSmoothScroll } from '../../context/SmoothScrollContext';
 import './Hero.css';
 
 const SOCIAL_ICON_MAP = {
@@ -21,13 +22,10 @@ const SOCIAL_ICON_MAP = {
 };
 
 export const Hero = () => {
+  const { scrollTo } = useSmoothScroll();
+
   const handleScrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const yOffset = -80;
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    scrollTo('#' + id, { offset: -80, duration: 1.4 });
   };
 
   return (

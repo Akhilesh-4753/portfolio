@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
+import { useSmoothScroll } from '../../context/SmoothScrollContext';
 import { NavLinks, NAV_ITEMS } from './NavLinks';
 import { MobileMenu } from './MobileMenu';
 import './Navbar.css';
@@ -11,6 +12,7 @@ export const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
   const navigate = useNavigate();
+  const { scrollTo } = useSmoothScroll();
 
   const handleLogoClick = (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ export const Navbar = () => {
       navigate('/#home');
       return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollTo(0, { duration: 1.4 });
   };
 
   useEffect(() => {

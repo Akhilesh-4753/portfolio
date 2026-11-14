@@ -6,6 +6,8 @@ import { AIButton } from '../components/common/AIButton';
 import { CinematicBackground } from '../components/background/CinematicBackground';
 import { CodeBackground } from '../components/background/CodeBackground';
 import { MouseGlow } from '../components/background/MouseGlow';
+import { IntroReveal } from '../components/common/IntroReveal';
+import { PageTransition } from '../components/animations/PageTransition';
 
 function ScrollProgressBar() {
   const barRef = useRef(null);
@@ -51,6 +53,9 @@ function ScrollProgressBar() {
 export const MainLayout = () => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      {/* Intro Reveal Curtain / Preloader Masking Initial Paint */}
+      <IntroReveal />
+
       {/* Scroll Progress Bar at the Top */}
       <ScrollProgressBar />
 
@@ -62,9 +67,11 @@ export const MainLayout = () => {
       {/* Navigation */}
       <Navbar />
 
-      {/* Main Page Content */}
+      {/* Main Page Content with Page Transition */}
       <main style={{ flex: 1, position: 'relative', zIndex: 10 }}>
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
 
       {/* Global Footer */}

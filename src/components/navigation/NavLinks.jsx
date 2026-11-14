@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSmoothScroll } from '../../context/SmoothScrollContext';
 
 export const NAV_ITEMS = [
   { label: 'Home', id: 'home', path: '/' },
@@ -14,6 +15,7 @@ export const NAV_ITEMS = [
 export const NavLinks = ({ activeSection, onItemClick, isMobile = false }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { scrollTo } = useSmoothScroll();
 
   const handleNav = (e, item) => {
     e.preventDefault();
@@ -25,16 +27,11 @@ export const NavLinks = ({ activeSection, onItemClick, isMobile = false }) => {
     }
 
     if (item.id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollTo(0, { duration: 1.4 });
       return;
     }
 
-    const element = document.getElementById(item.id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    scrollTo('#' + item.id, { offset: -80, duration: 1.4 });
   };
 
   return (

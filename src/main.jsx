@@ -4,6 +4,10 @@ import './index.css';
 import App from './App.jsx';
 import { ensureChatbotInit } from './components/chatbot/loadChatbot.js';
 
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 const rootElement = document.getElementById('root');
 const ssrPath = rootElement.getAttribute('data-ssr-path');
 const normalizePath = (value) => (value && value !== '/' ? value.replace(/\/+$/, '') : '/');

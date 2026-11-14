@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSmoothScroll } from '../../context/SmoothScrollContext';
 import { personalInfo } from '../../data/personal';
 import { SocialLinks } from './SocialLinks';
 import { Code2, ArrowUp } from 'lucide-react';
@@ -16,9 +17,10 @@ const FOOTER_SECTION_LINKS = [
 export const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { scrollTo } = useSmoothScroll();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollTo(0, { duration: 1.4 });
   };
 
   const handleSectionClick = (e, item) => {
@@ -27,12 +29,7 @@ export const Footer = () => {
       navigate(item.path);
       return;
     }
-    const element = document.getElementById(item.id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    scrollTo('#' + item.id, { offset: -80, duration: 1.4 });
   };
 
   return (

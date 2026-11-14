@@ -46,13 +46,13 @@ export const AppRoutes = ({ projectDetailsPage: SyncProjectDetailsPage, notFound
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
 
-        {/* Semantic section aliases pointing to home page with section anchors */}
-        <Route path="/about" element={<Navigate to="/#about" replace />} />
-        <Route path="/experience" element={<Navigate to="/#experience" replace />} />
-        <Route path="/skills" element={<Navigate to="/#skills" replace />} />
-        <Route path="/projects" element={<Navigate to="/#projects" replace />} />
-        <Route path="/services" element={<Navigate to="/#services" replace />} />
-        <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+        {/* Semantic section routes rendering HomePage directly with target section */}
+        <Route path="/about" element={<HomePage targetSection="about" />} />
+        <Route path="/experience" element={<HomePage targetSection="experience" />} />
+        <Route path="/skills" element={<HomePage targetSection="skills" />} />
+        <Route path="/projects" element={<HomePage targetSection="projects" />} />
+        <Route path="/services" element={<HomePage targetSection="services" />} />
+        <Route path="/contact" element={<HomePage targetSection="contact" />} />
 
         {/* Dedicated Project Detail Case Studies */}
         <Route

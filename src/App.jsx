@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
+import { SmoothScrollProvider } from './context/SmoothScrollContext';
 import { AppRoutes } from './routes/AppRoutes';
 import { getSeoForPath } from './data/seo';
 
@@ -34,10 +35,12 @@ function AnalyticsTracker() {
 export function AppShell({ projectDetailsPage, notFound } = {}) {
   return (
     <ThemeProvider>
-      <LazyMotion features={domAnimation} strict>
-        <AnalyticsTracker />
-        <AppRoutes projectDetailsPage={projectDetailsPage} notFound={notFound} />
-      </LazyMotion>
+      <SmoothScrollProvider>
+        <LazyMotion features={domAnimation} strict>
+          <AnalyticsTracker />
+          <AppRoutes projectDetailsPage={projectDetailsPage} notFound={notFound} />
+        </LazyMotion>
+      </SmoothScrollProvider>
     </ThemeProvider>
   );
 }

@@ -1,12 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
+/**
+ * Premium Scroll-Triggered Reveal Component.
+ * - IntersectionObserver with ~85% viewport trigger (rootMargin: '0px 0px -12% 0px')
+ * - easeOutExpo cubic curve: cubic-bezier(0.16, 1, 0.3, 1)
+ * - 24-40px subtle vertical translation
+ * - Stagger support via delay parameter
+ * - GPU acceleration with dynamic will-change cleanup
+ */
 export const FadeIn = ({
   children,
   delay = 0,
-  duration = 0.5,
+  duration = 0.65,
   direction = 'up',
-  distance = 24,
+  distance = 30,
   immediate = false,
   className = '',
   style = {}
@@ -30,7 +38,10 @@ export const FadeIn = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -12% 0px' // Triggers once element reaches ~88% of viewport
+      }
     );
 
     observer.observe(node);
@@ -62,7 +73,7 @@ export const FadeIn = ({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translate3d(0, 0, 0)' : hiddenTransform,
-        transition: `opacity ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, transform ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s`,
+        transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
         willChange: visible ? 'auto' : 'opacity, transform',
         ...style
       }}

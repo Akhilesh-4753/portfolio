@@ -30,6 +30,10 @@
     {
       "source": "/contact",
       "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api/|assets/|images/|Akhilesh/|documents/|robots\\.txt|sitemap\\.xml|.*\\..*).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
