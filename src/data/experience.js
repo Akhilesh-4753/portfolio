@@ -280,10 +280,10 @@ export const freelanceExperience = {
         "Created professional posters and visual promotional assets aligned with brand specifications and design goals."
     },
     {
-      title: "Technical SEO",
+      title: "SEO & Organic Growth",
       icon: "Search",
       description:
-        "Contributed to technical SEO efforts supporting website structure and digital visibility for client solutions."
+        "Implemented comprehensive on-page, technical, and off-page SEO optimizations to strengthen website structure and drive sustainable organic traffic."
     },
     {
       title: "Business Meetings & Team Collaboration",
