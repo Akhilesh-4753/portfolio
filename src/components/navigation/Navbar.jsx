@@ -115,17 +115,30 @@ export const Navbar = () => {
         NAV_ITEMS.some((item) => '/' + item.id === location.pathname);
 
       if (isHomeOrSection) {
-        const scrollPosition = y + 140;
         let nextActive = 'home';
 
-        if (y >= 150) {
+        if (y >= 100) {
+          const headerThreshold = 140;
           for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
             const item = NAV_ITEMS[i];
+            if (item.id === 'home') continue;
             const element = document.getElementById(item.id);
-            if (element && scrollPosition >= element.offsetTop) {
-              nextActive = item.id;
-              break;
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              if (rect.top <= headerThreshold) {
+                nextActive = item.id;
+                break;
+              }
             }
+          }
+        }
+
+        // Handle page bottom to ensure Contact is highlighted when scrolled all the way down
+        if (typeof document !== 'undefined') {
+          const scrollBottom = window.innerHeight + y;
+          const docHeight = document.documentElement.scrollHeight;
+          if (docHeight > 0 && scrollBottom >= docHeight - 60) {
+            nextActive = 'contact';
           }
         }
 

@@ -39,13 +39,34 @@ export const NavLinks = ({
       return;
     }
 
-    // 3. Inertia smooth-scroll with offset
-    if (item.id === 'home') {
-      scrollTo(0, { duration: 1.4 });
-      return;
+    // 3. Ensure body overflow and Lenis are unlocked immediately (crucial for mobile drawer clicks)
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    if (window.__lenis && typeof window.__lenis.start === 'function') {
+      try {
+        window.__lenis.start();
+      } catch {
+        // ignore
+      }
     }
 
-    scrollTo('#' + item.id, { offset: -80, duration: 1.4 });
+    // 4. Inertia smooth-scroll with offset
+    const executeScroll = () => {
+      if (item.id === 'home') {
+        scrollTo(0, { duration: 1.4 });
+      } else {
+        scrollTo('#' + item.id, { offset: -80, duration: 1.4 });
+      }
+    };
+
+    if (isMobile) {
+      // Small timeout allows mobile menu exit state to process and body layout to unfreeze
+      setTimeout(executeScroll, 50);
+    } else {
+      executeScroll();
+    }
   };
 
   return (

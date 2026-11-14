@@ -66,6 +66,13 @@ export const SmoothScrollProvider = ({ children }) => {
     const defaultDuration = 1.4;
 
     if (lenis && !prefersReducedMotion) {
+      if (lenis.isStopped) {
+        try {
+          lenis.start();
+        } catch {
+          // ignore
+        }
+      }
       lenis.scrollTo(target, {
         offset: options.offset !== undefined ? options.offset : defaultOffset,
         duration: options.duration !== undefined ? options.duration : defaultDuration,

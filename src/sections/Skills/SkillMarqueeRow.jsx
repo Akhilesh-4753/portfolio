@@ -12,22 +12,33 @@ const CATEGORY_ICONS = {
 
 /**
  * Renders a single rounded skill pill badge with subtle orange/amber indicator.
+ * Supports interactive selection with pause and highlight.
  */
-const SkillBadge = ({ label, accentColor }) => (
-  <span className="skill-marquee-badge">
+const SkillBadge = ({ label, accentColor, isSelected, onToggle }) => (
+  <button
+    type="button"
+    className={`skill-marquee-badge${isSelected ? ' is-selected' : ''}`}
+    onClick={(e) => {
+      e.stopPropagation();
+      onToggle(label);
+    }}
+    aria-pressed={isSelected}
+    aria-label={label}
+  >
     <span
       style={{
         width: '6px',
         height: '6px',
         borderRadius: '50%',
-        backgroundColor: accentColor,
-        boxShadow: `0 0 8px ${accentColor}88`,
-        flexShrink: 0
+        backgroundColor: isSelected ? '#F97316' : accentColor,
+        boxShadow: isSelected ? '0 0 10px #F97316' : `0 0 8px ${accentColor}88`,
+        flexShrink: 0,
+        transition: 'background-color 0.2s ease, box-shadow 0.2s ease'
       }}
       aria-hidden="true"
     />
     <span>{label}</span>
-  </span>
+  </button>
 );
 
 /**
@@ -37,31 +48,45 @@ const SkillBadge = ({ label, accentColor }) => (
  */
 export const SkillMarqueeRow = ({ category, direction = 'rtl' }) => {
   const prefersReducedMotion = useReducedMotion();
-  const [isTouchPaused, setIsTouchPaused] = useState(false);
-  const pointerStartRef = useRef(null);
+  const [selectedSkill, setSelectedSkill] = useState(null);
+  const lastToggleTimeRef = useRef(0);
 
   const Icon = CATEGORY_ICONS[category.icon] || Layers;
   const isLtr = direction === 'ltr';
   const accentColor = isLtr ? '#FDBA74' : '#F97316';
+  const isPaused = Boolean(selectedSkill);
 
   // Ensure each half-track is wide enough (> ~16 badges) to prevent gaps on ultra-wide viewports
   const repeatCount = Math.max(1, Math.ceil(16 / category.skills.length));
   const halfTrackBatches = Array.from({ length: repeatCount }, (_, batchIdx) => batchIdx);
 
-  const handlePointerDown = (e) => {
-    if (e.pointerType === 'touch') {
-      pointerStartRef.current = { x: e.clientX, y: e.clientY };
+  const handleSkillToggle = (skillName) => {
+    const now = Date.now();
+    // Guard against accidental double-firing on touch devices (pointerup followed by synthetic click)
+    if (now - lastToggleTimeRef.current < 260) {
+      return;
     }
+    lastToggleTimeRef.current = now;
+
+    setSelectedSkill((prev) => {
+      if (prev === skillName) {
+        // Deselecting: remove focus so mobile browsers don't retain focus outline/styling
+        if (typeof document !== 'undefined' && document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
+        return null;
+      }
+      return skillName;
+    });
   };
 
-  const handlePointerUp = (e) => {
-    if (e.pointerType === 'touch' && pointerStartRef.current) {
-      const dx = Math.abs(e.clientX - pointerStartRef.current.x);
-      const dy = Math.abs(e.clientY - pointerStartRef.current.y);
-      if (dx < 8 && dy < 8) {
-        setIsTouchPaused((prev) => !prev);
+  const handleViewportClick = (e) => {
+    // If user clicks outside any badge on the track/viewport background, clear selection and resume
+    if (selectedSkill && (e.target === e.currentTarget || e.target.classList.contains('marquee-track'))) {
+      if (typeof document !== 'undefined' && document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
       }
-      pointerStartRef.current = null;
+      setSelectedSkill(null);
     }
   };
 
@@ -128,17 +153,19 @@ export const SkillMarqueeRow = ({ category, direction = 'rtl' }) => {
           }}
         >
           {category.skills.map((skill) => (
-            <SkillBadge key={skill} label={skill} accentColor={accentColor} />
+            <SkillBadge
+              key={skill}
+              label={skill}
+              accentColor={accentColor}
+              isSelected={selectedSkill === skill}
+              onToggle={handleSkillToggle}
+            />
           ))}
         </div>
       ) : (
         <div
-          className={`marquee-viewport${isTouchPaused ? ' is-paused' : ''}`}
-          onPointerDown={handlePointerDown}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={() => {
-            pointerStartRef.current = null;
-          }}
+          className={`marquee-viewport${isPaused ? ' is-paused' : ''}`}
+          onClick={handleViewportClick}
           role="region"
           aria-label={category.title}
           style={{ padding: '0.25rem 0' }}
@@ -177,6 +204,8 @@ export const SkillMarqueeRow = ({ category, direction = 'rtl' }) => {
                         key={`${halfIdx}-${batchIdx}-${skill}`}
                         label={skill}
                         accentColor={accentColor}
+                        isSelected={selectedSkill === skill}
+                        onToggle={handleSkillToggle}
                       />
                     ))}
                   </div>

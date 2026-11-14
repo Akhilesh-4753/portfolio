@@ -269,25 +269,25 @@ export const freelanceExperience = {
   contributions: [
     {
       title: "Website Development",
-      icon: "Globe",
+      icon: "MonitorSmartphone",
       description:
         "Collaborated on client-focused web development tasks, translating project requirements into responsive digital experiences."
     },
     {
       title: "Creative & Poster Design",
-      icon: "Palette",
+      icon: "PenTool",
       description:
         "Created professional posters and visual promotional assets aligned with brand specifications and design goals."
     },
     {
       title: "SEO & Organic Growth",
-      icon: "Search",
+      icon: "TrendingUp",
       description:
         "Implemented comprehensive on-page, technical, and off-page SEO optimizations to strengthen website structure and drive sustainable organic traffic."
     },
     {
       title: "Business Meetings & Team Collaboration",
-      icon: "Users",
+      icon: "Handshake",
       description:
         "Participated in client discussions, business activities, and collaborative team workflows across real-world projects."
     }

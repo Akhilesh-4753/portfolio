@@ -5,6 +5,22 @@ import { NavLinks } from './NavLinks';
 import { SocialLinks } from '../common/SocialLinks';
 
 export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) => {
+  const handleClose = () => {
+    // Immediately unlock body scroll and restart Lenis
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    if (window.__lenis && typeof window.__lenis.start === 'function') {
+      try {
+        window.__lenis.start();
+      } catch {
+        // ignore
+      }
+    }
+    onClose();
+  };
+
   // Prevent background scrolling when slide menu is open
   useEffect(() => {
     if (isOpen) {
@@ -61,7 +77,8 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
             boxShadow: 'var(--shadow-lg)',
             boxSizing: 'border-box',
             overflowY: 'auto',
-            overscrollBehavior: 'contain'
+            overscrollBehavior: 'contain',
+            pointerEvents: isOpen ? 'auto' : 'none'
           }}
         >
           <div>
@@ -80,7 +97,7 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
                 <span className="gradient-text">Akhilesh P</span>
               </div>
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 aria-label="Close menu"
                 style={{
                   background: 'none',
@@ -105,7 +122,7 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
                 isMobile={true}
                 activeSection={activeSection}
                 onSelectSection={onSelectSection}
-                onItemClick={onClose}
+                onItemClick={handleClose}
               />
             </nav>
           </div>

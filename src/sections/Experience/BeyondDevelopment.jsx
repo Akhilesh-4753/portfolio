@@ -1,13 +1,20 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
-import { Building2, MapPin, Globe, Palette, Search, Users } from 'lucide-react';
+import {
+  Building2,
+  MapPin,
+  MonitorSmartphone,
+  PenTool,
+  TrendingUp,
+  Handshake
+} from 'lucide-react';
 import { freelanceExperience } from '../../data/experience';
 import './BeyondDevelopment.css';
 
 const CONTRIBUTION_ICONS = {
-  Globe,
-  Palette,
-  Search,
-  Users
+  MonitorSmartphone,
+  PenTool,
+  TrendingUp,
+  Handshake
 };
 
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
@@ -114,7 +121,7 @@ export const BeyondDevelopment = () => {
         <div className="bd-right">
           <div className="bd-grid">
             {contributions.map((item, idx) => {
-              const Icon = CONTRIBUTION_ICONS[item.icon] || Globe;
+              const Icon = CONTRIBUTION_ICONS[item.icon] || MonitorSmartphone;
               const delayMs = 100 + idx * 45;
 
               return (

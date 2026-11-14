@@ -148,6 +148,24 @@
   white-space: nowrap;
   transition: var(--transition-smooth);
   user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+button.skill-marquee-badge {
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: inherit;
+}
+
+button.skill-marquee-badge:focus:not(:focus-visible) {
+  outline: none;
+}
+
+button.skill-marquee-badge:focus-visible {
+  outline: 2px solid var(--color-orange, #F97316);
+  outline-offset: 2px;
 }
 
 .skill-marquee-badge:hover {
@@ -156,4 +174,12 @@
   color: var(--text-primary);
   box-shadow: 0 4px 16px rgba(249, 115, 22, 0.18);
   transform: translateY(-2px);
+}
+
+.skill-marquee-badge.is-selected {
+  border-color: rgba(249, 115, 22, 0.75) !important;
+  background: rgba(249, 115, 22, 0.18) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.35) !important;
+  transform: translateY(-2px) !important;
 }
