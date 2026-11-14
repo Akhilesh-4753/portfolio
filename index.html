@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Manual Scroll Restoration Control -->
+    <script>
+      (function() {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        // If visiting home directly without hash, ensure clean origin position
+        if (!window.location.hash && window.location.pathname === '/') {
+          try {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          } catch (_) {
+            window.scrollTo(0, 0);
+          }
+        }
+      })();
+    </script>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CRCHQSJM4"></script>
     <script>
