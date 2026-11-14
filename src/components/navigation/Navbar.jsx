@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { useSmoothScroll } from '../../context/SmoothScrollContext';
@@ -6,16 +6,54 @@ import { NavLinks, NAV_ITEMS } from './NavLinks';
 import { MobileMenu } from './MobileMenu';
 import './Navbar.css';
 
+// Helper to resolve section from location path or hash
+const resolveCurrentSection = (pathname = '', hash = '') => {
+  const hashTarget = hash.replace('#', '');
+  if (hashTarget && NAV_ITEMS.some((item) => item.id === hashTarget)) {
+    return hashTarget;
+  }
+  const pathTarget = pathname.replace(/^\//, '');
+  if (pathTarget && NAV_ITEMS.some((item) => item.id === pathTarget)) {
+    return pathTarget;
+  }
+  return 'home';
+};
+
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
   const navigate = useNavigate();
   const { scrollTo } = useSmoothScroll();
 
+  // Initialize active state synchronously from current URL
+  const [activeSection, setActiveSection] = useState(() =>
+    typeof window !== 'undefined'
+      ? resolveCurrentSection(window.location.pathname, window.location.hash)
+      : 'home'
+  );
+
+  const isScrollLockedRef = useRef(false);
+  const lockTimerRef = useRef(null);
+
+  // Optimistic active section selection with scroll lock
+  const handleSelectSection = useCallback((sectionId) => {
+    setActiveSection(sectionId);
+    isScrollLockedRef.current = true;
+
+    if (lockTimerRef.current) {
+      clearTimeout(lockTimerRef.current);
+    }
+
+    // Lock scroll-based detection for the duration of the 1.4s smooth scroll
+    lockTimerRef.current = setTimeout(() => {
+      isScrollLockedRef.current = false;
+    }, 1450);
+  }, []);
+
   const handleLogoClick = (e) => {
     e.preventDefault();
+    handleSelectSection('home');
     if (location.pathname !== '/') {
       navigate('/#home');
       return;
@@ -23,6 +61,22 @@ export const Navbar = () => {
     scrollTo(0, { duration: 1.4 });
   };
 
+  // Synchronize active section with URL changes, hash links, and browser back/forward
+  useEffect(() => {
+    const next = resolveCurrentSection(location.pathname, location.hash);
+    setActiveSection(next);
+  }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const next = resolveCurrentSection(window.location.pathname, window.location.hash);
+      setActiveSection(next);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Scroll detection for manual scrolling (locked during programmatic clicks)
   useEffect(() => {
     let rafId = null;
 
@@ -32,11 +86,20 @@ export const Navbar = () => {
       const nextScrolled = y > 20;
       setScrolled((prev) => (prev === nextScrolled ? prev : nextScrolled));
 
-      if (location.pathname === '/') {
-        const scrollPosition = y + 120;
+      // Skip scroll-based recalculation while smooth-scroll lock is active
+      if (isScrollLockedRef.current) {
+        return;
+      }
+
+      const isHomeOrSection =
+        location.pathname === '/' ||
+        NAV_ITEMS.some((item) => '/' + item.id === location.pathname);
+
+      if (isHomeOrSection) {
+        const scrollPosition = y + 140;
         let nextActive = 'home';
 
-        if (y >= 200) {
+        if (y >= 150) {
           for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
             const item = NAV_ITEMS[i];
             const element = document.getElementById(item.id);
@@ -60,6 +123,7 @@ export const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (rafId !== null) window.cancelAnimationFrame(rafId);
+      if (lockTimerRef.current) clearTimeout(lockTimerRef.current);
     };
   }, [location.pathname]);
 
@@ -126,7 +190,10 @@ export const Navbar = () => {
             }}
             className="desktop-nav"
           >
-            <NavLinks activeSection={activeSection} />
+            <NavLinks
+              activeSection={activeSection}
+              onSelectSection={handleSelectSection}
+            />
           </nav>
 
           {/* Mobile Hamburger Toggle (only visible on mobile < 900px) */}
@@ -157,6 +224,7 @@ export const Navbar = () => {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         activeSection={activeSection}
+        onSelectSection={handleSelectSection}
       />
 
       <style>{`

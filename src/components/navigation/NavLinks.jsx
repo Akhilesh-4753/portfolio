@@ -12,20 +12,34 @@ export const NAV_ITEMS = [
   { label: 'Contact', id: 'contact', path: '/#contact' }
 ];
 
-export const NavLinks = ({ activeSection, onItemClick, isMobile = false }) => {
+export const NavLinks = ({
+  activeSection,
+  onSelectSection,
+  onItemClick,
+  isMobile = false
+}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { scrollTo } = useSmoothScroll();
 
   const handleNav = (e, item) => {
     e.preventDefault();
-    if (onItemClick) onItemClick();
 
-    if (location.pathname !== '/') {
+    // 1. Immediately apply optimistic active state before scroll or transition begins
+    if (onSelectSection) {
+      onSelectSection(item.id);
+    }
+    if (onItemClick) {
+      onItemClick();
+    }
+
+    // 2. Cross-route transition handling
+    if (location.pathname !== '/' && !NAV_ITEMS.some((nav) => nav.path === location.pathname)) {
       navigate(item.path);
       return;
     }
 
+    // 3. Inertia smooth-scroll with offset
     if (item.id === 'home') {
       scrollTo(0, { duration: 1.4 });
       return;
@@ -40,35 +54,26 @@ export const NavLinks = ({ activeSection, onItemClick, isMobile = false }) => {
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         alignItems: isMobile ? 'flex-start' : 'center',
-        gap: isMobile ? '1.2rem' : '0.4rem',
+        gap: isMobile ? '0.6rem' : '0.4rem',
         listStyle: 'none',
         margin: 0,
-        padding: 0
+        padding: 0,
+        width: isMobile ? '100%' : 'auto'
       }}
     >
       {NAV_ITEMS.map((item) => {
-        const isActive = location.pathname === '/' && activeSection === item.id;
+        const isActive = activeSection === item.id;
+        const linkClass = isMobile
+          ? `nav-link-mobile ${isActive ? 'is-active' : ''}`
+          : `nav-link-item ${isActive ? 'is-active' : ''}`;
+
         return (
           <li key={item.id} style={{ width: isMobile ? '100%' : 'auto' }}>
             <a
               href={item.path}
               onClick={(e) => handleNav(e, item)}
-              style={{
-                display: 'block',
-                padding: isMobile ? '0.7rem 1rem' : '0.45rem 0.9rem',
-                borderRadius: '8px',
-                fontSize: isMobile ? '1.1rem' : '0.88rem',
-                fontWeight: isActive ? 600 : 500,
-                color: isActive ? 'var(--color-blue)' : 'var(--text-secondary)',
-                backgroundColor: isActive && !isMobile ? 'rgba(249, 115, 22, 0.1)' : 'transparent',
-                transition: 'var(--transition-smooth)'
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive) e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive) e.currentTarget.style.color = 'var(--text-secondary)';
-              }}
+              className={linkClass}
+              aria-current={isActive ? 'page' : undefined}
             >
               {item.label}
             </a>

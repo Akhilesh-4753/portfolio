@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import { NavLinks } from './NavLinks';
 import { SocialLinks } from '../common/SocialLinks';
 
-export const MobileMenu = ({ isOpen, onClose, activeSection }) => {
+export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) => {
   // Prevent background scrolling when slide menu is open
   useEffect(() => {
     if (isOpen) {
@@ -84,6 +84,7 @@ export const MobileMenu = ({ isOpen, onClose, activeSection }) => {
               <NavLinks
                 isMobile={true}
                 activeSection={activeSection}
+                onSelectSection={onSelectSection}
                 onItemClick={onClose}
               />
             </nav>
