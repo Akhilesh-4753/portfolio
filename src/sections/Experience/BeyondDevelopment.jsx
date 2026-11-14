@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import {
-  Building2,
+  Building,
   MapPin,
   MonitorSmartphone,
   PenTool,
@@ -105,7 +105,7 @@ export const BeyondDevelopment = () => {
 
           <div className="bd-org-row">
             <span className="bd-org-tile" aria-hidden="true">
-              <Building2 size={22} />
+              <Building size={22} />
             </span>
             <h3 className="bd-org-title">{mainCollaboration.organization}</h3>
           </div>
