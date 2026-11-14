@@ -24,7 +24,6 @@ export const SectionTitle = ({
         <FadeIn direction="down" delay={0.1}>
           <div style={{ marginBottom: '0.9rem', display: 'inline-block' }}>
             <span className="badge-pill">
-              <span className="status-dot" style={{ width: '6px', height: '6px' }} />
               {badge}
             </span>
           </div>

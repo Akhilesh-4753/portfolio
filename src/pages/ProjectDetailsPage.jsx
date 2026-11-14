@@ -127,7 +127,6 @@ export const ProjectDetailsPage = () => {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
               <span className="badge-pill">
-                <span className="status-dot" />
                 {project.category}
               </span>
               {project.badge && (

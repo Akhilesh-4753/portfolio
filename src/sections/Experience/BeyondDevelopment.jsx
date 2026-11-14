@@ -78,7 +78,6 @@ export const BeyondDevelopment = () => {
         style={{ '--bd-delay': '0ms' }}
       >
         <span className="bd-pill">
-          <span className="bd-status-dot" aria-hidden="true" />
           <span>{heading.badge}</span>
         </span>
 
