@@ -15,7 +15,8 @@ export const Button = ({
   rel,
   className = '',
   magnetic = true,
-  style = {}
+  style = {},
+  ...rest
 }) => {
   const btnClass =
     variant === 'primary'
@@ -36,7 +37,7 @@ export const Button = ({
 
   if (to) {
     element = (
-      <Link to={to} className={`${btnClass} ${className}`} style={style} onClick={onClick}>
+      <Link to={to} className={`${btnClass} ${className}`} style={style} onClick={onClick} {...rest}>
         {content}
       </Link>
     );
@@ -50,6 +51,7 @@ export const Button = ({
         rel={rel || (href.startsWith('http') ? 'noopener noreferrer' : undefined)}
         download={download}
         onClick={onClick}
+        {...rest}
       >
         {content}
       </a>
@@ -61,6 +63,7 @@ export const Button = ({
         className={`${btnClass} ${className}`}
         style={style}
         onClick={onClick}
+        {...rest}
       >
         {content}
       </button>

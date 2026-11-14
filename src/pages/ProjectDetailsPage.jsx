@@ -9,7 +9,8 @@ import {
   Award,
   Sparkles,
   Target,
-  Activity
+  Activity,
+  ExternalLink
 } from 'lucide-react';
 import { projects } from '../data/projects';
 import { getProjectSeo } from '../data/seo';
@@ -163,11 +164,29 @@ export const ProjectDetailsPage = () => {
                 color: 'var(--text-secondary)',
                 lineHeight: 1.6,
                 maxWidth: '820px',
-                marginBottom: '2rem'
+                marginBottom: project.liveUrl ? '1.5rem' : '2rem'
               }}
             >
               {project.tagline || project.shortDescription}
             </p>
+
+            {/* Live Website Link Action */}
+            {project.liveUrl && (
+              <div style={{ marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                <Button
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                  icon={ExternalLink}
+                  iconPosition="right"
+                  aria-label={`View live website for ${project.title} (opens in a new tab)`}
+                  className="project-live-btn"
+                >
+                  View Live Website
+                </Button>
+              </div>
+            )}
 
             {/* Tech Stack List */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2.5rem' }}>
@@ -714,6 +733,21 @@ export const ProjectDetailsPage = () => {
         .project-breadcrumb-link:hover,
         .project-breadcrumb-link:focus-visible {
           color: var(--text-primary);
+        }
+        .project-live-btn {
+          box-shadow: 0 4px 18px rgba(249, 115, 22, 0.35);
+          letter-spacing: -0.01em;
+        }
+        .project-live-btn svg {
+          transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .project-live-btn:hover svg,
+        .project-live-btn:focus-visible svg {
+          transform: translate(2px, -2px);
+        }
+        .project-live-btn:focus-visible {
+          outline: 2px solid #F97316;
+          outline-offset: 3px;
         }
         @media (max-width: 840px) {
           .case-study-split {
