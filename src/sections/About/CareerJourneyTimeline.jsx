@@ -66,8 +66,8 @@ export const CareerJourneyTimeline = ({ journey }) => {
             <FadeIn
               key={stage.step}
               delay={0.12 + idx * 0.09}
-              direction={isDesktop ? 'up' : 'left'}
-              style={{ display: 'flex' }}
+              direction="up"
+              style={{ display: 'flex', minWidth: 0, width: '100%' }}
             >
               <div className="career-step">
                 {/* Circular Timeline Node */}
@@ -301,6 +301,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
 
         .career-card {
           width: 100%;
+          min-width: 0;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -332,7 +333,7 @@ export const CareerJourneyTimeline = ({ journey }) => {
 
         @media (max-width: 1024px) {
           .career-timeline-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 1.25rem;
             max-width: 680px;
             margin: 0 auto;
@@ -345,9 +346,11 @@ export const CareerJourneyTimeline = ({ journey }) => {
 
           .career-step {
             display: grid;
-            grid-template-columns: 42px 1fr;
+            grid-template-columns: 42px minmax(0, 1fr);
             gap: 1rem;
             align-items: stretch;
+            min-width: 0;
+            width: 100%;
           }
 
           .career-node-wrapper {

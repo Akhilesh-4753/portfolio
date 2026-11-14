@@ -79,10 +79,12 @@ export const ExperienceTimeline = () => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: '48px 1fr',
-                gap: '1.5rem',
+                gridTemplateColumns: 'minmax(0, 48px) minmax(0, 1fr)',
+                gap: 'clamp(0.75rem, 3vw, 1.5rem)',
                 alignItems: 'flex-start',
-                position: 'relative'
+                position: 'relative',
+                minWidth: 0,
+                width: '100%'
               }}
               className="timeline-item"
             >
@@ -107,7 +109,7 @@ export const ExperienceTimeline = () => {
               </div>
 
               {/* Content Card */}
-              <TiltCard style={{ padding: '2rem' }}>
+              <TiltCard style={{ padding: 'clamp(1.15rem, 3.5vw, 2rem)', minWidth: 0, width: '100%' }}>
                 <div
                   style={{
                     display: 'flex',

@@ -4,7 +4,7 @@ const MAX_API_MESSAGES = 6;
 const MAX_CHAR_LENGTH = 500;
 const CLIENT_REQUEST_TIMEOUT_MS = 45000;
 const AUTO_RETRY_DELAY_MS = 3000;
-const MOBILE_BREAKPOINT_PX = 519;
+const MOBILE_BREAKPOINT_PX = 768;
 
 const DEFAULT_PLACEHOLDER = 'Ask about projects, skills, experience...';
 const PLACEHOLDER_ROTATION_MS = 3500;
@@ -381,24 +381,70 @@ export function initChatbot() {
   };
 
   const lockBodyScroll = () => {
-    if (!isMobileViewport() || savedOverflow !== null) return;
+    // Pause Lenis smooth scroll while chatbot modal is open
+    if (window.__lenis && typeof window.__lenis.stop === 'function') {
+      try {
+        window.__lenis.stop();
+      } catch {
+        // Safe fallback
+      }
+    }
+
+    if (savedOverflow !== null) return;
     savedOverflow = {
       body: document.body.style.overflow,
       html: document.documentElement.style.overflow
     };
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+
+    if (isMobileViewport()) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
   };
 
   const unlockBodyScroll = () => {
+    // Resume Lenis smooth scroll when chatbot modal closes
+    if (window.__lenis && typeof window.__lenis.start === 'function') {
+      try {
+        window.__lenis.start();
+      } catch {
+        // Safe fallback
+      }
+    }
+
     if (savedOverflow === null) return;
     document.body.style.overflow = savedOverflow.body;
     document.documentElement.style.overflow = savedOverflow.html;
     savedOverflow = null;
   };
 
+  const syncVisualViewport = () => {
+    if (!isOpen || !isMobileViewport()) {
+      if (panel) {
+        panel.style.removeProperty('--cb-viewport-height');
+        panel.style.removeProperty('--cb-keyboard-inset');
+      }
+      return;
+    }
+
+    if (window.visualViewport) {
+      const vv = window.visualViewport;
+      const height = vv.height;
+      const keyboardInset = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
+
+      panel.style.setProperty('--cb-viewport-height', `${height}px`);
+      panel.style.setProperty('--cb-keyboard-inset', `${keyboardInset}px`);
+    } else {
+      panel.style.setProperty('--cb-viewport-height', `${window.innerHeight}px`);
+      panel.style.setProperty('--cb-keyboard-inset', '0px');
+    }
+
+    scrollToLatest();
+  };
+
   const syncScrollLockOnResize = () => {
     if (!isOpen) return;
+    syncVisualViewport();
     if (isMobileViewport()) {
       lockBodyScroll();
     } else {
@@ -591,10 +637,15 @@ export function initChatbot() {
   const focusInputSafely = () => {
     window.requestAnimationFrame(() => {
       if (!isOpen) return;
-      if (!input.disabled) {
-        input.focus();
+      if (!isMobileViewport()) {
+        if (!input.disabled) {
+          input.focus();
+        } else {
+          closeBtn.focus();
+        }
       } else {
-        closeBtn.focus();
+        // On mobile/tablet, focus dialog panel to avoid forcing software keyboard popup
+        panel.focus();
       }
     });
   };
@@ -907,6 +958,7 @@ export function initChatbot() {
     isOpen = true;
     root.hidden = false;
     lockBodyScroll();
+    syncVisualViewport();
     renderMessages();
     updateControls();
 
@@ -928,6 +980,11 @@ export function initChatbot() {
     root.classList.remove('cb-open');
     unlockBodyScroll();
 
+    if (panel) {
+      panel.style.removeProperty('--cb-viewport-height');
+      panel.style.removeProperty('--cb-keyboard-inset');
+    }
+
     const finishHide = () => {
       if (!isOpen) {
         root.hidden = true;
@@ -940,7 +997,7 @@ export function initChatbot() {
       hideTimerId = window.setTimeout(() => {
         hideTimerId = null;
         finishHide();
-      }, 240);
+      }, 300);
     }
 
     const aiTrigger = document.querySelector('[data-ai-open]');
@@ -961,8 +1018,28 @@ export function initChatbot() {
     syncPlaceholderRotation();
   });
 
-  input.addEventListener('focus', syncPlaceholderRotation);
-  input.addEventListener('blur', syncPlaceholderRotation);
+  input.addEventListener('focus', () => {
+    syncPlaceholderRotation();
+    if (isMobileViewport()) {
+      window.setTimeout(() => {
+        syncVisualViewport();
+        scrollToLatest();
+      }, 100);
+      window.setTimeout(() => {
+        syncVisualViewport();
+        scrollToLatest();
+      }, 300);
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    syncPlaceholderRotation();
+    if (isMobileViewport()) {
+      window.setTimeout(() => {
+        syncVisualViewport();
+      }, 150);
+    }
+  });
 
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
@@ -983,6 +1060,20 @@ export function initChatbot() {
   backdrop?.addEventListener('click', closeAIChat);
   document.addEventListener('keydown', handleDocumentKeydown);
   window.addEventListener('resize', syncScrollLockOnResize, { passive: true });
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', syncVisualViewport, { passive: true });
+    window.visualViewport.addEventListener('scroll', syncVisualViewport, { passive: true });
+  }
+
+  // Prevent background touch scrolling on mobile while allowing messages to scroll cleanly
+  const handleTouchMove = (event) => {
+    if (!isOpen || !isMobileViewport()) return;
+    if (!panel.contains(event.target)) {
+      event.preventDefault();
+    }
+  };
+  document.addEventListener('touchmove', handleTouchMove, { passive: false });
 
   // Connect floating button (`data-ai-open`), custom `ai:open` event, and global helpers
   window.addEventListener('ai:open', openAIChat);

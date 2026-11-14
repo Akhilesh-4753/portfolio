@@ -30,6 +30,9 @@ html.lenis, html.lenis body {
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   scroll-behavior: smooth;
   font-family: var(--font-sans);
   background-color: var(--bg-main);
@@ -40,10 +43,30 @@ html {
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
   position: relative;
   line-height: 1.6;
+}
+
+/* Fluid Media & Unbreakable Content Containment */
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+pre, code {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, li {
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 /* Reduced Motion Support */
@@ -93,14 +116,14 @@ code, pre {
   max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: clamp(1rem, 3.5vw, 1.5rem);
+  padding-right: clamp(1rem, 3.5vw, 1.5rem);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 360px) {
   .site-container {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
   }
 }
 
@@ -266,25 +289,41 @@ code, pre {
 /* Responsive Grid Helpers */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+.grid-2 > *,
+.grid-3 > * {
+  min-width: 0;
 }
 
 @media (max-width: 1024px) {
   .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .grid-2, .grid-3 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Minimum 44px touch targets on mobile for interactive elements */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .nav-link-mobile,
+  .mobile-hamburger {
+    min-height: 44px;
   }
 }
 

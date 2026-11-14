@@ -64,15 +64,17 @@ export const Contact = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1.3fr',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.3fr)',
             gap: '3rem',
-            alignItems: 'start'
+            alignItems: 'start',
+            minWidth: 0,
+            width: '100%'
           }}
           className="contact-grid"
         >
           {/* Left: Contact Info & Channels */}
-          <div>
-            <FadeIn direction="right" delay={0.1}>
+          <div style={{ minWidth: 0, width: '100%' }}>
+            <FadeIn direction="up" delay={0.1}>
               <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.5rem' }}>
                 Contact Information
               </h3>
@@ -237,9 +239,9 @@ export const Contact = () => {
           </div>
 
           {/* Right: Validated Interactive Message Form */}
-          <div>
-            <FadeIn direction="left" delay={0.15}>
-              <TiltCard style={{ padding: '2.5rem' }}>
+          <div style={{ minWidth: 0, width: '100%' }}>
+            <FadeIn direction="up" delay={0.15}>
+              <TiltCard style={{ padding: 'clamp(1.2rem, 4vw, 2.5rem)', minWidth: 0, width: '100%' }}>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>
                   Send a Direct Message
                 </h3>
@@ -432,8 +434,8 @@ export const Contact = () => {
       <style>{`
         @media (max-width: 900px) {
           .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 2.25rem !important;
           }
         }
       `}</style>

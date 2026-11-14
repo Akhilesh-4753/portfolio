@@ -134,13 +134,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0;
   border: none;
   background: transparent;
   color: var(--hero-text-muted);
-  border-radius: 6px;
+  border-radius: 8px;
   transition:
     color 0.22s ease,
     transform 0.22s ease;

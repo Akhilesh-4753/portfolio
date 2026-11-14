@@ -202,8 +202,10 @@ export const Navbar = () => {
             aria-label="Open Navigation Menu"
             className="mobile-hamburger"
             style={{
-              width: '40px',
-              height: '40px',
+              width: '44px',
+              height: '44px',
+              minWidth: '44px',
+              minHeight: '44px',
               borderRadius: '10px',
               display: 'flex',
               alignItems: 'center',

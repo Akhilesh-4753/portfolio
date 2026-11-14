@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <!-- Manual Scroll Restoration Control -->
     <script>
@@ -93,6 +93,7 @@
         aria-modal="true"
         aria-label="AI assistant chat"
         tabindex="-1"
+        data-lenis-prevent
       >
         <header class="cb-header">
           <div class="cb-brand">
@@ -141,6 +142,7 @@
         <div
           id="cb-messages"
           class="cb-messages"
+          data-lenis-prevent
           aria-live="polite"
           aria-relevant="additions"
         ></div>

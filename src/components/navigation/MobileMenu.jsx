@@ -8,6 +8,13 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
   // Prevent background scrolling when slide menu is open
   useEffect(() => {
     if (isOpen) {
+      if (window.__lenis && typeof window.__lenis.stop === 'function') {
+        try {
+          window.__lenis.stop();
+        } catch {
+          // ignore
+        }
+      }
       const originalBodyOverflow = document.body.style.overflow;
       const originalHtmlOverflow = document.documentElement.style.overflow;
 
@@ -17,6 +24,13 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
       return () => {
         document.body.style.overflow = originalBodyOverflow;
         document.documentElement.style.overflow = originalHtmlOverflow;
+        if (window.__lenis && typeof window.__lenis.start === 'function') {
+          try {
+            window.__lenis.start();
+          } catch {
+            // ignore
+          }
+        }
       };
     }
   }, [isOpen]);
@@ -25,6 +39,7 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
     <AnimatePresence>
       {isOpen && (
         <m.div
+          data-lenis-prevent
           initial={{ x: '100%' }}
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
@@ -72,7 +87,12 @@ export const MobileMenu = ({ isOpen, onClose, activeSection, onSelectSection }) 
                   border: 'none',
                   color: 'var(--text-primary)',
                   cursor: 'pointer',
-                  padding: '0.4rem'
+                  padding: '0.4rem',
+                  minWidth: '44px',
+                  minHeight: '44px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 <X size={22} />
